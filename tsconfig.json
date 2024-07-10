@@ -1,0 +1,3 @@
+{
+	"extends": "@vadirn/tsconfig/base.json"
+}

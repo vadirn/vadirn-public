@@ -1,0 +1,20 @@
+{
+	"name": "@vadirn/prettier",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"peerDependencies": {
+		"prettier": "3.*"
+	},
+	"devDependencies": {
+		"@vadirn/eslint": "workspace:*",
+		"@vadirn/tsconfig": "workspace:*",
+		"prettier-plugin-organize-imports": "4.0.0",
+		"prettier-plugin-svelte": "3.1.2",
+		"prettier-plugin-tailwindcss": "0.6.5"
+	}
+}

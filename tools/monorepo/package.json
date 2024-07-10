@@ -1,0 +1,14 @@
+{
+	"name": "@vadirn/monorepo",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"@vadirn/tsconfig": "workspace:*",
+		"find-up": "7.0.0"
+	}
+}

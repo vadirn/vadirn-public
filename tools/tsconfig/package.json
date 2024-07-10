@@ -1,0 +1,7 @@
+{
+	"name": "@vadirn/tsconfig",
+	"type": "module",
+	"exports": {
+		"./base.json": "./src/base.json"
+	}
+}
