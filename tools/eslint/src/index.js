@@ -33,6 +33,7 @@ export default ts.config(
 				tsconfigRootDir: monorepo.root,
 				sourceType: 'module',
 				ecmaVersion: 2020,
+				extraFileExtensions: ['.svelte'],
 			},
 		},
 		settings: {
