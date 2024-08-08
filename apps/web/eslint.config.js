@@ -1,3 +1,3 @@
-import config from './src/index.js';
+import config from '@vadirn/eslint';
 
 export default config;

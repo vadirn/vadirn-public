@@ -14,7 +14,7 @@
 		"@vadirn/eslint": "workspace:*",
 		"@vadirn/tsconfig": "workspace:*",
 		"prettier-plugin-organize-imports": "4.0.0",
-		"prettier-plugin-svelte": "3.1.2",
+		"prettier-plugin-svelte": "3.2.6",
 		"prettier-plugin-tailwindcss": "0.6.5"
 	}
 }
