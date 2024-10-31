@@ -13,16 +13,16 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.2.2",
-		"@sveltejs/kit": "2.5.20",
-		"@sveltejs/vite-plugin-svelte": "3.1.1",
+		"@sveltejs/kit": "2.5.27",
+		"@sveltejs/vite-plugin-svelte": "4.0.0",
 		"@vadirn/eslint": "workspace:*",
 		"@vadirn/monorepo": "workspace:*",
 		"@vadirn/testing": "workspace:*",
 		"@vadirn/tsconfig": "workspace:*",
-		"svelte": "5.0.0-next.1",
-		"svelte-check": "3.8.5",
+		"svelte": "5.0.0",
+		"svelte-check": "4.0.0",
 		"tslib": "2.6.3",
-		"vite": "5.4.0"
+		"vite": "5.4.4"
 	},
 	"type": "module"
 }
