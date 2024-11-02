@@ -21,6 +21,7 @@ const config = {
 			config.compilerOptions.rootDir = monorepo.root;
 			config.compilerOptions.moduleResolution = 'Bundler';
 			config.compilerOptions.emitDeclarationOnly = false;
+
 			return config;
 		},
 	},

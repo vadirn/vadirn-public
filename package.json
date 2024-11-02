@@ -9,13 +9,12 @@
 		"format": "turbo format",
 		"test": "turbo test"
 	},
-	"packageManager": "pnpm@9.1.2",
+	"packageManager": "pnpm@9.12.3",
 	"devDependencies": {
 		"@vadirn/eslint": "workspace:*",
-		"@vadirn/prettier": "workspace:*",
 		"@vadirn/tsconfig": "workspace:*",
-		"turbo": "2.0.12",
-		"typescript": "5.5.4",
-		"vitest": "2.0.5"
+		"turbo": "2.2.3",
+		"typescript": "5.6.3",
+		"vitest": "2.1.4"
 	}
 }

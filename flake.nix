@@ -2,7 +2,7 @@
   description = "Dev environment for vadirn.io";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -16,7 +16,7 @@
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = [
-          pkgs.nodejs
+          pkgs.nodejs_23
           pkgs.pnpm
         ];
       };
