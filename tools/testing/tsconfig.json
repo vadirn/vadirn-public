@@ -1,4 +1,6 @@
 {
 	"extends": "@vadirn/tsconfig/base.json",
-	"include": ["src/**/*"]
+	"include": [
+		"src/**/*"
+	]
 }

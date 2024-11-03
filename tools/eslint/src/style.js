@@ -1,10 +1,10 @@
-import * as StylisticEslintPluginModule from '@stylistic/eslint-plugin';
-import { setFiles } from './utils.js';
-// avoid named export vs default export property conflict
-const configs = StylisticEslintPluginModule.default.configs;
+import StylisticEslintPlugin from '@stylistic/eslint-plugin';
+import { setDefaultFiles } from './utils.js';
+
+const configs = StylisticEslintPlugin.configs;
 
 export const style = () => ([
-	...setFiles(
+	...setDefaultFiles(
 		configs['disable-legacy'],
 		configs.customize({
 			indent: 'tab',
@@ -59,6 +59,8 @@ export const style = () => ([
 				'@stylistic/operator-linebreak': ['error', 'before'],
 				'@stylistic/padding-line-between-statements': [
 					'error',
+					{ blankLine: 'always', prev: 'import', next: '*' },
+					{ blankLine: 'never', prev: 'import', next: 'import' },
 					{ blankLine: 'always', prev: '*', next: 'return' },
 					{
 						blankLine: 'always',

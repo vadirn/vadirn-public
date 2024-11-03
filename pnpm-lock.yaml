@@ -74,12 +74,12 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: 2.10.1
         version: 2.10.1(eslint@9.14.0)(typescript@5.6.3)
+      '@vadirn/jsconfig':
+        specifier: workspace:*
+        version: link:../jsconfig
       '@vadirn/monorepo':
         specifier: workspace:*
         version: link:../monorepo
-      '@vadirn/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
       eslint:
         specifier: 9.14.0
         version: 9.14.0
@@ -108,11 +108,13 @@ importers:
         specifier: 8.12.2
         version: 8.12.2(eslint@9.14.0)(typescript@5.6.3)
 
+  tools/jsconfig: {}
+
   tools/monorepo:
     devDependencies:
-      '@vadirn/tsconfig':
+      '@vadirn/jsconfig':
         specifier: workspace:*
-        version: link:../tsconfig
+        version: link:../jsconfig
       find-up:
         specifier: 7.0.0
         version: 7.0.0

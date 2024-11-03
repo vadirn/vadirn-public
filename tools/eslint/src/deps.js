@@ -1,5 +1,6 @@
 import { monorepo } from '@vadirn/monorepo';
 import pluginImportX from 'eslint-plugin-import-x';
+import { setDefaultFiles } from './utils.js';
 
 export const project = [
 	monorepo.resolve('tsconfig.json'),
@@ -10,26 +11,23 @@ export const project = [
 	monorepo.ui('*', 'tsconfig.json'),
 ];
 
-export const deps = () => ([
-	{
-		settings: {
-			'import-x/parsers': {
-				'svelte-eslint-parser': ['.svelte'],
-				'@typescript-eslint/parser': ['.ts'],
-				'espree': ['.js'],
-			},
-			'import-x/resolver': {
-				typescript: {
-					alwaysTryTypes: true,
-					project,
-				},
-			},
+export const deps = () => setDefaultFiles({
+	settings: {
+		'import-x/parsers': {
+			'svelte-eslint-parser': ['.svelte'],
+			'@typescript-eslint/parser': ['.ts'],
+			'espree': ['.js'],
 		},
-		plugins: { 'import-x': pluginImportX },
-		rules: {
-			...pluginImportX.configs.recommended.rules,
-			// 'import/no-unresolved': 'error',
-			// 'import/no-unused-modules': 'warn',
+		'import-x/resolver': {
+			typescript: {
+				alwaysTryTypes: true,
+				project,
+			},
 		},
 	},
-]);
+	plugins: { 'import-x': pluginImportX },
+	rules: {
+		...pluginImportX.configs.recommended.rules,
+		'import-x/no-named-as-default-member': 'off',
+	},
+});

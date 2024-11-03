@@ -1,0 +1,7 @@
+{
+	"name": "@vadirn/jsconfig",
+	"type": "module",
+	"exports": {
+		"./base.json": "./src/base.json"
+	}
+}

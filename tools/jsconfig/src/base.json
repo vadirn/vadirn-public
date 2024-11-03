@@ -4,6 +4,7 @@
 		"skipLibCheck": true,
 		"target": "es2022",
 		"allowJs": true,
+		"checkJs": true,
 		"resolveJsonModule": true,
 		"moduleDetection": "force",
 		"isolatedModules": true,
@@ -22,6 +23,11 @@
 			"dom",
 			"dom.iterable"
 		],
-		"forceConsistentCasingInFileNames": true
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitAny": false,
+		"strictNullChecks": false,
+		"strictFunctionTypes": false,
+		"strictBindCallApply": false,
+		"strictPropertyInitialization": false
 	}
 }
