@@ -1,4 +1,7 @@
 {
-	"cSpell.words": ["vadirn"],
+	"cSpell.words": [
+		"tailwindcss",
+		"vadirn"
+	],
 	"eslint.useFlatConfig": true
 }

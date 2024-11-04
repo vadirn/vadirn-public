@@ -18,6 +18,7 @@ const config = {
 	typescript: {
 		config(config) {
 			config.extends = monorepo.tools('tsconfig', 'src', 'base.json');
+
 			config.compilerOptions.rootDir = monorepo.root;
 			config.compilerOptions.moduleResolution = 'Bundler';
 			config.compilerOptions.emitDeclarationOnly = false;

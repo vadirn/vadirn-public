@@ -1,0 +1,19 @@
+{
+	"name": "@vadirn/theme",
+	"exports": {
+		"./css/app.css": "./src/css/app.css",
+		"./postcss": "./src/postcss.js",
+		"./tailwindcss": "./src/tailwindcss.js"
+	},
+	"scripts": {
+		"lint": "eslint ."
+	},
+	"type": "module",
+	"devDependencies": {
+		"@vadirn/eslint": "workspace:*",
+		"@vadirn/jsconfig": "workspace:*",
+		"autoprefixer": "10.4.20",
+		"postcss": "8.4.47",
+		"tailwindcss": "3.4.14"
+	}
+}

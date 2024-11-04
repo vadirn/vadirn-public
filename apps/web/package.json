@@ -17,6 +17,7 @@
 		"@vadirn/eslint": "workspace:*",
 		"@vadirn/monorepo": "workspace:*",
 		"@vadirn/testing": "workspace:*",
+		"@vadirn/theme": "workspace:*",
 		"@vadirn/tsconfig": "workspace:*",
 		"svelte": "5.1.9",
 		"svelte-check": "4.0.5",

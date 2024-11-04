@@ -24,7 +24,11 @@ export const style = () => ([
 					},
 				],
 				'@stylistic/function-call-spacing': ['error', 'never'],
-				'@stylistic/function-paren-newline': ['error', 'multiline'],
+				'@stylistic/function-call-argument-newline': [
+					'error',
+					'consistent',
+				],
+				'@stylistic/function-paren-newline': ['error', 'consistent'],
 				'@stylistic/generator-star-spacing': [
 					'error',
 					{ before: true, after: true },

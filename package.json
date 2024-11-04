@@ -7,10 +7,13 @@
 		"dev": "turbo dev",
 		"lint": "turbo lint",
 		"format": "turbo format",
-		"test": "turbo test"
+		"test": "turbo test",
+		"check-project-references": "set-project-references",
+		"set-project-references": "set-project-references --save"
 	},
 	"packageManager": "pnpm@9.12.3",
 	"devDependencies": {
+		"@bessonovs/set-project-references": "0.0.10",
 		"@vadirn/eslint": "workspace:*",
 		"@vadirn/tsconfig": "workspace:*",
 		"turbo": "2.2.3",
