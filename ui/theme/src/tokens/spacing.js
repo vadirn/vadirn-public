@@ -1,0 +1,17 @@
+export const spacing = {
+	0: '0',
+	1: '1px',
+	2: '2px',
+	4: '4px',
+	8: '8px',
+	16: '16px',
+	20: '20px',
+	24: '24px',
+	32: '32px',
+	48: '48px',
+	full: '100%',
+	min: 'min-content',
+	max: 'max-content',
+	fit: 'fit-content',
+	svh: '100svh',
+};

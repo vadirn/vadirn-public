@@ -10,6 +10,9 @@
 		"test": "vitest",
 		"lint": "eslint ."
 	},
+	"dependencies": {
+		"@vadirn/components": "workspace:*"
+	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",
 		"@sveltejs/kit": "2.7.4",

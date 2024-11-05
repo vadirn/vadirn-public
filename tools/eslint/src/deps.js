@@ -29,5 +29,17 @@ export const deps = () => setDefaultFiles({
 	rules: {
 		...pluginImportX.configs.recommended.rules,
 		'import-x/no-named-as-default-member': 'off',
+		'import-x/no-duplicates': ['error', { considerQueryString: true }],
+		'import-x/order': ['error',
+			{ groups: [
+				'builtin',
+				'external',
+				'internal',
+				'parent',
+				'sibling',
+				'index',
+				'object',
+				'type',
+			] }],
 	},
 });

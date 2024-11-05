@@ -17,7 +17,9 @@ export function getTokensFromColors(colors) {
 	return Object.fromEntries(
 		Object.entries(colors).map(([key, value]) => [
 			key,
-			rgba(hexToRgbString(value)),
+			typeof value === 'string'
+				? rgba(hexToRgbString(value))
+				: getTokensFromColors(value),
 		]),
 	);
 }

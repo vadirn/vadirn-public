@@ -1,0 +1,14 @@
+{
+  "name": "@vadirn/components",
+  "exports": {
+    "./logo": "./src/Logo/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "type": "module",
+  "devDependencies": {
+    "@vadirn/eslint": "workspace:*",
+    "@vadirn/jsconfig": "workspace:*"
+  }
+}
