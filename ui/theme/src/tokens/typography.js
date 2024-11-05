@@ -10,6 +10,10 @@ export const fontSize = {
             [pxToRem(10), { lineHeight: pxToRem(12) }],
 };
 
+export const fontFamily = {
+	body: 'Literata, sans-serif',
+};
+
 function pxToRem(px) {
 	return `${px / 16}rem`;
 }

@@ -1,4 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite';
+import { monorepo } from '@vadirn/monorepo';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config';
 
@@ -7,7 +8,7 @@ export default defineConfig({
 	css: { postcss },
 	server: {
 		fs: {
-			allow: ['../../packages/kit'],
+			allow: [monorepo.ui('theme', 'src', 'assets')],
 		},
 	},
 });
