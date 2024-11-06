@@ -1,1 +1,1 @@
-Vadim Kotov
+<b>Vadim Kotov</b>

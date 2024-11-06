@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config['theme']['fontSize']} */
 export const fontSize = {
 	title:
@@ -11,7 +13,9 @@ export const fontSize = {
 };
 
 export const fontFamily = {
-	body: 'Literata, sans-serif',
+	body: ['Literata', ...defaultTheme.fontFamily.serif],
+	mono: [...defaultTheme.fontFamily.mono],
+	sans: [...defaultTheme.fontFamily.sans],
 };
 
 function pxToRem(px) {
