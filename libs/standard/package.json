@@ -1,7 +1,8 @@
 {
   "name": "@workspace/standard",
   "exports": {
-    "./function": "./src/function.ts"
+    "./function": "./src/function.ts",
+    "./promise": "./src/promise.ts"
   },
   "scripts": {},
   "type": "module",

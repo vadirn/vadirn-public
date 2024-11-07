@@ -1,5 +1,5 @@
 import { describe, expect, it } from '@workspace/testing';
-import { error, ok, resultOf, unwrap, unwrapOr, wrap } from '.';
+import { attempt, error, ok, resilient, resultOf, unwrap, unwrapOr } from '.';
 
 describe('result of', () => {
 	it('async function', async () => {
@@ -29,21 +29,21 @@ describe('result of', () => {
 	});
 });
 
-describe('wrap', () => {
+describe('attempt', () => {
 	it('a function into a result instead of doing try-catch', () => {
-		const result = wrap(() => 'hello');
+		const result = attempt(() => 'hello');
 
 		expect(result.ok).toBe(true);
 		expect(result.value).toBe('hello');
 	});
 	it('async function into a result', async () => {
-		let result = wrap(async () => 'hello');
+		let result = attempt(async () => 'hello');
 
 		expect(result.ok).toBe(true);
 		expect(result.value).toBeInstanceOf(Promise);
 
 		// however, result.value might be a promise, that is going to be rejected
-		result = wrap(async () => Promise.reject(new Error('💥')));
+		result = attempt(async () => Promise.reject(new Error('💥')));
 
 		// and still be ok
 		expect(result.ok).toBe(true);
@@ -74,5 +74,41 @@ describe('unwrap', () => {
 
 		expect(unwrapOr(errorResultWithNoValue, 'fallback')).toBe('fallback');
 		expect(unwrapOr(errorResultWithValue, 'fallback')).toBe('value');
+	});
+});
+
+describe('resilient', () => {
+	it('return a function that retries until it succeeds or fails',
+		async () => {
+			let attemptNo = 0;
+			const fn = () => {
+				attemptNo += 1;
+
+				return Promise.reject(new Error('💥'));
+			};
+			const resilientFn = resilient(fn, {
+				sleep: () => Promise.resolve(),
+			});
+			const result = await resilientFn();
+
+			expect(result.ok).toBe(false);
+			expect(attemptNo).toBe(3);
+		});
+	it('accepts bail option', async () => {
+		let attemptNo = 0;
+		const fn = () => {
+			attemptNo += 1;
+			if (attemptNo >= 3) return Promise.resolve('success');
+
+			return Promise.reject(new Error(`${attemptNo}`));
+		};
+		const resilientFn = resilient(fn, {
+			sleep: () => Promise.resolve(),
+			bail: async error => error.message === '2',
+		});
+		const result = await resilientFn();
+
+		expect(result.ok).toBe(false);
+		expect(result.error?.message).toBe('2');
 	});
 });
