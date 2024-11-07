@@ -1,5 +1,5 @@
 {
-	"name": "@vadirn/tsconfig",
+	"name": "@workspace/tsconfig",
 	"type": "module",
 	"exports": {
 		"./base.json": "./src/base.json"

@@ -1,5 +1,5 @@
 {
-  "name": "@vadirn/components",
+  "name": "@workspace/components",
   "exports": {
     "./logo": "./src/Logo/index.ts"
   },
@@ -8,7 +8,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "@vadirn/eslint": "workspace:*",
-    "@vadirn/jsconfig": "workspace:*"
+    "@workspace/eslint": "workspace:*",
+    "@workspace/jsconfig": "workspace:*"
   }
 }

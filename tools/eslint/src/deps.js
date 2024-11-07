@@ -1,4 +1,4 @@
-import { monorepo } from '@vadirn/monorepo';
+import { monorepo } from '@workspace/monorepo';
 import pluginImportX from 'eslint-plugin-import-x';
 import { setDefaultFiles } from './utils.js';
 

@@ -1,0 +1,8 @@
+{
+  "name": "@workspace/standard",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {},
+  "type": "module"
+}

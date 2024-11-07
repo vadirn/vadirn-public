@@ -1,5 +1,5 @@
 {
-	"extends": "@vadirn/jsconfig/base.json",
+	"extends": "@workspace/jsconfig/base.json",
 	"include": [
 		"src/**/*"
 	]

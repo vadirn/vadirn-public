@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '@vadirn/theme/css/app.css';
+	import '@workspace/theme/css/app.css';
 	const { children } = $props();
 </script>
 

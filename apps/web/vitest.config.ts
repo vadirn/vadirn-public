@@ -1,3 +1,3 @@
-import config from '@vadirn/testing/config';
+import config from '@workspace/testing/config';
 
 export default config;

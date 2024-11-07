@@ -1,3 +1,3 @@
-import config from '@vadirn/eslint';
+import config from '@workspace/eslint';
 
 export default config;

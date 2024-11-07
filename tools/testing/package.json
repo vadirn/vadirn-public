@@ -1,5 +1,5 @@
 {
-	"name": "@vadirn/testing",
+	"name": "@workspace/testing",
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
@@ -9,8 +9,8 @@
 	"devDependencies": {
 		"@sveltejs/kit": "2.5.20",
 		"@sveltejs/vite-plugin-svelte": "3.1.1",
-		"@vadirn/eslint": "workspace:*",
-		"@vadirn/tsconfig": "workspace:*",
+		"@workspace/eslint": "workspace:*",
+		"@workspace/tsconfig": "workspace:*",
 		"vitest": "2.0.5"
 	}
 }

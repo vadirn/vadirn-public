@@ -1,5 +1,5 @@
 {
-	"name": "@vadirn/jsconfig",
+	"name": "@workspace/jsconfig",
 	"type": "module",
 	"exports": {
 		"./base.json": "./src/base.json"

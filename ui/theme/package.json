@@ -1,5 +1,5 @@
 {
-	"name": "@vadirn/theme",
+	"name": "@workspace/theme",
 	"exports": {
 		"./css/app.css": "./src/css/app.css",
 		"./postcss": "./src/postcss.js",
@@ -10,9 +10,9 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@vadirn/eslint": "workspace:*",
-		"@vadirn/jsconfig": "workspace:*",
-		"@vadirn/monorepo": "workspace:*",
+		"@workspace/eslint": "workspace:*",
+		"@workspace/jsconfig": "workspace:*",
+		"@workspace/monorepo": "workspace:*",
 		"autoprefixer": "10.4.20",
 		"postcss": "8.4.47",
 		"tailwindcss": "3.4.14"

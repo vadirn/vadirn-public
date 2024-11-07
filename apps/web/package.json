@@ -1,5 +1,5 @@
 {
-	"name": "@vadirn/web",
+	"name": "@workspace/web",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -11,17 +11,17 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"@vadirn/components": "workspace:*"
+		"@workspace/components": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",
 		"@sveltejs/kit": "2.7.4",
 		"@sveltejs/vite-plugin-svelte": "4.0.0",
-		"@vadirn/eslint": "workspace:*",
-		"@vadirn/monorepo": "workspace:*",
-		"@vadirn/testing": "workspace:*",
-		"@vadirn/theme": "workspace:*",
-		"@vadirn/tsconfig": "workspace:*",
+		"@workspace/eslint": "workspace:*",
+		"@workspace/monorepo": "workspace:*",
+		"@workspace/testing": "workspace:*",
+		"@workspace/theme": "workspace:*",
+		"@workspace/tsconfig": "workspace:*",
 		"svelte": "5.1.9",
 		"svelte-check": "4.0.5",
 		"tslib": "2.8.1",

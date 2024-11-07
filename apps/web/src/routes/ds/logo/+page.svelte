@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Logo } from '@vadirn/components/logo';
+	import { Logo } from '@workspace/components/logo';
 	import Code from '../Code.svelte';
 	import SplitScreen from '../SplitScreen.svelte';
 </script>

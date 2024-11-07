@@ -1,4 +1,4 @@
-import { monorepo } from '@vadirn/monorepo';
+import { monorepo } from '@workspace/monorepo';
 import globals from 'globals';
 import { parser } from 'typescript-eslint';
 import { deps, project } from './deps.js';

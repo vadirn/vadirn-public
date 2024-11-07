@@ -1,4 +1,4 @@
-import { monorepo } from '@vadirn/monorepo';
+import { monorepo } from '@workspace/monorepo';
 import plugin from 'tailwindcss/plugin.js';
 import { colorTokens, themeBase } from './tokens/colors.js';
 import { spacing } from './tokens/spacing.js';
