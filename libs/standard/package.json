@@ -1,8 +1,12 @@
 {
   "name": "@workspace/standard",
   "exports": {
-    ".": "./src/index.js"
+    "./function": "./src/function.ts"
   },
   "scripts": {},
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@workspace/eslint": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
+  }
 }

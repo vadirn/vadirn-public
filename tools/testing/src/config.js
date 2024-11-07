@@ -1,10 +1,14 @@
-import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-	plugins: [sveltekit()],
+	plugins: [],
 	test: {
 		globals: true,
 		environment: 'jsdom',
 	},
+	resolve: process.env.VITEST
+		? {
+				conditions: ['browser'],
+			}
+		: undefined,
 });

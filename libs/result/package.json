@@ -4,5 +4,13 @@
     ".": "./src/index.js"
   },
   "scripts": {},
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@workspace/eslint": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@workspace/standard": "workspace:*",
+    "@workspace/testing": "workspace:*"
+  }
 }

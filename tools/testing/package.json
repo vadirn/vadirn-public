@@ -2,15 +2,16 @@
 	"name": "@workspace/testing",
 	"type": "module",
 	"exports": {
-		".": "./src/index.ts",
-		"./config": "./src/config.ts"
+		".": "./src/index.js",
+		"./config": "./src/config.js"
 	},
 	"scripts": {},
 	"devDependencies": {
 		"@sveltejs/kit": "2.5.20",
 		"@sveltejs/vite-plugin-svelte": "3.1.1",
 		"@workspace/eslint": "workspace:*",
-		"@workspace/tsconfig": "workspace:*",
+		"@workspace/jsconfig": "workspace:*",
+		"jsdom": "25.0.1",
 		"vitest": "2.0.5"
 	}
 }
