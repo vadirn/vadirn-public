@@ -1,0 +1,16 @@
+{
+  "name": "@workspace/routing",
+  "exports": {
+    "./path": "./src/path.ts"
+  },
+  "scripts": {},
+  "type": "module",
+  "devDependencies": {
+    "@workspace/eslint": "workspace:*",
+    "@workspace/testing": "workspace:*",
+    "@workspace/tsconfig": "workspace:*"
+  },
+  "dependencies": {
+    "@workspace/standard": "workspace:*"
+  }
+}
