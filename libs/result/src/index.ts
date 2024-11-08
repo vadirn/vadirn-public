@@ -84,7 +84,7 @@ type RetryOptions = {
 
 export function resilient<Return, Args extends []>(
 	fn: Fn<Promise<Return>, Args>,
-	options: RetryOptions,
+	options?: RetryOptions,
 ): Fn<Promise<Result<Return>>, Args> {
 	return async (...args: Args) => {
 		const { bail, attempts, sleep } = getRetryOptions(options);

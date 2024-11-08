@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Logo } from '@workspace/components/logo';
-	import Code from '../Code.svelte';
-	import SplitScreen from '../SplitScreen.svelte';
+	import SplitScreen from '$lib/components/SplitScreen.svelte';
+	import Snippet from './snippet.md';
 </script>
 
 {#snippet component()}
@@ -9,11 +9,7 @@
 {/snippet}
 
 {#snippet code()}
-	<Code src={`
-
-<Logo />
-
-`} />
+	<Snippet />
 {/snippet}
 
 <SplitScreen {code} {component} />

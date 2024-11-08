@@ -1,7 +1,7 @@
 {
   "name": "@workspace/result",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.ts"
   },
   "scripts": {},
   "type": "module",

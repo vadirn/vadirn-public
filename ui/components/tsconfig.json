@@ -1,6 +1,19 @@
 {
-      "extends": "@workspace/tsconfig/base.json",
-      "include": [
-            "src/**/*"
-      ]
+	"extends": "@workspace/tsconfig/base.json",
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"typeRoots": [
+			"./node_modules/svelte/types"
+		],
+		"types": [
+			"svelte"
+		]
+	},
+	"include": [
+		"src/**/*.js",
+		"src/**/*.ts",
+		"src/**/*.svelte"
+	],
+	"references": []
 }

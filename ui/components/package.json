@@ -1,7 +1,8 @@
 {
   "name": "@workspace/components",
   "exports": {
-    "./logo": "./src/Logo/index.ts"
+    "./logo": "./src/Logo/index.ts",
+    "./code": "./src/Code/index.ts"
   },
   "scripts": {
     "lint": "eslint ."
@@ -9,6 +10,8 @@
   "type": "module",
   "devDependencies": {
     "@workspace/eslint": "workspace:*",
-    "@workspace/jsconfig": "workspace:*"
+    "@workspace/jsconfig": "workspace:*",
+    "svelte": "5.1.9",
+    "svelte-check": "4.0.5"
   }
 }

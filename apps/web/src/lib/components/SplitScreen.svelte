@@ -12,7 +12,7 @@
 			border-r border-solid border-neutral-300;
 	}
 	.col-b {
-		@apply flex flex-col items-center bg-neutral-200 text-neutral-500;
+		@apply flex flex-col items-center bg-neutral-200 text-neutral-500 p-16;
 	}
 </style>
 
