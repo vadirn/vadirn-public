@@ -2,7 +2,7 @@
   "name": "@workspace/components",
   "exports": {
     "./logo": "./src/Logo/index.ts",
-    "./code": "./src/Code/index.ts"
+    "./navigation": "./src/Navigation/index.ts"
   },
   "scripts": {
     "lint": "eslint ."
@@ -13,5 +13,8 @@
     "@workspace/jsconfig": "workspace:*",
     "svelte": "5.1.9",
     "svelte-check": "4.0.5"
+  },
+  "dependencies": {
+    "@workspace/standard": "workspace:*"
   }
 }

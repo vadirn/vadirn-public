@@ -41,3 +41,10 @@
 body {
 	@apply box-border min-h-lvh w-full text-neutral-900 bg-neutral-100 text-body font-body;
 }
+
+a {
+	@apply text-neutral-600;
+	&:hover {
+		@apply text-opacity-60;
+	}
+}

@@ -16,5 +16,11 @@ export const svelte = () => ([
 				parser,
 			},
 		},
+		rules: {
+			'svelte/prefer-class-directive': ['error', { prefer: 'always' }],
+			'svelte/prefer-style-directive': 'error',
+			'svelte/shorthand-attribute': ['error', { prefer: 'always' }],
+			'svelte/shorthand-directive': ['error', { prefer: 'always' }],
+		},
 	},
 ]);

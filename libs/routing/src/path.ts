@@ -2,8 +2,6 @@ import { notNil } from '@workspace/standard/common';
 import { key, proxy } from './proxy';
 
 function joinPaths(...paths: string[]) {
-	console.log('joinPaths', ...paths);
-
 	return paths.map(stripTrailingSlashes).filter(notNil).join('/');
 }
 

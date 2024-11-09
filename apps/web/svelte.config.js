@@ -51,6 +51,10 @@ const config = {
 			return config;
 		},
 	},
+
+	compilerOptions: {
+		runes: true,
+	},
 };
 
 export default config;

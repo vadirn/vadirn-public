@@ -11,7 +11,8 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"@workspace/components": "workspace:*"
+		"@workspace/components": "workspace:*",
+		"@workspace/routing": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",

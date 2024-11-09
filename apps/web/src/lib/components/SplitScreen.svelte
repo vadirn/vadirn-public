@@ -12,7 +12,11 @@
 			border-r border-solid border-neutral-300;
 	}
 	.col-b {
-		@apply flex flex-col items-center bg-neutral-200 text-neutral-500 p-16;
+		@apply flex flex-col items-center bg-neutral-200
+			text-neutral-500 p-16;
+	}
+	.col-b :global(pre) {
+		@apply overflow-scroll p-8 overscroll-contain text-caption;
 	}
 </style>
 

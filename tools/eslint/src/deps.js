@@ -19,9 +19,8 @@ export const deps = () => setDefaultFiles({
 			'espree': ['.js'],
 		},
 		'import-x/resolver': {
-			typescript: {
-				alwaysTryTypes: true,
-				project,
+			'eslint-import-resolver-typescript': {
+				projectService: true,
 			},
 		},
 	},
@@ -31,15 +30,20 @@ export const deps = () => setDefaultFiles({
 		'import-x/no-named-as-default-member': 'off',
 		'import-x/no-duplicates': ['error', { considerQueryString: true }],
 		'import-x/order': ['error',
-			{ groups: [
-				'builtin',
-				'external',
-				'internal',
-				'parent',
-				'sibling',
-				'index',
-				'object',
-				'type',
-			] }],
+			{
+				groups: [
+					'builtin',
+					'external',
+					'internal',
+					'parent',
+					'sibling',
+					'index',
+					'object',
+					'type',
+				],
+			}],
+		// disable no-unresolved until https://github.com/un-ts/eslint-plugin-import-x/issues/40?ysclid=m393mkvkc718566676
+		// $app is vite alias
+		'import-x/no-unresolved': ['error', { ignore: ['^\\$app\\W'] }],
 	},
 });

@@ -9,7 +9,7 @@ export const fontSize = {
 	body:
             [pxToRem(16), { lineHeight: pxToRem(20) }],
 	caption:
-            [pxToRem(10), { lineHeight: pxToRem(12) }],
+            [pxToRem(12), { lineHeight: pxToRem(14) }],
 };
 
 export const fontFamily = {
