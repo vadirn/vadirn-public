@@ -10,15 +10,17 @@
 	}
 
 	.code {
-		animation: code 1800ms ease-in-out forwards;
+		animation: code 800ms cubic-bezier(0.33, 1.25, 0.68, 1.25) forwards;
+		transform-origin: bottom left;
 	}
 
 	@keyframes code {
 		0%, 100% {
-			filter: brightness(1);
+			transform: rotate(0deg);
 		}
+
 		50% {
-			filter: brightness(1.4);
+			transform: rotate(-16deg);
 		}
 	}
 
@@ -33,6 +35,7 @@
 			offset-distance: 0%;
 			offset-rotate: 0deg;
 		}
+
 		50% {
 			offset-distance: 100%;
 			offset-rotate: 0deg;
@@ -47,12 +50,15 @@
 		0%, 80%, 100% {
 			transform: translateY(0) scale(1, 1);
 		}
+
 		20% {
 			transform: translateY(10%) scale(1.2, 0.8); /* Squash */
 		}
+
 		40% {
 			transform: translateY(-80%) scale(0.8, 1.2); /* Stretch */
 		}
+
 		50% {
 			transform: translateY(10%) scale(1.2, 0.8); /* Squash */
 		}
@@ -66,6 +72,7 @@
 		0%, 100% {
 			transform: translateX(0);
 		}
+
 		50% {
 			transform: translateX(8px);
 		}

@@ -15,5 +15,9 @@
 		"src/**/*.ts",
 		"src/**/*.svelte"
 	],
-	"references": []
+	"references": [
+		{
+			"path": "../../libs/standard"
+		}
+	]
 }

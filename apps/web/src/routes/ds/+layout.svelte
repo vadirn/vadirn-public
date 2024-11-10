@@ -10,15 +10,19 @@
 	nav {
 		@apply flex-none w-[180px] p-16 min-h-svh;
 	}
+
 	main {
 		@apply flex-auto border-l border-solid border-neutral-300;
 	}
+
 	.nav-item {
 		@apply border-b border-solid block w-fit;
+
 		a {
 			@apply px-4;
 		}
 	}
+
 	.selected {
 		@apply border-accent;
 	}

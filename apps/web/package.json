@@ -8,7 +8,7 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
-		"lint": "eslint ."
+		"lint": "eslint . && stylelint **/*.{css,svelte}"
 	},
 	"dependencies": {
 		"@workspace/components": "workspace:*",
@@ -20,6 +20,7 @@
 		"@sveltejs/vite-plugin-svelte": "4.0.0",
 		"@workspace/eslint": "workspace:*",
 		"@workspace/monorepo": "workspace:*",
+		"@workspace/stylelint": "workspace:*",
 		"@workspace/testing": "workspace:*",
 		"@workspace/theme": "workspace:*",
 		"@workspace/tsconfig": "workspace:*",

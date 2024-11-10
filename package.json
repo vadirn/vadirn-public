@@ -14,7 +14,6 @@
 	"packageManager": "pnpm@9.12.3",
 	"devDependencies": {
 		"@bessonovs/set-project-references": "0.0.10",
-		"@workspace/eslint": "workspace:*",
 		"@workspace/tsconfig": "workspace:*",
 		"turbo": "2.2.3",
 		"typescript": "5.6.3",

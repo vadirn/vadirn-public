@@ -1,0 +1,12 @@
+button {
+	@apply rounded-full bg-neutral-300 font-sans cursor-default 
+		px-16 h-32 inline-flex items-center justify-center;
+
+	&:hover {
+		@apply bg-opacity-60;
+	}
+
+	&:active {
+		@apply bg-opacity-90;
+	}
+}
