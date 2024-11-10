@@ -13,7 +13,7 @@ export const fontSize = {
 };
 
 export const fontFamily = {
-	body: ['Literata', ...defaultTheme.fontFamily.serif],
+	serif: [...defaultTheme.fontFamily.serif],
 	mono: [...defaultTheme.fontFamily.mono],
 	sans: [...defaultTheme.fontFamily.sans],
 };

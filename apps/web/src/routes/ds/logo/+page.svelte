@@ -17,4 +17,4 @@
 	<button onclick={logoState.updateIndex}>Change emoji</button>
 {/snippet}
 
-<SplitScreen {code} {component} />
+<SplitScreen {code} {component} position="center" />

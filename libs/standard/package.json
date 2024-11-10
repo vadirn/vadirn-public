@@ -3,8 +3,10 @@
 	"exports": {
 		"./common": "./src/common.ts",
 		"./function": "./src/function.ts",
+		"./number": "./src/number.ts",
 		"./promise": "./src/promise.ts",
-		"./string": "./src/string.ts"
+		"./string": "./src/string.ts",
+		"./style": "./src/style.ts"
 	},
 	"scripts": {},
 	"type": "module",

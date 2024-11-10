@@ -9,6 +9,7 @@ export const spacing = {
 	24: '24px',
 	32: '32px',
 	48: '48px',
+	54: '54px',
 	full: '100%',
 	min: 'min-content',
 	max: 'max-content',
