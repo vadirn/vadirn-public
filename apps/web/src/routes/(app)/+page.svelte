@@ -8,14 +8,14 @@
 	}
 
 	.subhead {
-		@apply  pl-64;
+		@apply pl-64 pr-32;
 
 		grid-column: 1/2;
 		grid-row: 3/4;
 	}
 
 	.notes {
-		@apply border-accent border-l-2 pl-32 pt-60 pb-64;
+		@apply border-accent lg:border-l-2 pl-64 lg:pl-32 pt-60 pb-64;
 
 		grid-column: 2/3;
 		grid-row: 1/-1;
@@ -33,8 +33,14 @@
 </h1>
 
 <div class="subhead">
-	<p class="mb-24">More text</p>
-	<button>CTA</button>
+	<p class="mb-24">
+		With over a decade of frontend expertise,
+		I specialize in transforming legacy codebases
+		and crafting maintainable systems from the ground up.
+		Let's work on turning gradual decay into continuous improvement,
+		ensuring long-term success for your projects.
+	</p>
+	<button>Get a quote</button>
 </div>
 
 <div class="notes">
