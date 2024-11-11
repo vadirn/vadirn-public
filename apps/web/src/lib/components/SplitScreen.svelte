@@ -33,8 +33,12 @@
 			@apply bg-neutral-300 px-4 rounded-sm;
 		}
 
+		& :global(ul) {
+			@apply list-disc;
+		}
+
 		& :global(li) {
-			@apply list-disc mb-8;
+			@apply mb-8;
 		}
 	}
 </style>

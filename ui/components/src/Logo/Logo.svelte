@@ -80,7 +80,7 @@
 </style>
 
 <a
-	class="font-sans text-heading font-bold"
+	class="font-sans text-heading font-bold no-underline"
 	href='/'
 ><figure
 	class="w-32"

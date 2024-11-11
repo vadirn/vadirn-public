@@ -8,7 +8,7 @@
 
 <style lang="postcss">
 	nav {
-		@apply flex-none w-[180px] p-16 min-h-svh;
+		@apply flex-none w-[180px] py-16 min-h-svh;
 	}
 
 	main {
@@ -16,15 +16,19 @@
 	}
 
 	.nav-item {
-		@apply border-b border-solid block w-fit;
+		@apply block;
 
 		a {
-			@apply px-4;
+			@apply block px-16 py-4 no-underline;
 		}
 	}
 
 	.selected {
-		@apply border-accent;
+		@apply bg-accent;
+
+		a {
+			@apply text-gray-100;
+		}
 	}
 </style>
 
@@ -37,6 +41,7 @@
 <div class="flex">
 	<nav>
 		<ul class="flex flex-col gap-4">
+			<li class="nav-item"><a href="/">&larr;&nbsp;Back</a></li>
 			{@render navItem(ds.logo.toString(), 'Logo')}
 			{@render navItem(ds.navigation.toString(), 'Navigation')}
 		</ul>
