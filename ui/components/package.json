@@ -5,7 +5,7 @@
 		"./navigation": "./src/Navigation/index.ts"
 	},
 	"scripts": {
-		"lint": "eslint ."
+		"lint": "eslint . && stylelint **/*.{css,svelte}"
 	},
 	"type": "module",
 	"devDependencies": {

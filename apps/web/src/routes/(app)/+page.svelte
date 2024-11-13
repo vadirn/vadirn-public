@@ -1,3 +1,10 @@
+<script lang="ts">
+	import { note, notes } from '$lib/cache/notes';
+	import { app } from '$lib/paths/app';
+
+	const recentNotes = notes.slice(0, 5);
+</script>
+
 <style lang="postcss">
 	.headline {
 		@apply text-title pl-54 mb-20 border-l-8
@@ -15,14 +22,10 @@
 	}
 
 	.notes {
-		@apply border-accent lg:border-l-2 pl-64 lg:pl-32 pt-60 pb-64;
+		@apply border-accent lg:border-l pl-64 lg:pl-32 pt-60 pb-64;
 
 		grid-column: 2/3;
 		grid-row: 1/-1;
-
-		& li {
-			@apply mb-8;
-		}
 	}
 </style>
 
@@ -44,14 +47,14 @@
 </div>
 
 <div class="notes">
-	<h2 class="mb-20">Recent notes:</h2>
+	<h2 class="mb-32">Recent notes:</h2>
 
-	<ul class="list-disc">
-		<li>
-			<a href="#">Make it easy to classify your work</a>
-		</li>
-		<li>
-			<a href="#">Make it easy to classify your work</a>
-		</li>
+	<ul class="list-disc list-inside mb-20">
+		{#each recentNotes as title}
+			<li class="mb-4">
+				<a href={note(title.toLowerCase())}>{title}</a>
+			</li>
+		{/each}
 	</ul>
+	<a href={app.notes.toString()}>View all</a>
 </div>

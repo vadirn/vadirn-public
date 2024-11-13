@@ -22,8 +22,8 @@ describe('path builder', () => {
 		};
 		const paths = pathBuilder<Paths>();
 
-		expect(paths.blog.posts(123).comments('456_789').toString()).toBe(
-			'/blog/posts/123/comments/456_789',
+		expect(paths.blog.posts(123).comments('456 789').toString()).toBe(
+			'/blog/posts/123/comments/456-789',
 		);
 	});
 });

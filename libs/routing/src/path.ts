@@ -1,8 +1,10 @@
-import { notNil } from '@workspace/standard/common';
+import { toKebabCase } from '@workspace/standard/string';
 import { key, proxy } from './proxy';
 
 function joinPaths(...paths: string[]) {
-	return paths.map(stripTrailingSlashes).filter(notNil).join('/');
+	return paths
+		.map(path => toKebabCase(stripTrailingSlashes(path)))
+		.join('/');
 }
 
 function stripTrailingSlashes(path: unknown) {
@@ -25,8 +27,6 @@ function handler(): ProxyHandler<{ (): void; [key]: string }> {
 			);
 		},
 		apply: (target, thisArg, args) => {
-			console.log(target, thisArg, args);
-
 			return proxy(
 				joinPaths(target[key], ...args),
 				handler(),

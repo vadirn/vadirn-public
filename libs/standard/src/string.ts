@@ -23,7 +23,7 @@ function isUpperCase(char: string) {
 	return false;
 }
 
-const defaultDelimiterSymbols = new Set([' ', '-', '+', '_']);
+const defaultDelimiterSymbols = new Set([' ', '-', '+', '_', ':', '.', ',']);
 
 function splitIntoWords(
 	text: string,

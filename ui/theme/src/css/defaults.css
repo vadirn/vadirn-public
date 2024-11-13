@@ -6,7 +6,7 @@ body {
 }
 
 a {
-	@apply text-neutral-900 underline underline-offset-4;
+	@apply text-neutral-900 underline underline-offset-2 decoration-[0.5px];
 
 	&:hover {
 		@apply text-opacity-60;

@@ -5,6 +5,7 @@ import { deps, project } from './deps.js';
 import { recommended } from './recommended.js';
 import { style } from './style.js';
 import { svelte } from './svelte.js';
+import { final } from './final.js';
 
 export default [
 	{ ignores: ['**/.*', 'build/**/*', '.svelte-kit/**/*', 'dist/**/*'] },
@@ -28,4 +29,5 @@ export default [
 	...svelte(),
 	...deps(),
 	...style(),
+	...final(),
 ];

@@ -8,6 +8,5 @@ export class LogoState {
 
 	updateIndex = () => {
 		this.index = (this.index + 1) % emoji.length;
-		console.log(this.index, this.emoji);
 	};
 }

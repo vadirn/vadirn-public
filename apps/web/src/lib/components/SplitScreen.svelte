@@ -17,7 +17,7 @@
 	}
 
 	.code-container {
-		@apply flex flex-col items-center bg-neutral-200
+		@apply  bg-neutral-200
 			text-neutral-500 pl-32 pr-16
 			overscroll-contain overflow-y-scroll;
 
@@ -41,6 +41,12 @@
 			@apply mb-8;
 		}
 	}
+
+	.code {
+		@apply flex flex-col items-center  h-full;
+
+		max-width: 700px;
+	}
 </style>
 
 <div class="h-svh grid grid-cols-2">
@@ -53,11 +59,13 @@
 	</div>
 	{#if code}
 		<div class="code-container">
-			<div class="flex-auto min-h-16"></div>
-			<div class="flex-none w-full">
-				{@render code()}
+			<div class="code">
+				<div class="flex-auto min-h-16"></div>
+				<div class="flex-none w-full">
+					{@render code()}
+				</div>
+				<div class="flex-auto min-h-32"></div>
 			</div>
-			<div class="flex-auto min-h-32"></div>
 		</div>
 	{/if}
 </div>

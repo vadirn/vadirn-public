@@ -11,6 +11,8 @@
 	.layout {
 		@apply min-h-svh lg:grid;
 
+		max-width: 1400px;
+		margin: auto;
 		grid-template-columns: repeat(2, 1fr);
 		grid-template-rows: auto auto 1fr;
 	}
