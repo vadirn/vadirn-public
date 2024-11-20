@@ -3,7 +3,7 @@ import defaultTheme from 'tailwindcss/defaultTheme.js';
 /** @type {import('tailwindcss').Config['theme']['fontSize']} */
 export const fontSize = {
 	title:
-            [pxToRem(28), { lineHeight: pxToRem(32) }],
+            [pxToRem(34), { lineHeight: pxToRem(40) }],
 	heading:
             [pxToRem(20), { lineHeight: pxToRem(24) }],
 	body:
