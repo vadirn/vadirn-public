@@ -17,7 +17,7 @@
 	}
 
 	.code-container {
-		@apply  bg-neutral-200
+		@apply bg-neutral-200
 			text-neutral-500 pl-32 pr-16
 			overscroll-contain overflow-y-scroll;
 
@@ -30,7 +30,7 @@
 		}
 
 		& :global(code:not(pre code)) {
-			@apply bg-neutral-300 px-4 rounded-sm;
+			@apply bg-neutral-300 px-4 rounded;
 		}
 
 		& :global(ul) {

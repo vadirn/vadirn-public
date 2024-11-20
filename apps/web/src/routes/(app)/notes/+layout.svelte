@@ -52,8 +52,19 @@
 			}
 		}
 
+		& :global(pre) {
+			@apply p-8 text-caption rounded
+				overflow-scroll overscroll-contain;
+		}
+
+		& :global(.code) {
+			@apply bg-neutral-200 py-24 grid grid-cols-subgrid gap-24;
+
+			grid-column: 1 / -1;
+		}
+
 		& :global(code:not(pre code)) {
-			@apply bg-neutral-300 px-4 rounded-sm;
+			@apply bg-neutral-300 px-4 rounded;
 		}
 
 		& :global(.callout) {
@@ -67,10 +78,8 @@
 			}
 		}
 
-		& :global(aside) {
-			@apply bg-accent;
-
-			grid-column: 2 / 3;
+		& :global(img) {
+			@apply max-w-full;
 		}
 	}
 </style>

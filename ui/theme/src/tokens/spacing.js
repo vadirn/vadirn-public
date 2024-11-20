@@ -18,3 +18,13 @@ export const spacing = {
 	fit: 'fit-content',
 	svh: '100svh',
 };
+
+export const borderRadius = {
+	none: '0',
+	2: '2px',
+	4: '4px',
+	8: '8px',
+	16: '16px',
+	full: '9999px',
+	DEFAULT: '4px',
+};
