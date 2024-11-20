@@ -7,25 +7,43 @@
 
 <style lang="postcss">
 	.headline {
-		@apply text-title pl-54 mb-20 border-l-8
-			border-solid border-accent;
+		@apply text-title relative pr-24
+			col-start-3 col-span-2
+			lg:col-start-3 lg:col-span-1;
 
-		grid-column: 1/2;
-		grid-row: 2/3;
+		&::before {
+			@apply absolute block border-l-8 border-accent;
+
+			content: '';
+			top: 0;
+			bottom: 0;
+			left: -32px;
+		}
 	}
 
-	.subhead {
-		@apply pl-64 pr-32;
+	.lead {
+		@apply pr-24
+			col-start-3 col-span-2
+			lg:col-start-3 lg:col-span-1;
+	}
 
-		grid-column: 1/2;
-		grid-row: 3/4;
+	.notes-title {
+		@apply font-bold mb-20;
 	}
 
 	.notes {
-		@apply border-accent lg:border-l pl-64 lg:pl-32 pt-60 pb-64;
+		@apply col-start-3 col-span-2
+			lg:col-start-4 lg:col-span-1
+			lg:row-start-2 lg:row-span-2;
 
-		grid-column: 2/3;
-		grid-row: 1/-1;
+		&::before {
+			@apply absolute hidden lg:block h-full border-r border-accent;
+
+			content: '';
+			top: 0;
+			bottom: 0;
+			margin-left: -23px;
+		}
 	}
 </style>
 
@@ -35,8 +53,8 @@
 	<b>Enhancing</b> Dev&nbsp;Experience
 </h1>
 
-<div class="subhead">
-	<p class="mb-24">
+<div class="lead">
+	<p class="mb-20">
 		With over a decade of frontend expertise,
 		I specialize in transforming legacy codebases
 		and crafting maintainable systems from the ground up.
@@ -47,14 +65,13 @@
 </div>
 
 <div class="notes">
-	<h2 class="mb-32">Recent notes:</h2>
-
-	<ul class="list-disc list-inside mb-20">
+	<h2 class="notes-title">Recent notes:</h2>
+	<ul class="list-disc pl-24 mb-20">
 		{#each recentNotes as title}
-			<li class="mb-4">
+			<li >
 				<a href={note(title.toLowerCase())}>{title}</a>
 			</li>
 		{/each}
 	</ul>
-	<a href={app.notes.toString()}>View all</a>
+	<a href={app.notes.toString()}>View all notes</a>
 </div>

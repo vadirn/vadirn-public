@@ -2,9 +2,21 @@
 	import { note, notes } from '$lib/cache/notes';
 </script>
 
-<ul class="list-disc list-inside">
+<style lang="postcss">
+	h1, ul {
+		@apply col-start-3 col-span-2;
+	}
+
+	ul {
+		@apply list-disc;
+	}
+</style>
+
+<h1>Notes</h1>
+
+<ul>
 	{#each notes as title}
-		<li class="mb-4">
+		<li>
 			<a href={note(title.toLowerCase())}>{title}</a>
 		</li>
 	{/each}
