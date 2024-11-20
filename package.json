@@ -18,5 +18,12 @@
 		"turbo": "2.2.3",
 		"typescript": "5.6.3",
 		"vitest": "2.1.4"
-	}
+	},
+	"workspaces": [
+		"apps/*",
+		"tools/*",
+		"ui/*",
+		"libs/*",
+		"core/*"
+	]
 }
