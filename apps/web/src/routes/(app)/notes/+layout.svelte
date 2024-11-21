@@ -4,7 +4,7 @@
 
 <style lang="postcss">
 	div {
-		@apply grid leading-6 gap-24;
+		@apply grid leading-6 gap-y-24;
 
 		grid-template-columns: subgrid;
 		grid-column: 1 / -1;
