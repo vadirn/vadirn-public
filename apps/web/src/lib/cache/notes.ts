@@ -1,7 +1,6 @@
 import { toKebabCase } from '@workspace/standard/string';
-import { get } from 'svelte/store';
 import { app } from '$lib/paths/app';
-import { page } from '$app/stores';
+import type { Page } from '@sveltejs/kit';
 
 export const draftNotes = [
 	'Core?',
@@ -33,8 +32,8 @@ export function note(title: string) {
 	return app.notes(title).toString();
 }
 
-export function getCurrentNoteTitle() {
-	const slug = get(page).url.pathname.split('/').pop();
+export function getCurrentNoteTitle(page: Page) {
+	const slug = page.url.pathname.split('/').pop();
 
-	return notesMap.get(slug);
+	return notesMap.get(slug) ?? 'Notes';
 }

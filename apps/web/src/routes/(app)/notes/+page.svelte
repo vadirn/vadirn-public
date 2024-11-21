@@ -12,8 +12,6 @@
 	}
 </style>
 
-<h1>Notes</h1>
-
 <ul>
 	{#each notes as title}
 		<li>
