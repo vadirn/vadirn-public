@@ -7,7 +7,7 @@
 
 <style lang="postcss">
 	.headline {
-		@apply text-title relative pr-24
+		@apply text-balance text-title relative pr-24
 			col-start-3 col-span-2
 			lg:col-start-3 lg:col-span-1;
 
@@ -49,7 +49,7 @@
 
 <h1 class="headline">
 	Frontend <b>Tech Lead</b>:<br/>
-	<b>Transforming</b> Legacy&nbsp;Code&nbsp;&<br/>
+	<b>Transforming</b> Legacy&nbsp;Code&nbsp;&
 	<b>Enhancing</b> Dev&nbsp;Experience
 </h1>
 
