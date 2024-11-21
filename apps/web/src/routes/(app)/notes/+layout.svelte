@@ -6,8 +6,11 @@
 
 <style lang="postcss">
 	div {
+		@apply mb-48 lg:mb-0;
+
 		grid-template-columns: subgrid;
 		grid-column: 1 / -1;
+		grid-row: 2 / -1;
 		grid-auto-rows: min-content;
 
 		--max-width: 768px;
