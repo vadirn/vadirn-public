@@ -1,5 +1,6 @@
 @import './defaults.css' layer(base);
 @import './form.css' layer(components);
+@import './notes.css' layer(components);
 
 @tailwind base;
 @tailwind components;
