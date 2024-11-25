@@ -28,6 +28,9 @@
 			"path": "../../libs/routing"
 		},
 		{
+			"path": "../../libs/standard"
+		},
+		{
 			"path": "../../ui/components"
 		}
 	]

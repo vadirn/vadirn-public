@@ -1,6 +1,6 @@
 {
-      "extends": "@workspace/tsconfig/base.json",
-      "include": [
-            "src/**/*"
-      ]
+	"extends": "@workspace/tsconfig/base.json",
+	"include": [
+		"src/**/*"
+	]
 }

@@ -1,0 +1,20 @@
+{
+	"name": "@workspace/state-controller",
+	"exports": {
+		".": "./src/index.svelte.ts"
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"test": "vitest"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@workspace/eslint": "workspace:*",
+		"@workspace/testing": "workspace:*",
+		"@workspace/tsconfig": "workspace:*"
+	},
+	"dependencies": {
+		"@workspace/standard": "workspace:*",
+		"svelte": "5.2.7"
+	}
+}

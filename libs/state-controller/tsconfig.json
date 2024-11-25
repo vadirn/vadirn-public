@@ -1,0 +1,12 @@
+{
+	"extends": "@workspace/tsconfig/base.json",
+	"include": [
+		"src/**/*",
+		"node_modules/svelte/types"
+	],
+	"references": [
+		{
+			"path": "../standard"
+		}
+	]
+}

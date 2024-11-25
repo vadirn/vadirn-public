@@ -126,6 +126,25 @@ importers:
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
+  libs/state-controller:
+    dependencies:
+      '@workspace/standard':
+        specifier: workspace:*
+        version: link:../standard
+      svelte:
+        specifier: 5.2.7
+        version: 5.2.7
+    devDependencies:
+      '@workspace/eslint':
+        specifier: workspace:*
+        version: link:../../tools/eslint
+      '@workspace/testing':
+        specifier: workspace:*
+        version: link:../../tools/testing
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+
   tools/eslint:
     devDependencies:
       '@eslint/compat':
