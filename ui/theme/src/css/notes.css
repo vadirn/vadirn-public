@@ -5,6 +5,10 @@
 		@apply text-title font-bold text-balance;
 	}
 
+	& h2 {
+		@apply text-heading font-bold;
+	}
+
 	& ul {
 		@apply list-disc pl-24;
 	}

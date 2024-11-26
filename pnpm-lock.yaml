@@ -35,6 +35,9 @@ importers:
       '@workspace/standard':
         specifier: workspace:*
         version: link:../../libs/standard
+      '@workspace/state-controller':
+        specifier: workspace:*
+        version: link:../../libs/state-controller
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: 3.3.1

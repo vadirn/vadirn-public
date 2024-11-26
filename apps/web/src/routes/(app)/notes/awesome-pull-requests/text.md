@@ -12,7 +12,7 @@ But what really makes it **awesome** is "Accompanying gif" section.
 
 ![]({style})
 
-Here is slightly reduced PR template we used to use at Plan:
+Here is slightly reduced PR template we used to use at <a href="https://toggl.com/plan" target="_blank" rel="noopener noreferrer">Plan</a>:
 
 <div class="code">
 

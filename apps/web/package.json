@@ -13,7 +13,8 @@
 	"dependencies": {
 		"@workspace/components": "workspace:*",
 		"@workspace/routing": "workspace:*",
-		"@workspace/standard": "workspace:*"
+		"@workspace/standard": "workspace:*",
+		"@workspace/state-controller": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",
