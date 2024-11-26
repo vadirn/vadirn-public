@@ -15,7 +15,7 @@ a {
 
 .dark {
 	.shiki, .shiki span {
-		color: var(--shiki-light) !important;
-		background-color: var(--shiki-light-bg) !important;  
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;  
 	}
 }
