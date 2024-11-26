@@ -12,3 +12,10 @@ a {
 		@apply text-opacity-60;
 	}
 }
+
+.dark {
+	.shiki, .shiki span {
+		color: var(--shiki-light) !important;
+		background-color: var(--shiki-light-bg) !important;  
+	}
+}
