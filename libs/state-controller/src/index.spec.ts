@@ -1,15 +1,41 @@
 import { describe, expect, it, vi } from '@workspace/testing';
-import { AbstractStateController, stateController } from './index.svelte';
+import {
+	AbstractStateController,
+	stateController,
+	stateControllerObject,
+} from './index.svelte';
 import type { Fn } from '@workspace/standard/function';
 
 describe('state controller', () => {
-	it('allows basic transitions', async () => {
+	it('allows basic transitions (class)', async () => {
 		const buttonController = stateController('idle', {
 			idle: {
 				click: vi.fn(async () => {
-					buttonController.set('loading');
+					buttonController.state = 'loading';
 					await Promise.resolve();
-					buttonController.set('idle');
+					buttonController.state = 'idle';
+				}),
+			},
+			loading: {},
+		});
+
+		expect(buttonController.state).toBe('idle');
+		buttonController.click();
+		expect(buttonController.state).toBe('loading');
+		buttonController.click();
+		expect(
+			buttonController.stateMethods.idle.click,
+		).toHaveBeenCalledTimes(1);
+		await Promise.resolve();
+		expect(buttonController.state).toBe('idle');
+	});
+	it('allows basic transitions (object)', async () => {
+		const buttonController = stateControllerObject('idle', {
+			idle: {
+				click: vi.fn(async () => {
+					buttonController.state = 'loading';
+					await Promise.resolve();
+					buttonController.state = 'idle';
 				}),
 			},
 			loading: {},
@@ -40,10 +66,10 @@ describe('state controller', () => {
 				super('idle', {
 					idle: {
 						click: async () => {
-							this.set('loading');
+							this.state = 'loading';
 							this.count += 1;
 							await Promise.resolve();
-							this.set('idle');
+							this.state = 'idle';
 						},
 					},
 					loading: {},

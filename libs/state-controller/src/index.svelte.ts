@@ -9,22 +9,17 @@ type Methods<SM extends StateMethods> =
 	Prettify<UnionToIntersection<SM[keyof SM]>>;
 
 export abstract class AbstractStateController<SM extends StateMethods> {
-	private _state = $state<keyof SM>();
+	state = $state<keyof SM>();
+
 	protected constructor(defaultState: State<SM>, readonly stateMethods: SM) {
-		this._state = defaultState;
+		this.state = defaultState;
 	}
-
-	get state() {
-		return this._state;
-	}
-
-	set = (state: State<SM>) => {
-		this._state = state;
-	};
 
 	protected attachMethods = () => {
 		for (const stateKey of Object.keys(this.stateMethods)) {
 			for (const methodKey of Object.keys(this.stateMethods[stateKey]!)) {
+				if (methodKey in this) continue; // skip if already exists
+
 				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				(this as any)[methodKey] = (...args: any[]) => {
 					const availableMethods = this.stateMethods[this.state!];
@@ -48,7 +43,7 @@ export class StateController<SM extends StateMethods>
 		defaultState: State<SM>,
 		stateMethods: SM,
 	) {
-		return new StateController(defaultState, stateMethods).attachMethods();
+		return new this(defaultState, stateMethods).attachMethods();
 	}
 }
 
@@ -57,4 +52,38 @@ export function stateController<SM extends StateMethods>(
 	stateMethods: SM,
 ) {
 	return StateController.create(defaultState, stateMethods);
+}
+
+export function stateControllerObject<SM extends StateMethods>(
+	defaultState: State<SM>,
+	stateMethods: SM,
+) {
+	let state = $state<keyof SM>(defaultState);
+
+	const stateController = {
+		get state() {
+			return state;
+		},
+		set state(value: State<SM>) {
+			state = value;
+		},
+		get stateMethods() {
+			return stateMethods;
+		},
+	};
+
+	for (const stateKey of Object.keys(stateMethods)) {
+		for (const methodKey of Object.keys(stateMethods[stateKey]!)) {
+			if (methodKey in stateController) continue; // skip if already exists
+
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			(stateController as any)[methodKey] = (...args: any[]) => {
+				const availableMethods = stateMethods[state];
+
+				return availableMethods?.[methodKey]?.(...args);
+			};
+		}
+	}
+
+	return stateController as typeof stateController & Methods<SM>;
 }
