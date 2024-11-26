@@ -11,6 +11,12 @@ export const final = () => setDefaultFiles({
 				message: 'Use console.info() instead of console.log() for production code.',
 			},
 		],
+		'@typescript-eslint/no-empty-object-type': [
+			'error',
+			{
+				allowInterfaces: 'never', allowObjectTypes: 'always',
+			},
+		],
 
 	},
 });
