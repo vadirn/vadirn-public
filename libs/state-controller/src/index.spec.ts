@@ -1,10 +1,9 @@
 import { describe, expect, it, vi } from '@workspace/testing';
 import {
-	AbstractStateController,
+	attachMethods,
 	stateController,
-	stateControllerObject,
 } from './index.svelte';
-import type { Fn } from '@workspace/standard/function';
+import type { AnyFn } from '@workspace/standard/function';
 
 describe('state controller', () => {
 	it('allows basic transitions (class)', async () => {
@@ -30,7 +29,26 @@ describe('state controller', () => {
 		expect(buttonController.state).toBe('idle');
 	});
 	it('allows basic transitions (object)', async () => {
-		const buttonController = stateControllerObject('idle', {
+		const stateController = <
+			SM extends Record<string, Record<string, AnyFn>>,
+		>(
+			defaultState: keyof SM,
+			stateMethods: SM) => {
+			let state = defaultState;
+
+			const stateController = {
+				get state() {
+					return state;
+				},
+				set state(value: keyof SM) {
+					state = value;
+				},
+			};
+
+			return attachMethods(stateController, stateMethods);
+		};
+
+		const buttonController = stateController('idle', {
 			idle: {
 				click: vi.fn(async () => {
 					buttonController.state = 'loading';
@@ -51,33 +69,28 @@ describe('state controller', () => {
 		await Promise.resolve();
 		expect(buttonController.state).toBe('idle');
 	});
-	it('allows inheriting from abstract state controller', async () => {
-		type ButtonControllerStateMethods = {
-			idle: {
-				click: Fn<Promise<void>>;
-			};
-			loading: {};
-		};
-		class ButtonController extends
-			AbstractStateController<ButtonControllerStateMethods> {
+	it('allows custom state controller', async () => {
+		class ButtonController {
+			state: keyof this['stateMethods'] = 'idle';
 			count = 0;
-
-			protected constructor() {
-				super('idle', {
-					idle: {
-						click: async () => {
-							this.state = 'loading';
-							this.count += 1;
-							await Promise.resolve();
-							this.state = 'idle';
-						},
+			stateMethods = {
+				idle: {
+					click: async () => {
+						this.state = 'loading';
+						this.count += 1;
+						await Promise.resolve();
+						this.state = 'idle';
 					},
-					loading: {},
-				});
-			}
+				},
+				loading: {},
+			};
+
+			protected constructor() {}
 
 			static create() {
-				return new this().attachMethods();
+				const instance = new this();
+
+				return attachMethods(instance, instance.stateMethods);
 			}
 		}
 
