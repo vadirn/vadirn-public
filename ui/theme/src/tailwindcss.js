@@ -8,8 +8,8 @@ import { fontFamily, fontSize } from './tokens/typography.js';
 export const tailwindcss = {
 	darkMode: 'selector',
 	content: [
-		'./src/**/*.{html,js,svelte,ts}',
-		monorepo.ui('components', 'src', '**/*.{html,js,svelte,ts}'),
+		'./src/**/*.{html,js,svelte,ts,md}',
+		monorepo.ui('components', 'src', '**/*.{html,js,svelte,ts,md}'),
 	],
 	theme: {
 		colors: colorTokens,
