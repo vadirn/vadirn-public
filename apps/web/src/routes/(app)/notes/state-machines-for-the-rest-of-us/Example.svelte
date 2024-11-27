@@ -31,8 +31,8 @@
 	const label = $derived({
 		idle: 'Click me',
 		loading: 'Loading...',
-		success: 'Success',
-		error: 'Error',
+		success: 'Reset',
+		error: 'Reset',
 	}[buttonController.state]);
 </script>
 

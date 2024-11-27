@@ -19,7 +19,7 @@ We dismiss the option of using flags because it can easily cause confusion. Whil
 const buttonController = stateController('idle', {
 	idle: {
 		click: async () => {
-			buttonController.state = 'loading'; 
+			buttonController.state = 'loading';
 			try {
 				// ... do something
 				buttonController.state = 'success';
@@ -60,7 +60,7 @@ type State<SM extends StateMethods> = keyof SM;
 // SM[keyof SM] would give a union type { ... } | { ... }
 // but we need an intersection { ... } && { ... }
 // to get all the methods combined
-// luckily there is a way to do this: 
+// luckily there is a way to do this:
 // https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type
 type UnionToIntersection<U> =
 	(U extends any ? (k: U) => void : never) extends
@@ -70,9 +70,57 @@ type UnionToIntersection<U> =
 type Methods<SM extends StateMethods> = UnionToIntersection<SM[keyof SM]>;
 
 // eventually we'd need controller to have its own type intersected with Methods<StateMethods>
+type Controller<SM extends StateMethods> = {
+	state: State<SM>;
+};
 ```
 
 </div>
+
+## Extending Controller with Methods
+
+<div class="code">
+
+```ts
+export function attachMethods<
+	SM extends StateMethods,
+	SC extends IStateController<SM>,
+>(
+	controller: SC,
+	stateMethods: SM,
+) {
+	const methods = {} as Record<string, UnknownFn>;
+
+	for (const stateKey of Object.keys(stateMethods)) {
+		for (const methodKey of Object.keys(stateMethods[stateKey]!)) {
+			if (methodKey in methods) continue; // skip if already exists
+
+			methods[methodKey] = (...args) => {
+				const availableMethods = stateMethods[controller.state!];
+
+				return availableMethods?.[methodKey]?.(...args);
+			};
+		}
+	}
+
+	return merge(
+		controller,
+		{ stateMethods },
+		methods as Methods<SM>,
+	);
+}
+```
+
+I guess Typescript had the most impact on implementation details of this one:
+
+- We first create an empty object for the methods, so that `methods[methodKey]` wouldn't complain about type mismatch.
+- Then we use `merge` function, which is just a type-safe version of `Object.assign`.
+- Instead of defining `stateMethods` as a property of the `Controller` type, we provide it as an argument, this helps to properly infer generic types and avoid unexpected type errors. Otherwise we'd need to explicitly set the types as in `attachMethods<SM, IStateController<SM>>(stateController)`.
+- We also merge `stateMethods` into the controller, so that it would be available as a property of the instance, making it possible to reuse the methods.
+
+</div>
+
+Now we can experiment with the controller itself.
 
 ## State Controller as an Object
 
@@ -81,11 +129,11 @@ The state controller can be constructed manually from a regular object. As simpl
 <div class="code">
 
 ```ts
-export function stateController<SM extends StateMethods>(
+function stateController<SM extends StateMethods>(
 	defaultState: State<SM>,
 	stateMethods: SM,
 ) {
-	let state = $state<keyof SM>(defaultState);
+	let state = $state<State<SM>>(defaultState);
 
 	const stateController = {
 		get state() {
@@ -94,24 +142,9 @@ export function stateController<SM extends StateMethods>(
 		set state(value: State<SM>) {
 			state = value;
 		},
-		get stateMethods() {
-			return stateMethods;
-		},
 	};
 
-	for (const stateKey of Object.keys(stateMethods)) {
-		for (const methodKey of Object.keys(stateMethods[stateKey]!)) {
-			if (methodKey in stateController) continue; // skip if already exists
-
-			(stateController as any)[methodKey] = (...args: any[]) => {
-				const availableMethods = stateMethods[state]; 
-
-				return availableMethods?.[methodKey]?.(...args);
-			};
-		}
-	}
-
-	return stateController as typeof stateController & Methods<SM>;
+	return attachMethods(stateController, stateMethods);
 }
 ```
 
@@ -119,50 +152,28 @@ export function stateController<SM extends StateMethods>(
 
 ## State Controller as a Class
 
-This solution is a bit more verbose. In order to get state methods into the instance type, we have to use a separate method that returns `typeof this & Methods<SM>`. So we also have to use a static factory method to get the correctly typed instances. This makes it impossible to only have one class and extend from it, since static methods wouldn't provide the correct type for the child classes.
-
 <div class="code">
 
 ```ts
-export abstract class AbstractStateController<SM extends StateMethods> {
-	state = $state<keyof SM>();
+class StateController<SM extends StateMethods> {
+	state = $state<State<SM>>();
 
-	protected constructor(defaultState: State<SM>, readonly stateMethods: SM) {
+	protected constructor(defaultState: State<SM>) {
 		this.state = defaultState;
-	}
-
-	protected attachMethods = () => {
-		for (const stateKey of Object.keys(this.stateMethods)) {
-			for (const methodKey of Object.keys(this.stateMethods[stateKey]!)) {
-				if (methodKey in this) continue; // skip if already exists
-
-				(this as any)[methodKey] = (...args: any[]) => {
-					const availableMethods = this.stateMethods[this.state!];
-
-					return availableMethods?.[methodKey]?.(...args);
-				};
-			}
-		}
-
-		return this as typeof this & Methods<SM>;
-	};
-}
-
-export class StateController<SM extends StateMethods>
-	extends AbstractStateController<SM> {
-	protected constructor(defaultState: State<SM>, stateMethods: SM) {
-		super(defaultState, stateMethods);
 	}
 
 	static create<SM extends StateMethods>(
 		defaultState: State<SM>,
 		stateMethods: SM,
 	) {
-		return new this(defaultState, stateMethods).attachMethods();
+		return attachMethods(
+			new this(defaultState),
+			stateMethods,
+		);
 	}
 }
 
-export function stateController<SM extends StateMethods>(
+function stateController<SM extends StateMethods>(
 	defaultState: State<SM>,
 	stateMethods: SM,
 ) {
@@ -170,34 +181,21 @@ export function stateController<SM extends StateMethods>(
 }
 ```
 
+Since we can't properly extend the type in constructor. It's much easier make the constructor protected and use a static factory method to get the correct type.
+
 </div>
 
-Let's try to implement `ButtonController` class (from the very beginning of this note):
+Let's also try to implement custom `ButtonController` class with baked-in state methods:
 
 <div class="code">
 
 ```ts
-type ButtonControllerStateMethods = {
-	idle: {
-		click: () => Promise<void>;
-	};
-	loading: {};
-	success: {
-		click: () => void;
-	},
-	error: {
-		click: () => void;
-	}
-};
-
-class ButtonController extends
-	AbstractStateController<ButtonControllerStateMethods> {
-
-	protected constructor() {
-		super('idle', {
-			idle: {
+class ButtonController {
+	state = $state<keyof this['stateMethods']>('idle');
+	stateMethods = {
+		idle: {
 				click: async () => {
-					this.state = 'loading'; 
+					this.state = 'loading';
 					try {
 						// ... do something
 						this.state = 'success';
@@ -214,17 +212,24 @@ class ButtonController extends
 			error: {
 				click: () => { this.state = 'idle'; },
 			},
-		});
 	}
 
+	protected constructor() {}
+
 	static create() {
-		return new this().attachMethods();
+		const instance = new this();
+		
+		return attachMethods(instance, instance.stateMethods);
 	}
 }
+
+const buttonController = ButtonController.create();
 ```
 
 </div>
 
 ## Conclusion
 
-The choice between the two solutions is yours. You still benefit from autocompletion and type safety, and it's less verbose than using a state machine library.
+The price of autocompletion is high 😅. While Typescript can sometimes lead you to seeking non-obvious solutions, the payoff is often worth it.
+
+State controller approach can be particularly useful for UI components, that have multiple states and associated interactions. Defining these in a structured manner makes the code more maintainable and easier to reason about.
