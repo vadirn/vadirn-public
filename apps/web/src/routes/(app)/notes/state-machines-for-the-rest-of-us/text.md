@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Example from './Example.svelte';
+	import selfFive from './self-five.webp';
 </script>
 
 Let's say we have a button that should have 4 distinct appearances (states):
@@ -49,7 +50,7 @@ The implementation is fairly straightforward. The only tricky part is getting th
 
 ## Types
 
-State methods are provided as an argument, but then are usable as properties of the controller instance. This requires us to be able to get all the methods combined.
+State methods are provided as an argument, but then are usable as properties of the controller instance. This requires us to be able to get a type for all the methods combined.
 
 <div class="code">
 
@@ -78,6 +79,8 @@ type Controller<SM extends StateMethods> = {
 </div>
 
 ## Extending Controller with Methods
+
+This is the actual core functionality of the state controller. It takes the controller instance and the state methods, and returns a new controller instance with the methods attached.
 
 <div class="code">
 
@@ -115,7 +118,7 @@ I guess Typescript had the most impact on implementation details of this one:
 
 - We first create an empty object for the methods, so that `methods[methodKey]` wouldn't complain about type mismatch.
 - Then we use `merge` function, which is just a type-safe version of `Object.assign`.
-- Instead of defining `stateMethods` as a property of the `Controller` type, we provide it as an argument, this helps to properly infer generic types and avoid unexpected type errors. Otherwise we'd need to explicitly set the types as in `attachMethods<SM, IStateController<SM>>(stateController)`.
+- Instead of defining `stateMethods` as a property of the `Controller` type, we provide it as an argument, this helps to properly infer generic types and avoid unexpected type errors. Otherwise we'd need to explicitly set the types as in `attachMethods<SM, Controller<SM>>(stateController)`.
 - We also merge `stateMethods` into the controller, so that it would be available as a property of the instance, making it possible to reuse the methods.
 
 </div>
@@ -181,7 +184,7 @@ function stateController<SM extends StateMethods>(
 }
 ```
 
-Since we can't properly extend the type in constructor. It's much easier make the constructor protected and use a static factory method to get the correct type.
+Since we can't properly extend the type in constructor. We have to make the constructor protected and use a static factory method to get instances of the correct type.
 
 </div>
 
@@ -233,3 +236,5 @@ const buttonController = ButtonController.create();
 The price of autocompletion is high 😅. While Typescript can sometimes lead you to seeking non-obvious solutions, the payoff is often worth it.
 
 State controller approach can be particularly useful for UI components, that have multiple states and associated interactions. Defining these in a structured manner makes the code more maintainable and easier to reason about.
+
+![]({selfFive})
