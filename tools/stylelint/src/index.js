@@ -17,6 +17,8 @@ export default {
 					'apply',
 					'layer',
 					'config',
+					'theme',
+					'variant',
 				],
 			}],
 		'function-no-unknown': [true,
@@ -31,6 +33,8 @@ export default {
 					'global',
 				],
 			}],
+		'custom-property-pattern': null,
+		'hue-degree-notation': null,
 
 	},
 };
