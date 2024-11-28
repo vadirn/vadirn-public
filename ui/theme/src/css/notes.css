@@ -42,7 +42,7 @@
 
 	& pre {
 		@apply p-8 text-caption rounded
-			overflow-scroll overscroll-contain;
+			overflow-scroll overscroll-x-contain;
 	}
 
 	& .code {
