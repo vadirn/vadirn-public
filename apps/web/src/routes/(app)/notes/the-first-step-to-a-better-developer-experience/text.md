@@ -1,7 +1,7 @@
 <style lang="postcss">
 	.answer {
 		@apply flex items-center justify-center bg-accent text-gray-100 text-center max-w-full uppercase text-title font-bold p-16;
-		min-height: 50dvh;
+		min-height: 50svh;
 		grid-column: 1 / -1;
 	}
 </style>

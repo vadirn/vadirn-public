@@ -1,5 +1,5 @@
 body {
-	@apply box-border min-h-dvh w-full text-neutral-900 
+	@apply box-border min-h-svh w-full text-neutral-900 
 		bg-neutral-100 text-body;
 
 	--color-inherit: inherit;

@@ -34,7 +34,7 @@
 	.notes {
 		@apply col-start-3 col-span-2
 			lg:col-start-4 lg:col-span-1
-			lg:row-start-2 lg:row-span-2;
+			lg:row-start-2 lg:row-span-2 mb-48;
 
 		&::before {
 			@apply absolute hidden lg:block h-full border-r border-accent;
