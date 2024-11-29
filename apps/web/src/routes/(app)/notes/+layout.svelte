@@ -1,6 +1,4 @@
 <script lang="ts">
-	import NoteTitle from '$lib/components/NoteTitle.svelte';
-
 	const { children } = $props();
 </script>
 
@@ -23,6 +21,5 @@
 </style>
 
 <div class="note">
-	<NoteTitle />
 	{@render children()}
 </div>

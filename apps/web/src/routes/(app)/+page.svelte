@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { note, notes } from '$lib/cache/notes';
+	import { getNotePath, notes } from '$lib/cache/notes';
 	import { app } from '$lib/paths/app';
 
 	const recentNotes = notes.slice(0, 5);
@@ -69,7 +69,7 @@
 	<ul class="list-disc pl-24 mb-20">
 		{#each recentNotes as title}
 			<li >
-				<a href={note(title.toLowerCase())}>{title}</a>
+				<a href={getNotePath(title.toLowerCase())}>{title}</a>
 			</li>
 		{/each}
 	</ul>
