@@ -6,10 +6,10 @@ body {
 }
 
 a {
-	@apply text-neutral-900 underline underline-offset-2 decoration-[0.5px];
+	@apply text-current underline underline-offset-2 decoration-[0.5px];
 
 	&:hover {
-		@apply text-opacity-60;
+		@apply decoration-[1px];
 	}
 }
 

@@ -39,8 +39,7 @@ export function getCurrentNoteTitle(page: Page) {
 }
 
 export function getNextNoteTitle(page: Page) {
-	const slug = page.url.pathname.split('/').pop();
-	const currentIndex = notes.indexOf(slug);
+	const currentIndex = notes.indexOf(getCurrentNoteTitle(page));
 
-	return notes[currentIndex + 1] ?? notes[0];
+	return notes[currentIndex - 1] ?? notes.at(-1);
 }
