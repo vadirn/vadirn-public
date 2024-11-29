@@ -237,4 +237,4 @@ The price of autocompletion is high 😅. While Typescript can sometimes lead yo
 
 State controller approach can be particularly useful for UI components, that have multiple states and associated interactions. Defining these in a structured manner makes the code more maintainable and easier to reason about.
 
-![]({selfFive})
+![gif: self-five]({selfFive})

@@ -10,7 +10,7 @@ Everyone knows that a good pull request has several key characteristics, such as
 
 But what really makes it **awesome** is "Accompanying gif" section.
 
-![]({style})
+![gif: style]({style})
 
 Here is slightly reduced PR template we used to use at <a href="https://toggl.com/plan" target="_blank" rel="noopener noreferrer">Plan</a>:
 
