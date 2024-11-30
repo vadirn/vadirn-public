@@ -1,12 +1,10 @@
 <style lang="postcss">
 	.answer {
-		@apply flex items-center justify-center bg-accent text-gray-100 text-center max-w-full uppercase text-title font-bold p-16;
-		min-height: 50svh;
-		grid-column: 1 / -1;
+		@apply flex items-center text-accent max-w-full text-title font-bold;
 	}
 </style>
 
-<p class="answer">Uninterrupted focus time</p>
+<p class="answer">is uninterrupted focus time</p>
 
 It's the most crucial factor for improving developer experience and should be the first thing to implement if not already in place.
 
