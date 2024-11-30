@@ -28,6 +28,9 @@
 			"path": "../../libs/routing"
 		},
 		{
+			"path": "../../libs/shortcuts"
+		},
+		{
 			"path": "../../libs/standard"
 		},
 		{

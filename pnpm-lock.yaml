@@ -32,6 +32,9 @@ importers:
       '@workspace/routing':
         specifier: workspace:*
         version: link:../../libs/routing
+      '@workspace/shortcuts':
+        specifier: workspace:*
+        version: link:../../libs/shortcuts
       '@workspace/standard':
         specifier: workspace:*
         version: link:../../libs/standard
@@ -102,6 +105,22 @@ importers:
         version: link:../../tools/tsconfig
 
   libs/routing:
+    dependencies:
+      '@workspace/standard':
+        specifier: workspace:*
+        version: link:../standard
+    devDependencies:
+      '@workspace/eslint':
+        specifier: workspace:*
+        version: link:../../tools/eslint
+      '@workspace/testing':
+        specifier: workspace:*
+        version: link:../../tools/testing
+      '@workspace/tsconfig':
+        specifier: workspace:*
+        version: link:../../tools/tsconfig
+
+  libs/shortcuts:
     dependencies:
       '@workspace/standard':
         specifier: workspace:*

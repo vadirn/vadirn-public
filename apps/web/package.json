@@ -13,6 +13,7 @@
 	"dependencies": {
 		"@workspace/components": "workspace:*",
 		"@workspace/routing": "workspace:*",
+		"@workspace/shortcuts": "workspace:*",
 		"@workspace/standard": "workspace:*",
 		"@workspace/state-controller": "workspace:*"
 	},

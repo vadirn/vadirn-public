@@ -4,6 +4,7 @@ const cache = new Map<string, unknown>();
 
 export const Keys = {
 	LogoState: 'logo-state',
+	Shortcuts: 'shortcuts',
 } as const;
 
 /** Get or create cache entry */

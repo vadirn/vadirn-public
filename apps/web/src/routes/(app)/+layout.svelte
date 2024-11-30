@@ -4,6 +4,20 @@
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { app } from '$lib/paths/app';
 	import { ds } from '$lib/paths/ds';
+	import { getShortcuts } from '$lib/cache/shortcuts';
+
+	getShortcuts().add('d', () => {
+		const value = localStorage.getItem('theme');
+
+		if (value === 'dark') {
+			localStorage.removeItem('theme');
+			document.documentElement.classList.remove('dark');
+
+			return;
+		}
+		localStorage.setItem('theme', 'dark');
+		document.documentElement.classList.add('dark');
+	});
 
 	const { children } = $props();
 </script>
