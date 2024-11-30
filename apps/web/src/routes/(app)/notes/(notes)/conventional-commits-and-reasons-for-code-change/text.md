@@ -1,4 +1,4 @@
-Systems often degrade over time due to factors like changing requirements, quick fixes, and accumulating technical debt. These factors align with the four reasons for code change that M. Feathers outlines in his book ["Working Effectively with Legacy Code."](https://archive.org/details/working-effectively-with-legacy-code)
+Systems often degrade over time due to factors like changing requirements, quick fixes, and accumulating technical debt. These factors align with the four reasons for code change that M. Feathers outlines in his book <a href="https://archive.org/details/working-effectively-with-legacy-code" target="_blank" rel="noopener noreferrer">Working Effectively with Legacy Code</a>.
 
 - **Fixing bugs**. Constantly fixing bugs is both a sign and a cause of system decay.
 - **Adding features**. Adding each new feature makes the system more complex. This can introduce new bugs or make the codebase harder to maintain.
