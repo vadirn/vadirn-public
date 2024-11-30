@@ -9,7 +9,7 @@ a {
 	@apply text-current underline underline-offset-2 decoration-[0.5px];
 
 	&:hover {
-		@apply decoration-[1px];
+		@apply opacity-60;
 	}
 }
 
