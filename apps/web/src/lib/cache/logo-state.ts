@@ -1,4 +1,4 @@
-import { LogoState } from '@workspace/components/logo';
+import { LogoState } from '@ui/components/logo';
 import { getOrCreate, Keys } from './cache';
 
 export const getLogoState

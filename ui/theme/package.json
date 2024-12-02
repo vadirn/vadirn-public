@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/theme",
+	"name": "@ui/theme",
 	"exports": {
 		"./css/app.css": "./src/css/app.css",
 		"./postcss": "./src/postcss.js",
@@ -10,10 +10,10 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@workspace/eslint": "workspace:*",
-		"@workspace/jsconfig": "workspace:*",
-		"@workspace/monorepo": "workspace:*",
-		"@workspace/stylelint": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
+		"@tools/monorepo": "workspace:*",
+		"@tools/stylelint": "workspace:*",
 		"autoprefixer": "10.4.20",
 		"postcss": "8.4.49",
 		"tailwindcss": "3.4.15"

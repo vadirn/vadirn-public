@@ -1,4 +1,4 @@
-import { pathBuilder } from '@workspace/routing/path';
+import { pathBuilder } from '@libs/routing/path';
 
 type Paths = {
 	notes: {

@@ -1,3 +1,3 @@
-import { tailwindcss } from '@workspace/theme/tailwindcss';
+import { tailwindcss } from '@ui/theme/tailwindcss';
 
 export default tailwindcss;

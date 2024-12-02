@@ -42,7 +42,7 @@ export function getOrCreate<T>(key: string, create: () => T): T {
 
 ```svelte
 <script lang="ts">
-	import { Logo } from '@workspace/components/logo';
+	import { Logo } from '@ui/components/logo';
 	import { getLogoState } from '$lib/cache/logo-state';
 </script>
 

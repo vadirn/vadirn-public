@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Navigation } from '@workspace/components/navigation';
-	import { classNames as c } from '@workspace/standard/style';
+	import { Navigation } from '@ui/components/navigation';
+	import { classNames as c } from '@libs/standard/style';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { app } from '$lib/paths/app';
 	import { ds } from '$lib/paths/ds';

@@ -1,3 +1,3 @@
-import config from '@workspace/testing/config';
+import config from '@tools/testing/config';
 
 export default config;

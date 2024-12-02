@@ -1,5 +1,5 @@
-import { isFunction, type Fn } from '@workspace/standard/function';
-import { sleep } from '@workspace/standard/promise';
+import { isFunction, type Fn } from '@libs/standard/function';
+import { sleep } from '@libs/standard/promise';
 
 class OkResult<Value = unknown> {
 	public readonly ok = true;

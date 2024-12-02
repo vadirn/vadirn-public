@@ -1,3 +1,3 @@
-import config from '@workspace/stylelint';
+import config from '@tools/stylelint';
 
 export default config;

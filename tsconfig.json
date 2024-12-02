@@ -1,3 +1,3 @@
 {
-	"extends": "@workspace/tsconfig/base.json"
+	"extends": "@tools/tsconfig/base.json"
 }

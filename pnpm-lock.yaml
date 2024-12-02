@@ -11,7 +11,7 @@ importers:
       '@bessonovs/set-project-references':
         specifier: 0.0.10
         version: 0.0.10
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:tools/tsconfig
       turbo:
@@ -26,21 +26,21 @@ importers:
 
   apps/web:
     dependencies:
-      '@workspace/components':
-        specifier: workspace:*
-        version: link:../../ui/components
-      '@workspace/routing':
+      '@libs/routing':
         specifier: workspace:*
         version: link:../../libs/routing
-      '@workspace/shortcuts':
+      '@libs/shortcuts':
         specifier: workspace:*
         version: link:../../libs/shortcuts
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../../libs/standard
-      '@workspace/state-controller':
+      '@libs/state-controller':
         specifier: workspace:*
         version: link:../../libs/state-controller
+      '@ui/components':
+        specifier: workspace:*
+        version: link:../../ui/components
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: 3.3.1
@@ -51,24 +51,24 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 4.0.1
         version: 4.0.1(svelte@5.2.7)(vite@5.4.11(lightningcss@1.28.2))
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/monorepo':
+      '@tools/monorepo':
         specifier: workspace:*
         version: link:../../tools/monorepo
-      '@workspace/stylelint':
+      '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
-      '@workspace/testing':
+      '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
-      '@workspace/theme':
-        specifier: workspace:*
-        version: link:../../ui/theme
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
+      '@ui/theme':
+        specifier: workspace:*
+        version: link:../../ui/theme
       mdsvex:
         specifier: 0.12.3
         version: 0.12.3(svelte@5.2.7)
@@ -90,80 +90,80 @@ importers:
 
   libs/result:
     dependencies:
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../standard
-      '@workspace/testing':
-        specifier: workspace:*
-        version: link:../../tools/testing
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/tsconfig':
+      '@tools/testing':
+        specifier: workspace:*
+        version: link:../../tools/testing
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
   libs/routing:
     dependencies:
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../standard
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/testing':
+      '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
   libs/shortcuts:
     dependencies:
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../standard
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/testing':
+      '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
   libs/standard:
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/testing':
+      '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
   libs/state-controller:
     dependencies:
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../standard
       svelte:
         specifier: 5.2.7
         version: 5.2.7
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/testing':
+      '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
@@ -184,10 +184,10 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: 2.11.0
         version: 2.11.0(eslint@9.15.0(jiti@2.4.0))(typescript@5.6.3)
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../jsconfig
-      '@workspace/monorepo':
+      '@tools/monorepo':
         specifier: workspace:*
         version: link:../monorepo
       eslint:
@@ -216,7 +216,7 @@ importers:
 
   tools/monorepo:
     devDependencies:
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../jsconfig
       find-up:
@@ -228,10 +228,10 @@ importers:
       '@stylistic/stylelint-plugin':
         specifier: 3.1.1
         version: 3.1.1(stylelint@16.10.0(typescript@5.6.3))
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../eslint
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../jsconfig
       postcss:
@@ -258,10 +258,10 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 4.0.1
         version: 4.0.1(svelte@5.2.7)(vite@5.4.11(lightningcss@1.28.2))
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../eslint
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../jsconfig
       jsdom:
@@ -275,17 +275,17 @@ importers:
 
   ui/components:
     dependencies:
-      '@workspace/standard':
+      '@libs/standard':
         specifier: workspace:*
         version: link:../../libs/standard
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/stylelint':
+      '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
-      '@workspace/tsconfig':
+      '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
       svelte:
@@ -297,16 +297,16 @@ importers:
 
   ui/theme:
     devDependencies:
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../../tools/jsconfig
-      '@workspace/monorepo':
+      '@tools/monorepo':
         specifier: workspace:*
         version: link:../../tools/monorepo
-      '@workspace/stylelint':
+      '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
       autoprefixer:
@@ -324,13 +324,13 @@ importers:
       '@tailwindcss/postcss':
         specifier: 4.0.0-beta.3
         version: 4.0.0-beta.3
-      '@workspace/eslint':
+      '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
-      '@workspace/jsconfig':
+      '@tools/jsconfig':
         specifier: workspace:*
         version: link:../../tools/jsconfig
-      '@workspace/stylelint':
+      '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
       postcss:

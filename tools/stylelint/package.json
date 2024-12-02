@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/stylelint",
+	"name": "@tools/stylelint",
 	"exports": {
 		".": "./src/index.js"
 	},
@@ -9,8 +9,8 @@
 	"type": "module",
 	"devDependencies": {
 		"@stylistic/stylelint-plugin": "3.1.1",
-		"@workspace/eslint": "workspace:*",
-		"@workspace/jsconfig": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
 		"postcss": "8.4.49",
 		"postcss-html": "1.7.0",
 		"stylelint": "16.10.0",

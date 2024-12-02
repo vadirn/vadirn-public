@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/testing",
+	"name": "@tools/testing",
 	"type": "module",
 	"exports": {
 		".": "./src/index.js",
@@ -9,8 +9,8 @@
 	"devDependencies": {
 		"@sveltejs/kit": "2.8.1",
 		"@sveltejs/vite-plugin-svelte": "4.0.1",
-		"@workspace/eslint": "workspace:*",
-		"@workspace/jsconfig": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
 		"jsdom": "25.0.1",
 		"vitest": "2.1.5"
 	}

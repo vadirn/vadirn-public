@@ -1,4 +1,4 @@
-import { Shortcuts } from '@workspace/shortcuts';
+import { Shortcuts } from '@libs/shortcuts';
 import { getOrCreate, Keys } from './cache';
 import { browser } from '$app/environment';
 

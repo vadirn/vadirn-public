@@ -1,6 +1,6 @@
-import { type AnyFn, type UnknownFn } from '@workspace/standard/function';
-import { merge } from '@workspace/standard/object';
-import type { UnionToIntersection } from '../../standard/src/type';
+import { type AnyFn, type UnknownFn } from '@libs/standard/function';
+import { merge } from '@libs/standard/object';
+import type { UnionToIntersection } from '@libs/standard/type';
 
 type StateMethods = Record<string, Record<string, AnyFn>>;
 

@@ -1,4 +1,4 @@
-import { toKebabCase } from '@workspace/standard/string';
+import { toKebabCase } from '@libs/standard/string';
 import { key, proxy } from './proxy';
 
 function joinPaths(...paths: string[]) {

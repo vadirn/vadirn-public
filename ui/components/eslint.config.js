@@ -1,3 +1,3 @@
-import config from '@workspace/eslint';
+import config from '@tools/eslint';
 
 export default config;

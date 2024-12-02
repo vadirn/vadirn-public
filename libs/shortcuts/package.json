@@ -1,16 +1,16 @@
 {
-	"name": "@workspace/shortcuts",
+	"name": "@libs/shortcuts",
 	"exports": {
 		".": "./src/index.ts"
 	},
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {
-		"@workspace/eslint": "workspace:*",
-		"@workspace/testing": "workspace:*",
-		"@workspace/tsconfig": "workspace:*"
+		"@tools/eslint": "workspace:*",
+		"@tools/testing": "workspace:*",
+		"@tools/tsconfig": "workspace:*"
 	},
 	"dependencies": {
-		"@workspace/standard": "workspace:*"
+		"@libs/standard": "workspace:*"
 	}
 }

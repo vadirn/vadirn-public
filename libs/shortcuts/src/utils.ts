@@ -1,4 +1,4 @@
-import { isNonEmptyString } from '@workspace/standard/string';
+import { isNonEmptyString } from '@libs/standard/string';
 
 const modifierKeys = [
 	['alt', 'altKey'],

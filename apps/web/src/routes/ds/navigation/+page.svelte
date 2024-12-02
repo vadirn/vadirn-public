@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Navigation } from '@workspace/components/navigation';
+	import { Navigation } from '@ui/components/navigation';
 	import SplitScreen from '$lib/components/SplitScreen.svelte';
 	import { app } from '$lib/paths/app';
 	import { getLogoState } from '$lib/cache/logo-state';

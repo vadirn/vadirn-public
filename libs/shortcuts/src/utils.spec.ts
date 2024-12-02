@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@workspace/testing';
+import { describe, expect, it } from '@tools/testing';
 import {
 	getPressedKeys,
 	getShortcutName,

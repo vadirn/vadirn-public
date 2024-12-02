@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/theme-v4",
+	"name": "@ui/theme-v4",
 	"exports": {
 		"./css/app.css": "./src/css/app.css",
 		"./postcss": "./src/postcss.js"
@@ -8,9 +8,9 @@
 	"type": "module",
 	"devDependencies": {
 		"@tailwindcss/postcss": "4.0.0-beta.3",
-		"@workspace/eslint": "workspace:*",
-		"@workspace/jsconfig": "workspace:*",
-		"@workspace/stylelint": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
+		"@tools/stylelint": "workspace:*",
 		"postcss": "8.4.49",
 		"tailwindcss": "4.0.0-beta.3"
 	}

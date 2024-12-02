@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/monorepo",
+	"name": "@tools/monorepo",
 	"type": "module",
 	"exports": {
 		".": "./src/index.js"
@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"devDependencies": {
-		"@workspace/jsconfig": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
 		"find-up": "7.0.0"
 	}
 }

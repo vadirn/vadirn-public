@@ -1,11 +1,11 @@
 {
-      "extends": "@workspace/tsconfig/base.json",
-      "include": [
-            "src/**/*"
-      ],
-      "references": [
-            {
-                  "path": "../standard"
-            }
-      ]
+	"extends": "@tools/tsconfig/base.json",
+	"include": [
+		"src/**/*"
+	],
+	"references": [
+		{
+			"path": "../standard"
+		}
+	]
 }

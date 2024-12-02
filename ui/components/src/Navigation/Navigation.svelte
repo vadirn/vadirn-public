@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { classNames as c } from '@workspace/standard/style';
+	import { classNames as c } from '@libs/standard/style';
 	import { Logo, type LogoState } from '../Logo';
 	import type { NavigationLink } from './types';
 

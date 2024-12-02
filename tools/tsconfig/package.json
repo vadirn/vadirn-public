@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/tsconfig",
+	"name": "@tools/tsconfig",
 	"type": "module",
 	"exports": {
 		"./base.json": "./src/base.json"

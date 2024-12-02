@@ -1,9 +1,9 @@
-import { describe, expect, it, vi } from '@workspace/testing';
+import { describe, expect, it, vi } from '@tools/testing';
 import {
 	attachMethods,
 	stateController,
 } from './index.svelte';
-import type { AnyFn } from '@workspace/standard/function';
+import type { AnyFn } from '@libs/standard/function';
 
 describe('state controller', () => {
 	it('allows basic transitions (class)', async () => {

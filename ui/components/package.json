@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/components",
+	"name": "@ui/components",
 	"exports": {
 		"./logo": "./src/Logo/index.ts",
 		"./navigation": "./src/Navigation/index.ts"
@@ -9,13 +9,13 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@workspace/eslint": "workspace:*",
-		"@workspace/stylelint": "workspace:*",
-		"@workspace/tsconfig": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/stylelint": "workspace:*",
+		"@tools/tsconfig": "workspace:*",
 		"svelte": "5.2.7",
 		"svelte-check": "4.0.9"
 	},
 	"dependencies": {
-		"@workspace/standard": "workspace:*"
+		"@libs/standard": "workspace:*"
 	}
 }

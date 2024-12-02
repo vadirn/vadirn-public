@@ -1,5 +1,5 @@
 {
-	"name": "@workspace/web",
+	"name": "@apps/web",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -11,22 +11,22 @@
 		"lint": "eslint . && stylelint **/*.{css,svelte}"
 	},
 	"dependencies": {
-		"@workspace/components": "workspace:*",
-		"@workspace/routing": "workspace:*",
-		"@workspace/shortcuts": "workspace:*",
-		"@workspace/standard": "workspace:*",
-		"@workspace/state-controller": "workspace:*"
+		"@ui/components": "workspace:*",
+		"@libs/routing": "workspace:*",
+		"@libs/shortcuts": "workspace:*",
+		"@libs/standard": "workspace:*",
+		"@libs/state-controller": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",
 		"@sveltejs/kit": "2.8.1",
 		"@sveltejs/vite-plugin-svelte": "4.0.1",
-		"@workspace/eslint": "workspace:*",
-		"@workspace/monorepo": "workspace:*",
-		"@workspace/stylelint": "workspace:*",
-		"@workspace/testing": "workspace:*",
-		"@workspace/theme": "workspace:*",
-		"@workspace/tsconfig": "workspace:*",
+		"@tools/eslint": "workspace:*",
+		"@tools/monorepo": "workspace:*",
+		"@tools/stylelint": "workspace:*",
+		"@tools/testing": "workspace:*",
+		"@ui/theme": "workspace:*",
+		"@tools/tsconfig": "workspace:*",
 		"mdsvex": "0.12.3",
 		"shiki": "1.23.1",
 		"svelte": "5.2.7",

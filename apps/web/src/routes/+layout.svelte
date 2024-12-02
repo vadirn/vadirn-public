@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
-	import '@workspace/theme/css/app.css';
+	import '@ui/theme/css/app.css';
 
 	const { children } = $props();
 

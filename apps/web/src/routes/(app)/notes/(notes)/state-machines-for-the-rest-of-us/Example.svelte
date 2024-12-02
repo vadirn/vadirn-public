@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { sleep } from '@workspace/standard/promise';
-	import { stateController } from '@workspace/state-controller';
+	import { sleep } from '@libs/standard/promise';
+	import { stateController } from '@libs/state-controller';
 
 	let clicks = $state(0);
 

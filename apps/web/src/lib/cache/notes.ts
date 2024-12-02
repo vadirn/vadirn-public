@@ -1,4 +1,4 @@
-import { toKebabCase } from '@workspace/standard/string';
+import { toKebabCase } from '@libs/standard/string';
 import { app } from '$lib/paths/app';
 import type { Page } from '@sveltejs/kit';
 

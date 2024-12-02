@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import { monorepo } from '@workspace/monorepo';
+import { monorepo } from '@tools/monorepo';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import { createHighlighter } from 'shiki';
 
@@ -15,11 +15,13 @@ const mdsvexOptions = {
 	highlight: {
 		highlighter: async (code, lang = 'text') => {
 			const html
-			= escapeSvelte(highlighter.codeToHtml(code, { lang,
-				themes: {
-					light: 'github-light',
-					dark: 'github-dark',
-				} }));
+				= escapeSvelte(highlighter.codeToHtml(code, {
+					lang,
+					themes: {
+						light: 'github-light',
+						dark: 'github-dark',
+					}
+				}));
 
 			return `{@html \`${html}\` }`;
 		},

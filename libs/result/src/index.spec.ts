@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@workspace/testing';
+import { describe, expect, it } from '@tools/testing';
 import { attempt, error, ok, resilient, resultOf, unwrap, unwrapOr } from '.';
 
 describe('result of', () => {
