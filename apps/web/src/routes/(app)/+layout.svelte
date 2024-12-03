@@ -1,22 +1,24 @@
 <script lang="ts">
 	import { Navigation } from '@ui/components/navigation';
 	import { classNames as c } from '@libs/standard/style';
+	import { shortcuts } from '@libs/shortcuts';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { app } from '$lib/paths/app';
 	import { ds } from '$lib/paths/ds';
-	import { getShortcuts } from '$lib/cache/shortcuts';
 
-	getShortcuts().add('d', () => {
-		const value = localStorage.getItem('theme');
+	const onkeydown = shortcuts({
+		d: () => {
+			const value = localStorage.getItem('theme');
 
-		if (value === 'dark') {
-			localStorage.removeItem('theme');
-			document.documentElement.classList.remove('dark');
+			if (value === 'dark') {
+				localStorage.removeItem('theme');
+				document.documentElement.classList.remove('dark');
 
-			return;
-		}
-		localStorage.setItem('theme', 'dark');
-		document.documentElement.classList.add('dark');
+				return;
+			}
+			localStorage.setItem('theme', 'dark');
+			document.documentElement.classList.add('dark');
+		},
 	});
 
 	const { children } = $props();
@@ -46,6 +48,8 @@
 		place-self:  end;
 	}
 </style>
+
+<svelte:document {onkeydown} />
 
 <div class="layout">
 	<Navigation

@@ -1,79 +1,30 @@
 import {
 	getPressedKeys,
-	getShortcutName,
-	listenerOptions,
-	normalizeScopeHierarchy,
 	normalizeShortcut,
 } from './utils';
 
-export class Shortcuts {
-	private shortcuts = new Map<string, (event: KeyboardEvent) => unknown>();
-	readonly scopeHierarchy: string[];
-	constructor(scopeHierarchy: string[], readonly isBrowser: boolean) {
-		this.scopeHierarchy = normalizeScopeHierarchy(scopeHierarchy);
+export function shortcuts(
+	shortcuts: Record<string, (event: KeyboardEvent) => unknown>,
+	options: { preventDefault?: boolean; stopPropagation?: boolean } = {},
+) {
+	const { preventDefault = true, stopPropagation = false } = options;
+	const callbacks = new Map<string, (event: KeyboardEvent) => unknown>();
+
+	for (const [shortcut, callback] of Object.entries(shortcuts)) {
+		const normalizedShortcut = normalizeShortcut(shortcut);
+
+		callbacks.set(normalizedShortcut, callback);
 	}
 
-	private handleKeyDown = (event: KeyboardEvent) => {
+	return (event: KeyboardEvent) => {
 		const pressedKeys = getPressedKeys(event);
 
-		for (const scope of this.scopeHierarchy) {
-			const shortcutName = getShortcutName(pressedKeys, scope);
+		const callback = callbacks.get(pressedKeys);
 
-			const callback = this.shortcuts.get(shortcutName);
-
-			if (callback) {
-				callback(event);
-
-				return;
-			}
+		if (callback) {
+			if (preventDefault) event.preventDefault();
+			if (stopPropagation) event.stopPropagation();
+			callback(event);
 		}
 	};
-
-	private startListening() {
-		if (this.isBrowser) {
-			document.addEventListener(
-				'keydown',
-				this.handleKeyDown,
-				listenerOptions,
-			);
-		}
-	}
-
-	private stopListening() {
-		if (this.isBrowser) {
-			document.removeEventListener(
-				'keydown',
-				this.handleKeyDown,
-			);
-		}
-	}
-
-	add(
-		shortcut: string,
-		callback: (event: KeyboardEvent) => void,
-		scope?: typeof this.scopeHierarchy[number],
-	) {
-		const shortcutName = getShortcutName(
-			normalizeShortcut(shortcut),
-			scope,
-		);
-
-		if (this.shortcuts.has(shortcutName)) {
-			console.warn(`Shortcut "${shortcutName}" already exists`);
-		}
-
-		this.shortcuts.set(shortcutName, callback);
-
-		this.startListening();
-	}
-
-	remove(shortcut: string, scope?: typeof this.scopeHierarchy[number]) {
-		const shortcutName = getShortcutName(
-			normalizeShortcut(shortcut),
-			scope,
-		);
-
-		this.shortcuts.delete(shortcutName);
-		if (this.shortcuts.size === 0) this.stopListening();
-	}
 }

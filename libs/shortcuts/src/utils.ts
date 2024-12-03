@@ -1,5 +1,3 @@
-import { isNonEmptyString } from '@libs/standard/string';
-
 const modifierKeys = [
 	['alt', 'altKey'],
 	['ctrl', 'ctrlKey'],
@@ -11,6 +9,7 @@ const aliasedKeys = new Map([
 	['option', 'alt'],
 	['cmd', 'meta'],
 	['command', 'meta'],
+	['escape', 'esc'],
 ]);
 
 export const listenerOptions = {
@@ -48,18 +47,4 @@ export function normalizeShortcut(shortcut: string) {
 	}
 
 	return [...normalizedKeys].sort().join('+');
-}
-
-export function getShortcutName(shortcut: string, scope?: string) {
-	if (isNonEmptyString(scope)) {
-		return [scope, shortcut].join(':');
-	}
-
-	return shortcut;
-}
-
-export function normalizeScopeHierarchy(scopeHierarchy: string[]) {
-	if (scopeHierarchy.length === 0) return [''];
-
-	return scopeHierarchy.reverse();
 }
