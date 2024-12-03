@@ -15,8 +15,9 @@ export const monorepo = {
 	},
 	resolve: (...args) => path.resolve(root, ...args),
 	apps: (...args) => path.resolve(root, 'apps', ...args),
-	core: (...args) => path.resolve(root, 'core', ...args),
-	libs: (...args) => path.resolve(root, 'libs', ...args),
-	tools: (...args) => path.resolve(root, 'tools', ...args),
 	ui: (...args) => path.resolve(root, 'ui', ...args),
+	core: (...args) => path.resolve(root, 'core', ...args),
+	domain: (...args) => path.resolve(root, 'domain', ...args),
+	tools: (...args) => path.resolve(root, 'tools', ...args),
+	libs: (...args) => path.resolve(root, 'libs', ...args),
 };
