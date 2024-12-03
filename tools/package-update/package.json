@@ -1,0 +1,12 @@
+{
+	"name": "@tools/package-update",
+	"bin": {
+		"package-update": "./src/index.js"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
+		"@tools/monorepo": "workspace:*"
+	}
+}
