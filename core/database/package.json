@@ -1,0 +1,17 @@
+{
+	"name": "@core/database",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {},
+	"type": "module",
+	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/testing": "workspace:*",
+		"@tools/tsconfig": "workspace:*"
+	},
+	"dependencies": {
+		"@vercel/kv": "3.0.0",
+		"@libs/result": "workspace:*"
+	}
+}
