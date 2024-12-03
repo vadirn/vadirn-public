@@ -12,8 +12,8 @@
 		"@tools/eslint": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"svelte": "5.2.7",
-		"svelte-check": "4.0.9"
+		"svelte": "5.4.0",
+		"svelte-check": "4.1.0"
 	},
 	"dependencies": {
 		"@libs/standard": "workspace:*"
