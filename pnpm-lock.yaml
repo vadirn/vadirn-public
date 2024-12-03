@@ -318,6 +318,9 @@ importers:
 
   ui/components:
     dependencies:
+      '@libs/shortcuts':
+        specifier: workspace:*
+        version: link:../../libs/shortcuts
       '@libs/standard':
         specifier: workspace:*
         version: link:../../libs/standard

@@ -17,6 +17,7 @@
 		"svelte-check": "4.1.0"
 	},
 	"dependencies": {
+		"@libs/shortcuts": "workspace:*",
 		"@libs/standard": "workspace:*",
 		"@ui/actions": "workspace:*"
 	}

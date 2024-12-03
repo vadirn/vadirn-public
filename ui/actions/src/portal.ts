@@ -16,8 +16,6 @@ export function getLayer(layer: Layer) {
 export function portal(node: HTMLElement, layer: Layer = Layers.None) {
 	const layerElement = getLayer(layer);
 
-	console.log({ layerElement });
-
 	layerElement?.appendChild(node);
 
 	return {
