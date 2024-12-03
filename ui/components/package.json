@@ -1,8 +1,9 @@
 {
 	"name": "@ui/components",
 	"exports": {
-		"./logo": "./src/Logo/index.ts",
-		"./navigation": "./src/Navigation/index.ts"
+		"./logo": "./src/content/Logo/index.ts",
+		"./navigation": "./src/content/Navigation/index.ts",
+		"./modal": "./src/overlays/Modal/index.ts"
 	},
 	"scripts": {
 		"lint": "eslint . && stylelint **/*.{css,svelte}"
@@ -16,6 +17,7 @@
 		"svelte-check": "4.1.0"
 	},
 	"dependencies": {
-		"@libs/standard": "workspace:*"
+		"@libs/standard": "workspace:*",
+		"@ui/actions": "workspace:*"
 	}
 }
