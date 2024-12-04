@@ -3,6 +3,13 @@ body {
 		bg-neutral-100 text-body;
 
 	--color-inherit: inherit;
+
+	overflow: scroll;
+
+	@supports (scrollbar-gutter: stable) {
+		overflow: auto;
+		scrollbar-gutter: stable;
+	}
 }
 
 a {
@@ -24,6 +31,6 @@ a {
 	@apply hidden;
 
 	&:has(*) {
-		@apply flex fixed inset-0 bg-neutral-900/50;
+		@apply flex fixed inset-0 bg-neutral-900/50 justify-center items-center;
 	}
 }
