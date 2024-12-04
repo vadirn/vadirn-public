@@ -90,6 +90,8 @@ export const style = () => ([
 	{
 		files: ['**/*.svelte'],
 		rules: {
+			'@stylistic/indent': 'off',
+			'@stylistic/indent-binary-ops': 'off',
 			'svelte/indent': ['error', { indent: 'tab' }],
 			'svelte/sort-attributes': [
 				'warn',
