@@ -7,7 +7,7 @@ export function shortcuts(
 	shortcuts: Record<string, (event: KeyboardEvent) => unknown>,
 	options: { preventDefault?: boolean; stopPropagation?: boolean } = {},
 ) {
-	const { preventDefault = true, stopPropagation = false } = options;
+	const { preventDefault = false, stopPropagation = false } = options;
 	const callbacks = new Map<string, (event: KeyboardEvent) => unknown>();
 
 	for (const [shortcut, callback] of Object.entries(shortcuts)) {

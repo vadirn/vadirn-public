@@ -2,6 +2,8 @@
 	"name": "@libs/standard",
 	"exports": {
 		"./common": "./src/common.ts",
+		"./dom": "./src/dom.ts",
+		"./error": "./src/error.ts",
 		"./function": "./src/function.ts",
 		"./number": "./src/number.ts",
 		"./object": "./src/object.ts",
