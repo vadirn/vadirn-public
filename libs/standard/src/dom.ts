@@ -1,3 +1,5 @@
+import { isNil } from './common';
+
 const focusableSelectors = [
 	'a[href]',
 	'area[href]',
@@ -13,17 +15,34 @@ const focusableSelectors = [
 ];
 
 const editableSelectors = [
-	'input:not([disabled])',
+	'input:not([disabled]):not([type="radio"]):not([type="checkbox"])',
 	'textarea:not([disabled])',
 	'[contenteditable]',
 ];
 
 export function getFocusableElements(element: HTMLElement) {
-	const focusableElements = element.querySelectorAll(
-		focusableSelectors.join(','),
-	);
+	const focusableElements
+		= element.querySelectorAll<HTMLElement>(focusableSelectors.join(','));
+	const namedFocusableElements = new Map<string | symbol, HTMLElement>();
 
-	return [...focusableElements] as HTMLElement[];
+	for (const element of focusableElements) {
+		const key = element.getAttribute('name') ?? Symbol();
+
+		const existingElement = namedFocusableElements.get(key);
+
+		if (isNil(existingElement)) {
+			namedFocusableElements.set(key, element);
+			continue;
+		}
+
+		// check if new element is a checked radio button
+		if (element.matches('input[type="radio"]:checked')) {
+			// replace existing element with new one
+			namedFocusableElements.set(key, element);
+		}
+	}
+
+	return [...namedFocusableElements.values()];
 }
 
 export function isEditableElement(element: Element | null) {
