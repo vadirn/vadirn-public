@@ -1,6 +1,6 @@
 body {
-	@apply box-border min-h-svh w-full text-neutral-900 
-		bg-neutral-100 text-body;
+	@apply box-border min-h-svh w-full text-foreground
+		bg-background text-body;
 
 	--color-inherit: inherit;
 
@@ -31,6 +31,6 @@ a {
 	@apply hidden;
 
 	&:has(*) {
-		@apply flex fixed inset-0 bg-neutral-900/50 justify-center items-center;
+		@apply flex fixed inset-0 bg-gray-900/50 justify-center items-center;
 	}
 }
