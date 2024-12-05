@@ -12,11 +12,13 @@
 		children,
 		trigger,
 		isBrowser,
+		labelledby,
 		isVisible = $bindable(false),
 	}: {
 		children: Snippet;
 		trigger?: Snippet<[Fn<void, [Event, boolean]>]>;
 		isBrowser?: boolean;
+		labelledby: string;
 		isVisible?: boolean;
 	} = $props();
 
@@ -98,6 +100,7 @@
 
 	$effect(() => {
 		if (isVisible) {
+			(document.activeElement as HTMLElement)?.blur();
 			document.addEventListener('keydown', onkeydown);
 			document.addEventListener('pointerdown', closeOnClickOutside);
 			document.body.classList.add('overflow-hidden');
@@ -116,8 +119,8 @@
 {#if isVisible && isBrowser}
 	<div
 		bind:this={element}
-		class="modal"
-		aria-modal="true"
+		class="p-24"
+		aria-labelledby={labelledby}
 		role="dialog"
 		use:portal={Layers.Modals}
 	>

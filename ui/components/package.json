@@ -3,6 +3,7 @@
 	"exports": {
 		"./logo": "./src/content/Logo/index.ts",
 		"./navigation": "./src/content/Navigation/index.ts",
+		"./field": "./src/forms/Field/index.ts",
 		"./modal": "./src/overlays/Modal/index.ts"
 	},
 	"scripts": {
@@ -13,8 +14,8 @@
 		"@tools/eslint": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"svelte": "5.4.0",
-		"svelte-check": "4.1.0"
+		"svelte": "5.6.2",
+		"svelte-check": "4.1.1"
 	},
 	"dependencies": {
 		"@libs/shortcuts": "workspace:*",
