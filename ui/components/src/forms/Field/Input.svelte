@@ -21,7 +21,7 @@
 
 	input {
 		@apply w-full rounded border-neutral-500
-			border px-16 py-8 bg-background;
+			border px-[15px] py-8 bg-background;
 
 		&:focus-visible {
 			@apply outline-none ring-2 ring-offset-2
