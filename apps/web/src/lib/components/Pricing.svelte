@@ -5,7 +5,7 @@
 
 <style lang="postcss">
 	.modal {
-		@apply bg-background p-16 rounded;
+		@apply bg-background p-16 pb-24 rounded;
 
 		width: 100%;
 	}
@@ -18,6 +18,10 @@
 
 			min-width: 200px;
 		}
+	}
+
+	h2 {
+		@apply text-heading font-bold text-balance;
 	}
 
 	.plan-radio {
@@ -65,7 +69,8 @@
 </style>
 
 <form class="modal">
-	<h2 id={labelledby} class="sr-only">Pricing plans</h2>
+	<h2 id={labelledby} class="mb-16">Get a Quote</h2>
+	<p class="mb-8">Choose a tier that best suits your needs:</p>
 	<div class="pricing">
 		<div>
 			<input
@@ -137,7 +142,7 @@
 			</label>
 		</div>
 	</div>
-	<div class="flex gap-16">
+	<div class="flex flex-col md:flex-row gap-16">
 		<div class="flex-1 flex flex-col gap-16">
 			<Field.Input
 				name="name"
@@ -148,18 +153,32 @@
 			<Field.Input
 				name="email"
 				label="Email"
-				placeholder="Email address"
+				placeholder="jane.smith@acme.com"
 				required
 				type="email"
 			/>
 			<Field.Input
 				name="company"
 				label="Company"
-				placeholder="Company name"
+				placeholder="Acme Corp"
 			/>
 		</div>
-		<div class="flex-1 flex flex-col justify-end items-end gap-16">
-			<button type="submit">Submit</button>
+		<div class="flex-1 flex flex-col justify-end gap-16">
+			<div class="flex flex-col gap-16 bg-yellow/10 p-8 rounded">
+				<p>
+					After submitting,
+					I will review your request and
+					get back to you within 3 business days.
+				</p>
+				<p class="text-caption text-neutral-600 text-balance">
+					I respect your privacy.
+					Your information will not be shared with third parties.
+				</p>
+			</div>
+			<div class="place-self-end flex gap-16">
+				<button>Cancel</button>
+				<button type="submit">Submit</button>
+			</div>
 		</div>
 	</div>
 </form>
