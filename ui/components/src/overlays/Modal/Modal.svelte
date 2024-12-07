@@ -119,7 +119,7 @@
 {#if isVisible && isBrowser}
 	<div
 		bind:this={element}
-		class="p-24"
+		class="p-24 flex-none m-auto"
 		aria-labelledby={labelledby}
 		role="dialog"
 		use:portal={Layers.Modals}
