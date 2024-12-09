@@ -1,6 +1,6 @@
 <style lang="postcss">
 	.answer {
-		@apply flex items-center text-accent max-w-full text-title font-bold;
+		@apply flex items-center text-red-400 max-w-full text-title font-bold; 
 	}
 </style>
 
