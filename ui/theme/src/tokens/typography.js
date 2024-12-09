@@ -2,13 +2,15 @@ import defaultTheme from 'tailwindcss/defaultTheme.js';
 
 /** @type {import('tailwindcss').Config['theme']['fontSize']} */
 export const fontSize = {
-	title:
+	'title':
             [pxToRem(34), { lineHeight: pxToRem(40) }],
-	heading:
+	'heading':
             [pxToRem(20), { lineHeight: pxToRem(24) }],
-	body:
+	'body':
             [pxToRem(16), { lineHeight: pxToRem(20) }],
-	caption:
+	'body-monospace':
+		[pxToRem(15), { lineHeight: pxToRem(20) }],
+	'caption':
             [pxToRem(12), { lineHeight: pxToRem(14) }],
 };
 

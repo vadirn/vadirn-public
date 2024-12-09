@@ -1,16 +1,30 @@
-button {
-	@apply rounded-full bg-gray-200 text-gray-900 font-sans cursor-default 
-		px-16 h-32 inline-flex items-center justify-center;
-
-	&:focus-visible {
-		@apply outline-none ring-2 ring-offset-2 ring-blue ring-offset-neutral-100;
+@layer components {
+	.colors-interactive {
+		@apply bg-grey-100 text-black
+			hover:bg-grey-200
+			dark:bg-grey-500 dark:text-white
+			dark:hover:bg-grey-600;
 	}
 
-	&:hover {
-		@apply bg-gray-300;
+	.colors-interactive-accent {
+		@apply bg-yellow-100 active:bg-yellow-100 text-black
+			hover:bg-yellow-200
+			dark:bg-yellow-300 active:bg-yellow-300
+			dark:hover:bg-yellow-400;
 	}
 
-	&:active {
-		@apply bg-gray-200;
+	*:focus-visible {
+		@apply outline-none ring-2 ring-offset-2 
+			ring-blue-300 ring-offset-background;
+	}
+
+	button {
+		@apply rounded-full font-sans cursor-default 
+			px-16 h-32 inline-flex items-center justify-center 
+			colors-interactive;
+	}
+
+	button[type="submit"] {
+		@apply colors-interactive-accent;
 	}
 }

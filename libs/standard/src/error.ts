@@ -1,9 +1,12 @@
 export function assert(
 	condition: unknown,
-	message?: string,
+	messageOrError?: string | Error,
 ): asserts condition {
 	if (!condition) {
-		throw new Error(message);
+		if (messageOrError instanceof Error) {
+			throw messageOrError;
+		}
+		throw new Error(messageOrError);
 	}
 }
 

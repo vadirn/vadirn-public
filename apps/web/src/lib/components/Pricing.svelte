@@ -5,7 +5,7 @@
 
 <style lang="postcss">
 	.modal {
-		@apply bg-background p-16 pb-24 rounded;
+		@apply bg-background p-16 pb-24 rounded shadow-xl;
 
 		width: 100%;
 	}
@@ -29,16 +29,15 @@
 	}
 
 	.plan-label {
-		@apply flex flex-1 flex-col bg-gray-200 text-gray-900
-			p-16 pt-8 rounded transition-all;
-	}
-
-	.plan-label:hover {
-		@apply bg-gray-300;
+		@apply flex flex-1 flex-col
+			colors-interactive
+			p-16 pt-8 rounded;
 	}
 
 	.plan-radio:checked + .plan-label {
-		@apply bg-accent text-gray-100;
+		@apply
+			bg-yellow-100 text-black
+			dark:bg-yellow-400 dark:text-white;
 	}
 
 	.plan-title {
@@ -64,7 +63,7 @@
 	}
 
 	.plan-radio:focus-visible + .plan-label {
-		@apply ring-2 ring-offset-2 ring-blue ring-offset-neutral-100;
+		@apply ring-2 ring-offset-2 ring-blue-500 ring-offset-neutral-100;
 	}
 </style>
 
@@ -164,13 +163,14 @@
 			/>
 		</div>
 		<div class="flex-1 flex flex-col justify-end gap-16">
-			<div class="flex flex-col gap-16 bg-yellow/10 p-8 rounded">
+			<div class="flex flex-col gap-16 callout p-8 rounded">
 				<p>
 					After submitting,
 					I will review your request and
 					get back to you within 3 business days.
 				</p>
-				<p class="text-caption text-neutral-600 text-balance">
+				<p class="text-caption text-grey-600
+					dark:text-yellow-100 text-balance">
 					I respect your privacy.
 					Your information will not be shared with third parties.
 				</p>

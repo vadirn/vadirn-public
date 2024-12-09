@@ -6,7 +6,10 @@ import { fontFamily, fontSize } from './tokens/typography.js';
 
 /** @type {import('tailwindcss').Config} */
 export const tailwindcss = {
-	darkMode: 'selector',
+	darkMode: ['variant',
+		['@media (prefers-color-scheme: dark) { &:not(.light *) }',
+			'&:is(.dark *)',
+			'&:is(:global(.dark) *)']],
 	content: [
 		'./src/**/*.{html,js,svelte,ts,md}',
 		monorepo.ui('components', 'src', '**/*.{html,js,svelte,ts,md}'),

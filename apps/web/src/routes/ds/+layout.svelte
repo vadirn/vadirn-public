@@ -24,10 +24,10 @@
 	}
 
 	.selected {
-		@apply bg-accent;
+		@apply bg-yellow-500;
 
 		a {
-			@apply text-gray-100;
+			@apply text-grey-100;
 		}
 	}
 </style>

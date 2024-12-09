@@ -20,13 +20,9 @@
 	}
 
 	input {
-		@apply w-full rounded border-neutral-500
-			border px-[15px] py-8 bg-background;
-
-		&:focus-visible {
-			@apply outline-none ring-2 ring-offset-2
-				ring-blue ring-offset-neutral-100;
-		}
+		@apply w-full rounded border-grey-500
+			border px-[15px] py-8 bg-white
+			bg-background;
 	}
 
 </style>

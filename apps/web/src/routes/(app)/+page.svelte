@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { Modal } from '@ui/components/modal';
+	import { type Fn } from '@libs/standard/function';
 	import { getNotePath, notes } from '$lib/cache/notes';
 	import { app } from '$lib/paths/app';
+	import Pricing from '$lib/components/Pricing.svelte';
+	import { browser } from '$app/environment';
 
 	const recentNotes = notes.slice(0, 5);
 </script>
@@ -12,7 +16,7 @@
 			lg:col-start-3 lg:col-span-1;
 
 		&::before {
-			@apply absolute block border-l-8 border-accent;
+			@apply absolute block border-l-8 border-yellow-300;
 
 			content: '';
 			top: 0;
@@ -37,7 +41,7 @@
 			lg:row-start-2 lg:row-span-2 mb-48;
 
 		&::before {
-			@apply absolute hidden lg:block h-full border-r border-accent;
+			@apply absolute hidden lg:block h-full border-r border-yellow-300;
 
 			content: '';
 			top: 0;
@@ -61,7 +65,18 @@
 		Let's work on turning gradual decay into continuous improvement,
 		ensuring long-term success for your projects.
 	</p>
-	<button>Get a quote</button>
+
+	<Modal isBrowser={browser} isVisible={true} labelledby="pricing-plans">
+		{#snippet trigger(setVisibility: Fn<void, [Event, boolean]>)}
+			<button
+				onclick={(event) => { setVisibility(event, true); }}
+			>
+				Get a quote
+			</button>
+		{/snippet}
+		<Pricing labelledby="pricing-plans" />
+	</Modal>
+
 </div>
 
 <div class="notes">

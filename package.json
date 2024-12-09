@@ -12,7 +12,7 @@
 		"check-project-references": "set-project-references",
 		"set-project-references": "set-project-references --save"
 	},
-	"packageManager": "pnpm@9.14.4",
+	"packageManager": "pnpm@9.15.0",
 	"devDependencies": {
 		"@bessonovs/set-project-references": "0.0.10",
 		"@tools/package-update": "workspace:*",

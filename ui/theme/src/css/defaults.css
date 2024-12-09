@@ -1,36 +1,41 @@
-body {
-	@apply box-border min-h-svh w-full text-foreground
-		bg-background text-body;
+@layer base {
+	body {
+		@apply box-border min-h-svh w-full 
+			text-black bg-white 
+			dark:text-white dark:bg-black 
+			text-body;
 
-	--color-inherit: inherit;
+		--color-inherit: inherit;
 
-	overflow: scroll;
+		overflow: scroll;
 
-	@supports (scrollbar-gutter: stable) {
-		overflow: auto;
-		scrollbar-gutter: stable;
+		@supports (scrollbar-gutter: stable) {
+			overflow: auto;
+			scrollbar-gutter: stable;
+		}
 	}
-}
 
-a {
-	@apply text-current underline underline-offset-2 decoration-[0.5px];
+	a {
+		@apply text-current underline underline-offset-2 decoration-[0.5px];
 
-	&:hover {
-		@apply opacity-60;
+		&:hover {
+			@apply opacity-60;
+		}
 	}
-}
 
-.dark {
-	.shiki, .shiki span {
-		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;  
+	.dark {
+		.shiki, .shiki span {
+			color: var(--shiki-dark) !important;
+			background-color: var(--shiki-dark-bg) !important;  
+		}
 	}
-}
 
-#modals {
-	@apply hidden;
+	#modals {
+		@apply hidden;
 
-	&:has(*) {
-		@apply flex fixed inset-0 bg-gray-900/50 justify-center items-center;
+		&:has(*) {
+			@apply flex flex-col fixed inset-0 bg-grey-900/60 dark:bg-grey-800/90
+				items-center max-h-svh overflow-y-scroll;
+		}
 	}
 }

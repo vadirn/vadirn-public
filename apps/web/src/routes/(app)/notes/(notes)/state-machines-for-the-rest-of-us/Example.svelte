@@ -39,17 +39,19 @@
 <div class="flex items-center gap-16">
 	<button
 		class="min-w-fit w-[240px]"
-		class:bg-error={buttonController.state === 'error'}
-		class:bg-success={buttonController.state === 'success'}
-		class:text-gray-100={
-			['success', 'error'].includes(buttonController.state)
-		}
 		onclick={buttonController.click}
 	>
 		{label}
 	</button>
 	<ul class="text-caption font-mono p-8 border-l border-neutral-400">
-		<li>State: {buttonController.state}</li>
+		<li>State:
+			<span
+				class:text-green-400={buttonController.state === 'success'}
+				class:text-red-400={buttonController.state === 'error'}
+				class:text-yellow-400={buttonController.state === 'loading'}>
+				{buttonController.state}
+			</span>
+		</li>
 		<li>Clicks: {clicks}</li>
 	</ul>
 </div>
