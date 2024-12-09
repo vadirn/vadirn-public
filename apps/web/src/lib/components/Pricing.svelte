@@ -63,7 +63,7 @@
 	}
 
 	.plan-radio:focus-visible + .plan-label {
-		@apply ring-2 ring-offset-2 ring-blue-500 ring-offset-neutral-100;
+		@apply ring-2 ring-offset-2 ring-blue-500 ring-offset-background;
 	}
 </style>
 
