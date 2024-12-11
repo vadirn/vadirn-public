@@ -1,0 +1,11 @@
+{
+	"name": "@tools/svelte-local",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {},
+	"type": "module",
+	"devDependencies": {
+		"svelte": "5.10.0"
+	}
+}

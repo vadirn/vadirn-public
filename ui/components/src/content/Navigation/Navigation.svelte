@@ -1,20 +1,29 @@
 <script lang="ts">
-	import { classNames as c } from '@libs/standard/style';
 	import { Logo, type LogoState } from '../Logo';
+	import type { Snippet } from 'svelte';
 	import type { NavigationLink } from './types';
 
-	const { links = [], logoState, className }: {
+	const { links = [], logoState }: {
 		links?: NavigationLink[];
 		logoState: LogoState;
-		className?: string;
+		layout?: Snippet<[nav: Snippet]>;
 	} = $props();
 
 	const blankProps = { target: '_blank', rel: 'noopener noreferrer' };
 </script>
 
-<nav class={c(className)}>
+<style lang="postcss">
+	ul {
+		display: flex;
+		gap: var(--size-16);
+		padding-top: var(--size-4);
+		margin-left: var(--size-32);
+	}
+</style>
+
+<nav>
 	<Logo {logoState} />
-	<ul class="ml-32 pt-4 flex gap-16 font-sans">
+	<ul>
 		{#each links as link}
 			<li>
 				<a

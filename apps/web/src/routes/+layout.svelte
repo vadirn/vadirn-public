@@ -3,7 +3,7 @@
 	import { isEditingText } from '@libs/standard/dom';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
-	import '@ui/theme/css/app.css';
+	import '@ui/theme-next/css';
 
 	const { children } = $props();
 

@@ -11,24 +11,36 @@
 
 <style lang="postcss">
 	.headline {
-		@apply text-balance text-title relative pr-24
-			col-start-3 col-span-2
-			lg:col-start-3 lg:col-span-1;
+		position: relative;
+		grid-column: 3 / span 2;
+		padding-right: var(--size-24);
+		font-size: var(--font-size-title);
+		line-height: var(--line-height-title);
+		text-wrap: balance;
+
+		@media (--lg-n-above) {
+			grid-column: 3 / span 1;
+			color: red;
+		}
 
 		&::before {
-			@apply absolute block border-l-8 border-yellow-300;
-
-			content: '';
+			position: absolute;
 			top: 0;
 			bottom: 0;
 			left: -32px;
+			display: block;
+			content: '';
+			border-left: var(--size-8) solid var(--color-yellow-300);
 		}
 	}
 
 	.lead {
-		@apply pr-24
-			col-start-3 col-span-2
-			lg:col-start-3 lg:col-span-1;
+		grid-column: 3 / span 2;
+		padding-right: var(--size-24);
+
+		@media (--lg-n-above) {
+			grid-column: 3 / span 1;
+		}
 	}
 
 	.notes-title {
@@ -43,10 +55,10 @@
 		&::before {
 			@apply absolute hidden lg:block h-full border-r border-yellow-300;
 
-			content: '';
 			top: 0;
 			bottom: 0;
 			margin-left: -23px;
+			content: '';
 		}
 	}
 </style>

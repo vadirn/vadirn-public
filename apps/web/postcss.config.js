@@ -1,4 +1,3 @@
-import { postcssConfig } from '@ui/theme/postcss';
-import tailwindConfig from './tailwind.config';
+import { postcssConfig } from '@ui/theme-next/postcss';
 
-export default postcssConfig(tailwindConfig);
+export default postcssConfig();

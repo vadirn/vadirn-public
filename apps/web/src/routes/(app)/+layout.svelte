@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { classNames as c } from '@libs/standard/style';
 	import { Navigation } from '@ui/components/navigation';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { app } from '$lib/paths/app';
@@ -10,9 +9,8 @@
 
 <style lang="postcss">
 	.layout {
-		@apply min-h-svh grid gap-x-0 gap-y-20 lg:gap-x-24;
-
-		margin: auto;
+		display: grid;
+		grid-template-rows: min-content min-content min-content 1fr;
 		grid-template-columns:
 			minmax(0, 1fr)
 			minmax(8px, 40px)
@@ -20,26 +18,43 @@
 			minmax(0, 700px)
 			minmax(8px, 40px)
 			minmax(0, 1fr);
-		grid-template-rows: min-content min-content min-content 1fr;
 		grid-auto-rows: min-content;
+		gap: var(--size-20) 0;
+		min-height: 100svh;
+		padding-top: var(--size-32);
+		margin: auto;
+
+		@media (--lg-n-above) {
+			column-gap: var(--size-24);
+		}
+	}
+
+	* :global(nav) {
+		grid-column: 3 / span 4;
+		margin-left: calc(-1 * var(--size-32));
+
+		@media (--lg-n-above) {
+			grid-column: 3 / span 2;
+		}
 	}
 
 	footer {
-		@apply pb-16 text-caption hidden lg:block;
-
-		grid-column: 3/-3;
+		display: none;
 		grid-row: -1 / span 1;
+		grid-column: 3/-3;
 		place-self:  end;
+		padding-bottom: var(--size-16);
+		font-size: var(--font-size-caption);
+		line-height: var(--line-height-caption);
+
+		@media (--lg-n-above) {
+			display: block;
+		}
 	}
 </style>
 
 <div class="layout">
 	<Navigation
-		className={c(
-			'pt-32 -ml-32',
-			'col-start-3 lg:col-span-4',
-			'lg:col-start-3 lg:col-span-2',
-		)}
 		links={[
 			{ title: 'Notes', href: app.notes.toString() },
 			{ title: 'Github', href: 'https://github.com/vadirn', blank: true },

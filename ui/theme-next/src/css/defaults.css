@@ -1,0 +1,57 @@
+body {
+	width: 100%;
+	min-height: 100svh;
+	overflow: scroll;
+	font-family: var(--font-family-sans);
+	font-size: var(--font-size-body);
+	line-height: var(--line-height-body);
+	color: var(--color-foreground);
+	background-color: var(--color-white);
+
+	.dark & {
+		background-color: var(--color-black);
+	}
+
+	@supports (scrollbar-gutter: stable) {
+		overflow: auto;
+		scrollbar-gutter: stable;
+	}
+}
+
+a {
+	color: currentcolor;
+	text-decoration-line: underline;
+	text-decoration-thickness: 0.5px;
+	text-underline-offset: var(--size-2);
+
+	&:hover {
+		opacity: 0.6;
+	}
+}
+
+.dark {
+	.shiki, .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;  
+	}
+}
+
+#modals {
+	display: none;
+
+	&:has(*) {
+		position: fixed;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		max-height: 100svh;
+		overflow-y: scroll;
+		background-color: oklch(from var(--color-grey-900) l c h / 60%);
+
+		.dark & {
+			background-color: oklch(from var(--color-grey-800) l c h / 90%);
+		}
+	}
+}

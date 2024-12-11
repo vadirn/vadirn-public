@@ -1,7 +1,11 @@
 /** @type {import('stylelint').Config} */
 export default {
-	extends: ['stylelint-config-standard', 'stylelint-config-html/svelte'],
-	plugins: ['@stylistic/stylelint-plugin'],
+	extends: [
+		'stylelint-config-standard',
+		'stylelint-config-recess-order',
+		'stylelint-config-html/svelte',
+	],
+	plugins: ['@stylistic/stylelint-plugin', 'stylelint-gamut'],
 	overrides: [{
 		files: ['**/*.svelte', '**/*.html'],
 		customSyntax: 'postcss-html',
@@ -35,6 +39,9 @@ export default {
 			}],
 		'custom-property-pattern': null,
 		'hue-degree-notation': null,
-
+		'gamut/color-no-out-gamut-range': true,
+		'function-disallowed-list': ['rgba', 'hsla', 'rgb', 'hsl'],
+		'color-function-notation': 'modern',
+		'color-no-hex': true,
 	},
 };

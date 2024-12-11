@@ -5,13 +5,21 @@
 </script>
 
 <style lang="postcss">
+	a {
+		font-size: var(--font-size-heading);
+		font-weight: var(--font-weight-700);
+		line-height: var(--line-height-heading);
+		text-decoration-line: none;
+	}
+
 	figure {
 		display: inline-block;
+		width: var(--size-32);
 	}
 
 	.code {
-		animation: code 800ms cubic-bezier(0.33, 1.25, 0.68, 1.25) forwards;
 		transform-origin: bottom left;
+		animation: code 800ms cubic-bezier(0.33, 1.25, 0.68, 1.25) forwards;
 	}
 
 	@keyframes code {
@@ -79,11 +87,7 @@
 	}
 </style>
 
-<a
-	class="font-sans text-heading font-bold no-underline"
-	href='/'
-><figure
-	class="w-32"
+<a href='/'><figure
 	class:ball={logoState.index === 2}
 	class:code={logoState.index === 0}
 	class:game={logoState.index === 3}

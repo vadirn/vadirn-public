@@ -1,0 +1,20 @@
+{
+	"name": "@ui/theme-next",
+	"exports": {
+		"./css": "./src/css/index.css",
+		"./postcss": "./src/postcss.js"
+	},
+	"scripts": {
+		"lint": "eslint . && stylelint **/*.css"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@csstools/postcss-global-data": "3.0.0",
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
+		"@tools/stylelint": "workspace:*",
+		"postcss": "8.4.49",
+		"postcss-import": "16.1.0",
+		"postcss-preset-env": "10.1.1"
+	}
+}

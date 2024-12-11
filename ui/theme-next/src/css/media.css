@@ -1,0 +1,6 @@
+@custom-media --portrait	(orientation: portrait);
+@custom-media --landscape	(orientation: landscape);
+@custom-media --lg-only		(768px <= width < 1024px);
+@custom-media --lg-n-above	(width >= 1024px);
+@custom-media --lg-n-below	(width < 1024px);
+@custom-media --lg-phone	(--lg-only) and (--portrait);
