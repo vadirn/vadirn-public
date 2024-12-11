@@ -6,6 +6,9 @@
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/jsconfig": "workspace:*",
+		"lightningcss": "1.28.2",
 		"svelte": "5.10.0"
 	}
 }

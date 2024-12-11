@@ -292,6 +292,15 @@ importers:
 
   tools/svelte-local:
     devDependencies:
+      '@tools/eslint':
+        specifier: workspace:*
+        version: link:../eslint
+      '@tools/jsconfig':
+        specifier: workspace:*
+        version: link:../jsconfig
+      lightningcss:
+        specifier: 1.28.2
+        version: 1.28.2
       svelte:
         specifier: 5.10.0
         version: 5.10.0
