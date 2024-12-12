@@ -3,6 +3,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { monorepo } from '@tools/monorepo';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import { createHighlighter } from 'shiki';
+import { svelteLocalSelector } from '@tools/svelte-local-selector';
 
 const highlighter = await createHighlighter({
 	themes: ['github-light', 'github-dark'],
@@ -20,7 +21,7 @@ const mdsvexOptions = {
 					themes: {
 						light: 'github-light',
 						dark: 'github-dark',
-					}
+					},
 				}));
 
 			return `{@html \`${html}\` }`;
@@ -33,7 +34,7 @@ const config = {
 	extensions: ['.svelte', '.md'],
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)],
+	preprocess: [svelteLocalSelector(), vitePreprocess(), mdsvex(mdsvexOptions)],
 
 	kit: {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.

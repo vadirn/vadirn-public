@@ -5,6 +5,7 @@
 	import { ds } from '$lib/paths/ds';
 
 	const { children } = $props();
+	const { nav: navClassName } = __styles();
 </script>
 
 <style lang="postcss">
@@ -29,7 +30,7 @@
 		}
 	}
 
-	* :global(nav) {
+	:local(.nav) {
 		grid-column: 3 / span 4;
 		margin-left: calc(-1 * var(--size-32));
 
@@ -55,6 +56,7 @@
 
 <div class="layout">
 	<Navigation
+		className={navClassName}
 		links={[
 			{ title: 'Notes', href: app.notes.toString() },
 			{ title: 'Github', href: 'https://github.com/vadirn', blank: true },

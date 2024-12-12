@@ -63,6 +63,9 @@ importers:
       '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
+      '@tools/svelte-local-selector':
+        specifier: workspace:*
+        version: link:../../tools/svelte-local-selector
       '@tools/testing':
         specifier: workspace:*
         version: link:../../tools/testing
@@ -304,6 +307,33 @@ importers:
       svelte:
         specifier: 5.10.0
         version: 5.10.0
+
+  tools/svelte-local-selector:
+    devDependencies:
+      '@tools/eslint':
+        specifier: workspace:*
+        version: link:../eslint
+      '@tools/jsconfig':
+        specifier: workspace:*
+        version: link:../jsconfig
+      acorn:
+        specifier: 8.14.0
+        version: 8.14.0
+      css-tree:
+        specifier: 3.1.0
+        version: 3.1.0
+      magic-string:
+        specifier: 0.30.15
+        version: 0.30.15
+      postcss:
+        specifier: 8.4.49
+        version: 8.4.49
+      svelte:
+        specifier: 5.10.0
+        version: 5.10.0
+      zimmerframe:
+        specifier: 1.1.2
+        version: 1.1.2
 
   tools/testing:
     devDependencies:
@@ -1722,6 +1752,10 @@ packages:
     resolution: {integrity: sha512-8Fxxv+tGhORlshCdCwnNJytvlvq46sOLSYEx2ZIGurahWvMucSRnyjPA3AmrMq4VPRYbHVpWj5VkiVasrM2H4Q==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
 
+  css-tree@3.1.0:
+    resolution: {integrity: sha512-0eW44TGN5SQXU1mWSkKwFstI/22X2bG1nYzZTYMAWjylYURhse752YgbE4Cx46AC+bAvI+/dYTPRk1LqSUnu6w==}
+    engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
+
   cssdb@8.2.3:
     resolution: {integrity: sha512-9BDG5XmJrJQQnJ51VFxXCAtpZ5ebDlAREmO8sxMOVU0aSxN/gocbctjIG5LMh3WBUq+xTlb/jw2LoljBEqraTA==}
 
@@ -2397,6 +2431,9 @@ packages:
   magic-string@0.30.14:
     resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
 
+  magic-string@0.30.15:
+    resolution: {integrity: sha512-zXeaYRgZ6ldS1RJJUrMrYgNJ4fdwnyI6tVqoiIhyCyv5IVTK9BU8Ic2l253GGETQHxI4HNUwhJ3fjDhKqEoaAw==}
+
   mathml-tag-names@2.1.3:
     resolution: {integrity: sha512-APMBEanjybaPzUrfqU0IMU5I0AswKMH7k8OTLs0vvV4KZpExkTkY87nR/zpbuTPj+gARop7aGUbl11pnDfW6xg==}
 
@@ -2405,6 +2442,9 @@ packages:
 
   mdn-data@2.12.1:
     resolution: {integrity: sha512-rsfnCbOHjqrhWxwt5/wtSLzpoKTzW7OXdT5lLOIH1OTYhWu9rRJveGq0sKvDZODABH7RX+uoR+DYcpFnq4Tf6Q==}
+
+  mdn-data@2.12.2:
+    resolution: {integrity: sha512-IEn+pegP1aManZuckezWCO+XZQDplx1366JoVhTpMpBB1sPey/SbveZQUosKiKiGYjg1wH4pMlNgXbCiYgihQA==}
 
   mdsvex@0.12.3:
     resolution: {integrity: sha512-C/uIJamjNo5PHHnR3JHqsBPoLcfUBpzRmAEB6FLMXI/s7XHOceswjDMKqSPEW2WHmYpKm0taZ3U20GSyhMridA==}
@@ -4626,6 +4666,11 @@ snapshots:
       mdn-data: 2.12.1
       source-map-js: 1.2.1
 
+  css-tree@3.1.0:
+    dependencies:
+      mdn-data: 2.12.2
+      source-map-js: 1.2.1
+
   cssdb@8.2.3: {}
 
   cssesc@3.0.0: {}
@@ -5346,6 +5391,10 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  magic-string@0.30.15:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
   mathml-tag-names@2.1.3: {}
 
   mdast-util-to-hast@13.2.0:
@@ -5361,6 +5410,8 @@ snapshots:
       vfile: 6.0.3
 
   mdn-data@2.12.1: {}
+
+  mdn-data@2.12.2: {}
 
   mdsvex@0.12.3(svelte@5.10.0):
     dependencies:
@@ -6112,7 +6163,7 @@ snapshots:
       esrap: 1.2.3
       is-reference: 3.0.3
       locate-character: 3.0.0
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       zimmerframe: 1.1.2
 
   svg-tags@1.0.0: {}

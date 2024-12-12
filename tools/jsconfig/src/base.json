@@ -19,7 +19,7 @@
 		"emitDeclarationOnly": true,
 		"module": "preserve",
 		"lib": [
-			"es2022",
+			"es2024",
 			"dom",
 			"dom.iterable"
 		],

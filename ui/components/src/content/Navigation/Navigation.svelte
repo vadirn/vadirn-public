@@ -1,12 +1,12 @@
 <script lang="ts">
+	import { classNames as c } from '@libs/standard/style';
 	import { Logo, type LogoState } from '../Logo';
-	import type { Snippet } from 'svelte';
 	import type { NavigationLink } from './types';
 
-	const { links = [], logoState }: {
+	const { links = [], logoState, className }: {
 		links?: NavigationLink[];
 		logoState: LogoState;
-		layout?: Snippet<[nav: Snippet]>;
+		className?: string;
 	} = $props();
 
 	const blankProps = { target: '_blank', rel: 'noopener noreferrer' };
@@ -21,7 +21,7 @@
 	}
 </style>
 
-<nav>
+<nav class={c(className)}>
 	<Logo {logoState} />
 	<ul>
 		{#each links as link}

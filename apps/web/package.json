@@ -11,11 +11,11 @@
 		"lint": "eslint . && stylelint **/*.{css,svelte}"
 	},
 	"dependencies": {
-		"@ui/components": "workspace:*",
 		"@libs/routing": "workspace:*",
 		"@libs/shortcuts": "workspace:*",
 		"@libs/standard": "workspace:*",
-		"@libs/state-controller": "workspace:*"
+		"@libs/state-controller": "workspace:*",
+		"@ui/components": "workspace:*"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "3.3.1",
@@ -24,9 +24,10 @@
 		"@tools/eslint": "workspace:*",
 		"@tools/monorepo": "workspace:*",
 		"@tools/stylelint": "workspace:*",
+		"@tools/svelte-local-selector": "workspace:*",
 		"@tools/testing": "workspace:*",
-		"@ui/theme-next": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
+		"@ui/theme-next": "workspace:*",
 		"mdsvex": "0.12.3",
 		"shiki": "1.24.2",
 		"svelte": "5.10.0",
