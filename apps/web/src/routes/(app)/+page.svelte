@@ -11,54 +11,54 @@
 
 <style lang="postcss">
 	.headline {
-		position: relative;
+		@apply relative pr-24 text-title;
+
 		grid-column: 3 / span 2;
-		padding-right: var(--size-24);
-		font-size: var(--font-size-title);
-		line-height: var(--line-height-title);
 		text-wrap: balance;
 
-		@media (--lg-n-above) {
+		@screen lg {
 			grid-column: 3 / span 1;
-			color: red;
 		}
 
 		&::before {
-			position: absolute;
-			top: 0;
-			bottom: 0;
-			left: -32px;
-			display: block;
+			@apply absolute block top-0 bottom-0 -left-32
+				border-l-8 border-l-solid border-yellow-200;
+
 			content: '';
-			border-left: var(--size-8) solid var(--color-yellow-300);
 		}
 	}
 
 	.lead {
-		grid-column: 3 / span 2;
-		padding-right: var(--size-24);
+		@apply pr-24;
 
-		@media (--lg-n-above) {
+		grid-column: 3 / span 2;
+
+		@screen lg {
 			grid-column: 3 / span 1;
 		}
 	}
 
 	.notes-title {
-		@apply font-bold mb-20;
+		@apply mb-20 font-bold;
 	}
 
 	.notes {
-		@apply col-start-3 col-span-2
-			lg:col-start-4 lg:col-span-1
-			lg:row-start-2 lg:row-span-2 mb-48;
+		grid-column: 3 / span 2;
+
+		@screen lg {
+			grid-row: 2 / span 2;
+			grid-column: 4 / span 1;
+		}
 
 		&::before {
-			@apply absolute hidden lg:block h-full border-r border-yellow-300;
+			@apply absolute bottom-0 hidden h-full -ml-23px
+				border-r-1 border-r-solid border-yellow-200;
 
-			top: 0;
-			bottom: 0;
-			margin-left: -23px;
 			content: '';
+
+			@screen lg {
+				display: block;
+			}
 		}
 	}
 </style>

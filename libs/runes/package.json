@@ -1,0 +1,12 @@
+{
+	"name": "@libs/runes",
+	"exports": {
+		"./media-query": "./src/media-query.svelte.ts"
+	},
+	"scripts": {},
+	"type": "module",
+	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/tsconfig": "workspace:*"
+	}
+}

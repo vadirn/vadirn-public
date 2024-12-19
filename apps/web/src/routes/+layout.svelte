@@ -1,9 +1,11 @@
 <script lang="ts">
+	import { MediaQuery } from '@libs/runes/media-query';
 	import { shortcuts } from '@libs/shortcuts';
 	import { isEditingText } from '@libs/standard/dom';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
-	import '@ui/theme-next/css';
+	import '@ui/theme-uno/css';
+	import 'uno.css';
 
 	const { children } = $props();
 
@@ -27,6 +29,19 @@
 			document.documentElement.classList.add('dark');
 		},
 	});
+
+	const darkMode = new MediaQuery('(prefers-color-scheme: dark)');
+
+	$effect(() => {
+		if (darkMode.matches) {
+			document.documentElement.classList.add('dark');
+
+			return;
+		}
+
+		document.documentElement.classList.remove('dark');
+	});
+
 </script>
 
 <svelte:document {onkeydown} />

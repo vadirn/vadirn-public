@@ -1,6 +1,6 @@
 @layer base {
 	body {
-		@apply box-border min-h-svh w-full 
+		@apply min-h-screen w-full 
 			text-black bg-white 
 			dark:text-white dark:bg-black 
 			text-body;

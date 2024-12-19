@@ -7,8 +7,8 @@
 		@apply mb-48 lg:mb-0;
 
 		grid-template-columns: subgrid;
-		grid-column: 1 / -1;
 		grid-row: 2 / -1;
+		grid-column: 1 / -1;
 		grid-auto-rows: min-content;
 
 		--max-width: min(768px, 100%);

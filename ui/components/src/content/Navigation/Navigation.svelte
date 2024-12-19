@@ -14,10 +14,7 @@
 
 <style lang="postcss">
 	ul {
-		display: flex;
-		gap: var(--size-16);
-		padding-top: var(--size-4);
-		margin-left: var(--size-32);
+		@apply flex gap-16 pt-4 ml-32;
 	}
 </style>
 

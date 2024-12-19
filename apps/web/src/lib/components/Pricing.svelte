@@ -5,49 +5,91 @@
 
 <style lang="postcss">
 	.modal {
-		@apply bg-background p-16 pb-24 rounded shadow-xl;
+		@apply w-full pi-16 pb-24 bg-background;
 
-		width: 100%;
+		border-radius: var(--size-8);
+		box-shadow: var(--shadow-xl);
 	}
 
 	.pricing {
-		@apply flex flex-col gap-16 md:flex-row mb-16;
+		display: flex;
+		gap: var(--size-16);
+		margin-bottom: var(--size-16);
+
+		@media (--lg-n-above) {
+			flex-direction: row;
+		}
 
 		div {
-			@apply flex items-stretch relative;
-
+			position: relative;
+			display: flex;
+			align-items: stretch;
 			min-width: 200px;
 		}
 	}
 
 	h2 {
-		@apply text-heading font-bold text-balance;
+		font-size: var(--font-size-heading);
+		font-weight: var(--font-weight-700);
+		line-height: var(--line-height-heading);
+		text-wrap: balance;
 	}
 
 	.plan-radio {
-		@apply opacity-0 absolute;
+		position: absolute;
+		opacity: 0;
 	}
 
 	.plan-label {
-		@apply flex flex-1 flex-col
-			colors-interactive
-			p-16 pt-8 rounded;
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		padding: var(--size-16);
+		padding-top: var(--size-8);
+		border-radius: var(--size-4);
+
+		--color: var(--color-black);
+		--background: var(--color-grey-100);
+		--hover-background: var(--color-grey-200);
+		--active-background: var(--color-grey-200);
+
+		:global(.dark) & {
+			--color: var(--color-white);
+			--background: var(--color-grey-500);
+			--hover-background: var(--color-grey-600);
+			--active-background: var(--color-grey-600);
+		}
 	}
 
 	.plan-radio:checked + .plan-label {
-		@apply
-			bg-yellow-100 text-black
-			dark:bg-yellow-400 dark:text-white;
+		--color: var(--color-black);
+		--background: var(--color-yellow-100);
+		--hover-background: var(--color-yellow-100);
+		--active-background: var(--color-yellow-100);
+
+		:global(.dark) & {
+			--color: var(--color-white);
+			--background: var(--color-yellow-400);
+			--hover-background: var(--color-yellow-400);
+			--active-background: var(--color-yellow-400);
+		}
 	}
 
 	.plan-title {
-		@apply flex items-center font-bold text-balance mb-20 gap-8;
-
+		display: flex;
+		gap: var(--size-8);
+		align-items: center;
 		min-height: 40px;
+		margin-bottom: var(--size-20);
+		font-weight: var(--font-weight-700);
+		white-space: balance;
 	}
 
 	.plan-features {
-		@apply flex-auto text-caption mb-20;
+		flex: 1 1 auto;
+		margin-bottom: var(--size-20);
+		font-size: var(--font-size-caption);
+		line-height: var(--line-height-caption);
 	}
 
 	.icon-select {
@@ -79,7 +121,7 @@
 				type="radio"
 				value="basic"
 			/>
-			<label class="plan-label" for="plan-basic">
+			<label class="plan-label colorize" for="plan-basic">
 				<h3 class="plan-title">
 					<i class="icon-select"></i>
 					Basic Consult
@@ -102,7 +144,7 @@
 				type="radio"
 				value="comprehensive"
 			/>
-			<label class="plan-label" for="plan-comprehensive">
+			<label class="plan-label colorize" for="plan-comprehensive">
 				<h3 class="plan-title">
 					<i class="icon-select"></i>
 					Legacy Revamp
@@ -125,7 +167,7 @@
 				type="radio"
 				value="ongoing"
 			/>
-			<label class="plan-label" for="plan-ongoing">
+			<label class="plan-label colorize" for="plan-ongoing">
 				<h3 class="plan-title">
 					<i class="icon-select"></i>
 					Continuous Consult
@@ -169,7 +211,7 @@
 					I will review your request and
 					get back to you within 3 business days.
 				</p>
-				<p class="text-caption text-grey-600
+				<p class="text-small text-grey-600
 					dark:text-yellow-100 text-balance">
 					I respect your privacy.
 					Your information will not be shared with third parties.

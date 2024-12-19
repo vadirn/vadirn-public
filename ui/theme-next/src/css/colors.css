@@ -72,3 +72,16 @@
 	--color-background:	var(--color-grey-900);
 	--color-foreground:	var(--color-white);
 }
+
+:where(.colorize) {
+	color: var(--color, var(--color-foreground));
+	background: var(--background, var(--color-background));
+
+	&:hover {
+		background: var(--hover-background, var(--background));
+	}
+
+	&:active {
+		background: var(--active-background, var(--background));
+	}
+}

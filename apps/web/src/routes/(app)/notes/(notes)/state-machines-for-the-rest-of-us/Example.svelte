@@ -43,7 +43,7 @@
 	>
 		{label}
 	</button>
-	<ul class="text-caption font-mono p-8 border-l border-neutral-400">
+	<ul class="text-small font-mono p-8 border-l border-neutral-400">
 		<li>State:
 			<span
 				class:text-green-400={buttonController.state === 'success'}

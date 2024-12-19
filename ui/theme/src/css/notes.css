@@ -20,7 +20,7 @@
 		}
 
 		& table {
-			@apply mx-8 text-caption table-fixed border-collapse 
+			@apply mx-8 text-small table-fixed border-collapse 
 				border border-grey-300 bg-grey-200 text-grey-900;
 
 			max-width: calc(var(--max-width) - 16px);
@@ -47,7 +47,7 @@
 		}
 
 		& pre {
-			@apply p-8 text-caption rounded
+			@apply p-8 text-small rounded
 				overflow-scroll overscroll-x-contain;
 		}
 

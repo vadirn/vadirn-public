@@ -28,6 +28,9 @@
 			"path": "../../libs/routing"
 		},
 		{
+			"path": "../../libs/runes"
+		},
+		{
 			"path": "../../libs/shortcuts"
 		},
 		{
@@ -38,6 +41,9 @@
 		},
 		{
 			"path": "../../ui/components"
+		},
+		{
+			"path": "../../ui/theme-uno"
 		}
 	]
 }

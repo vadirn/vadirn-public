@@ -22,7 +22,7 @@
 			overscroll-contain overflow-y-scroll;
 
 		& :global(pre) {
-			@apply overflow-scroll p-8 overscroll-contain text-caption;
+			@apply overflow-scroll p-8 overscroll-contain text-small;
 		}
 
 		& :global(pre), :global(p), :global(ul) {

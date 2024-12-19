@@ -1,0 +1,48 @@
+body {
+	@apply min-h-svh w-full text-black bg-white 
+		dark:text-white dark:bg-black 
+		text-body font-sans;
+	
+	overflow: scroll;
+
+	@supports (scrollbar-gutter: stable) {
+		overflow: auto;
+		scrollbar-gutter: stable;
+	}
+}
+
+#modals {
+	@apply hidden;
+
+	&:has(*) {
+		@apply flex flex-col fixed inset-0
+			items-center max-h-svh overflow-y-scroll;
+
+		background: oklch(from var(--color-grey-900) l c h / 0.6);
+
+		html.dark & {
+			background: oklch(from var(--color-grey-800) l c h / 0.9);
+		}
+	}
+}
+
+a {
+	@apply text-current underline underline-offset-2 decoration-[0.5px];
+
+	&:hover {
+		@apply opacity-60;
+	}
+}
+
+b {
+	@apply font-bold;
+}
+
+html.dark {
+	.shiki, .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;  
+	}
+}
+
+

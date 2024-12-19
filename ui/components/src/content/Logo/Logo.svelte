@@ -6,15 +6,13 @@
 
 <style lang="postcss">
 	a {
-		font-size: var(--font-size-heading);
-		font-weight: var(--font-weight-700);
-		line-height: var(--line-height-heading);
+		@apply text-heading font-bold;
+
 		text-decoration-line: none;
 	}
 
 	figure {
-		display: inline-block;
-		width: var(--size-32);
+		@apply inline-block w-32;
 	}
 
 	.code {

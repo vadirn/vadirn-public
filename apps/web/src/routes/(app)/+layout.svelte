@@ -10,7 +10,8 @@
 
 <style lang="postcss">
 	.layout {
-		display: grid;
+		@apply grid gap-y-20 min-h-screen pt-32 m-auto;
+
 		grid-template-rows: min-content min-content min-content 1fr;
 		grid-template-columns:
 			minmax(0, 1fr)
@@ -20,35 +21,30 @@
 			minmax(8px, 40px)
 			minmax(0, 1fr);
 		grid-auto-rows: min-content;
-		gap: var(--size-20) 0;
-		min-height: 100svh;
-		padding-top: var(--size-32);
-		margin: auto;
 
-		@media (--lg-n-above) {
-			column-gap: var(--size-24);
+		@screen lg {
+			@apply gap-x-24;
 		}
 	}
 
 	:local(.nav) {
-		grid-column: 3 / span 4;
-		margin-left: calc(-1 * var(--size-32));
+		@apply -ml-32;
 
-		@media (--lg-n-above) {
+		grid-column: 3 / span 4;
+
+		@screen lg {
 			grid-column: 3 / span 2;
 		}
 	}
 
 	footer {
-		display: none;
+		@apply hidden pb-16 text-small;
+
 		grid-row: -1 / span 1;
 		grid-column: 3/-3;
 		place-self:  end;
-		padding-bottom: var(--size-16);
-		font-size: var(--font-size-caption);
-		line-height: var(--line-height-caption);
 
-		@media (--lg-n-above) {
+		@screen lg {
 			display: block;
 		}
 	}

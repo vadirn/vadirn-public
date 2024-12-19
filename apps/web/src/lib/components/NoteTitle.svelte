@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { isNonEmptyString } from '@libs/standard/string';
 	import { getCurrentNoteTitle } from '$lib/cache/notes';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	const title = $derived(getCurrentNoteTitle($page));
+	const title = $derived(getCurrentNoteTitle(page));
 </script>
 
 {#if isNonEmptyString(title)}

@@ -7,7 +7,7 @@
 
 <style lang="postcss">
 	div {
-		@apply mt-24 italic text-neutral-500;
+		@apply mt-24 color-neutral-500 font-italic;
 	}
 </style>
 

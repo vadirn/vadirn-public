@@ -44,6 +44,6 @@ export const deps = () => setDefaultFiles({
 			}],
 		// disable no-unresolved until https://github.com/un-ts/eslint-plugin-import-x/issues/40?ysclid=m393mkvkc718566676
 		// $app is vite alias
-		'import-x/no-unresolved': ['error', { ignore: ['^\\$app\\W'] }],
+		'import-x/no-unresolved': ['error', { ignore: ['^\\$app\\W', 'uno.css'] }],
 	},
 });

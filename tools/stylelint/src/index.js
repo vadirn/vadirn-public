@@ -23,6 +23,7 @@ export default {
 					'config',
 					'theme',
 					'variant',
+					'screen',
 				],
 			}],
 		'function-no-unknown': [true,
@@ -35,6 +36,7 @@ export default {
 			{
 				ignorePseudoClasses: [
 					'global',
+					'local',
 				],
 			}],
 		'custom-property-pattern': null,

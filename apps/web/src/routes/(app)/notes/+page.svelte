@@ -4,7 +4,9 @@
 
 <style lang="postcss">
 	ul {
-		@apply col-start-3 col-span-2 list-disc;
+		@apply list-disc;
+
+		grid-column: 3 / span 2;
 	}
 </style>
 
