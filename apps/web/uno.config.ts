@@ -1,3 +1,3 @@
-import { unocssConfig } from '@ui/theme-uno/uno';
+import { unocssConfig } from '@ui/theme/uno';
 
 export default unocssConfig;

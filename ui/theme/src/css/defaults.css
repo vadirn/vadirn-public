@@ -1,41 +1,46 @@
-@layer base {
-	body {
-		@apply min-h-screen w-full 
-			text-black bg-white 
-			dark:text-white dark:bg-black 
-			text-body;
+body {
+	@apply min-h-svh w-full text-black bg-white 
+		dark:text-white dark:bg-black 
+		text-body font-sans;
+	
+	overflow: scroll;
 
-		--color-inherit: inherit;
+	@supports (scrollbar-gutter: stable) {
+		overflow: auto;
+		scrollbar-gutter: stable;
+	}
+}
 
-		overflow: scroll;
+#modals {
+	@apply hidden;
 
-		@supports (scrollbar-gutter: stable) {
-			overflow: auto;
-			scrollbar-gutter: stable;
+	&:has(*) {
+		@apply flex flex-col fixed inset-0
+			items-center max-h-svh overflow-y-scroll;
+
+		background: oklch(from var(--color-grey-900) l c h / 60%);
+
+		.dark & {
+			background: oklch(from var(--color-grey-800) l c h / 90%);
 		}
 	}
+}
 
-	a {
-		@apply text-current underline underline-offset-2 decoration-[0.5px];
+a {
+	@apply text-current underline underline-offset-2 decoration-thin;
 
-		&:hover {
-			@apply opacity-60;
-		}
+	&:hover {
+		@apply opacity-60;
 	}
+}
 
-	.dark {
-		.shiki, .shiki span {
-			color: var(--shiki-dark) !important;
-			background-color: var(--shiki-dark-bg) !important;  
-		}
-	}
+b {
+	@apply font-bold;
+}
 
-	#modals {
-		@apply hidden;
-
-		&:has(*) {
-			@apply flex flex-col fixed inset-0 bg-grey-900/60 dark:bg-grey-800/90
-				items-center max-h-svh overflow-y-scroll;
-		}
+.dark {
+	.shiki, .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;  
 	}
 }

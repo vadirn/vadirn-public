@@ -1,6 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { monorepo } from '@tools/monorepo';
-import { unocssPlugin } from '@ui/theme-uno/vite';
+import { unocssPlugin } from '@ui/theme/vite';
 import { defineConfig } from 'vite';
 import postcss from './postcss.config';
 

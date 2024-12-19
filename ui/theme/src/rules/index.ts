@@ -1,7 +1,7 @@
-import type { Rule } from 'unocss';
+import type { DynamicRule } from 'unocss';
 import type { Theme } from '../theme';
 
-const listRule: Rule<Theme> = [
+const listRule: DynamicRule<Theme> = [
 	/^list-(.+)$/,
 	([, type]) => ({ 'list-style': type }),
 ];

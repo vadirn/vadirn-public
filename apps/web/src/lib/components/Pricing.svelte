@@ -5,83 +5,44 @@
 
 <style lang="postcss">
 	.modal {
-		@apply w-full pi-16 pb-24 bg-background;
-
-		border-radius: var(--size-8);
-		box-shadow: var(--shadow-xl);
+		@apply w-full p-inline-16 pb-24 bg-background rounded-8 shadow-modal;
 	}
 
 	.pricing {
-		display: flex;
-		gap: var(--size-16);
-		margin-bottom: var(--size-16);
+		@apply flex flex-col gap-16 mb-16;
 
-		@media (--lg-n-above) {
-			flex-direction: row;
+		@screen lg {
+			@apply flex-row;
 		}
 
 		div {
-			position: relative;
-			display: flex;
-			align-items: stretch;
+			@apply relative flex items-stretch;
+
 			min-width: 200px;
 		}
 	}
 
 	h2 {
-		font-size: var(--font-size-heading);
-		font-weight: var(--font-weight-700);
-		line-height: var(--line-height-heading);
+		@apply text-heading font-bold;
+
 		text-wrap: balance;
 	}
 
 	.plan-radio {
-		position: absolute;
-		opacity: 0;
+		@apply absolute opacity-0;
 	}
 
 	.plan-label {
-		display: flex;
-		flex: 1 1 auto;
-		flex-direction: column;
-		padding: var(--size-16);
-		padding-top: var(--size-8);
-		border-radius: var(--size-4);
-
-		--color: var(--color-black);
-		--background: var(--color-grey-100);
-		--hover-background: var(--color-grey-200);
-		--active-background: var(--color-grey-200);
-
-		:global(.dark) & {
-			--color: var(--color-white);
-			--background: var(--color-grey-500);
-			--hover-background: var(--color-grey-600);
-			--active-background: var(--color-grey-600);
-		}
+		@apply flex flex-auto flex-col p-16 pt-8 rounded-4 interactive;
 	}
 
 	.plan-radio:checked + .plan-label {
-		--color: var(--color-black);
-		--background: var(--color-yellow-100);
-		--hover-background: var(--color-yellow-100);
-		--active-background: var(--color-yellow-100);
-
-		:global(.dark) & {
-			--color: var(--color-white);
-			--background: var(--color-yellow-400);
-			--hover-background: var(--color-yellow-400);
-			--active-background: var(--color-yellow-400);
-		}
+		@apply interactive-selected;
 	}
 
 	.plan-title {
-		display: flex;
-		gap: var(--size-8);
-		align-items: center;
-		min-height: 40px;
-		margin-bottom: var(--size-20);
-		font-weight: var(--font-weight-700);
+		@apply flex gap-8 items-center min-h-40 mb-20 font-bold;
+
 		white-space: balance;
 	}
 
