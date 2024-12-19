@@ -7,20 +7,22 @@
 	import type { Snippet } from 'svelte';
 	import type { Fn } from '@libs/standard/function';
 
-	// https://github.com/svelftejs/eslint-plugin-svelte/issues/818
-	let {
-		children,
-		trigger,
-		isBrowser,
-		labelledby,
-		isVisible = $bindable(false),
-	}: {
-		children: Snippet;
+	type Props = {
+		body?: Snippet<[Fn<void, [Event, boolean]>]>;
 		trigger?: Snippet<[Fn<void, [Event, boolean]>]>;
 		isBrowser?: boolean;
 		labelledby: string;
 		isVisible?: boolean;
-	} = $props();
+	};
+
+	// https://github.com/svelftejs/eslint-plugin-svelte/issues/818
+	let {
+		body,
+		trigger,
+		isBrowser,
+		labelledby,
+		isVisible = $bindable(false),
+	}: Props = $props();
 
 	let element: HTMLElement | undefined = $state();
 
@@ -124,6 +126,6 @@
 		role="dialog"
 		use:portal={Layers.Modals}
 	>
-		{@render children()}
+		{@render body?.(setVisibility)}
 	</div>
 {/if}

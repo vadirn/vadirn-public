@@ -4,8 +4,8 @@
 	import { isEditingText } from '@libs/standard/dom';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
-	import '@ui/theme/css';
 	import 'uno.css';
+	import '@ui/theme/css';
 
 	const { children } = $props();
 

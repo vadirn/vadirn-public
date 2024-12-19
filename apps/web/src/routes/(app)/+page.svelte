@@ -86,7 +86,9 @@
 				Get a quote
 			</button>
 		{/snippet}
-		<Pricing labelledby="pricing-plans" />
+		{#snippet body(setVisibility: Fn<void, [Event, boolean]>)}
+			<Pricing labelledby="pricing-plans" {setVisibility} />
+		{/snippet}
 	</Modal>
 
 </div>

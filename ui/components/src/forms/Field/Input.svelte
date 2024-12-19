@@ -18,13 +18,6 @@
 	label {
 		@apply block mb-8;
 	}
-
-	input {
-		@apply w-full rounded border-grey-500
-			border px-[15px] py-8 bg-white
-			bg-background;
-	}
-
 </style>
 
 <div>

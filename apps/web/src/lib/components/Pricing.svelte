@@ -1,11 +1,18 @@
 <script lang="ts">
+	import { noop, type Fn } from '@libs/standard/function';
 	import { Field } from '@ui/components/field';
-	const { labelledby }: { labelledby: string } = $props();
+
+	type Props = {
+		labelledby: string;
+		setVisibility?: Fn<void, [Event, boolean]>;
+	};
+
+	const { labelledby, setVisibility = noop }: Props = $props();
 </script>
 
 <style lang="postcss">
 	.modal {
-		@apply w-full p-inline-16 pb-24 bg-background rounded-8 shadow-modal;
+		@apply w-full p-16 pb-24 bg-background rounded-8 shadow-modal;
 	}
 
 	.pricing {
@@ -47,14 +54,12 @@
 	}
 
 	.plan-features {
-		flex: 1 1 auto;
-		margin-bottom: var(--size-20);
-		font-size: var(--font-size-caption);
-		line-height: var(--line-height-caption);
+		@apply flex-auto mb-20 text-small;
 	}
 
 	.icon-select {
-		@apply relative block w-16 h-16 border border-current rounded-full;
+		@apply relative block w-16 h-16 border-1
+			border-solid border-current rounded-full;
 	}
 
 	.plan-radio:checked + .plan-label .icon-select {
@@ -66,7 +71,7 @@
 	}
 
 	.plan-radio:focus-visible + .plan-label {
-		@apply ring-2 ring-offset-2 ring-blue-500 ring-offset-background;
+		@apply ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
 	}
 </style>
 
@@ -144,7 +149,7 @@
 			</label>
 		</div>
 	</div>
-	<div class="flex flex-col md:flex-row gap-16">
+	<div class="flex flex-col lg:flex-row gap-16">
 		<div class="flex-1 flex flex-col gap-16">
 			<Field.Input
 				name="name"
@@ -166,7 +171,7 @@
 			/>
 		</div>
 		<div class="flex-1 flex flex-col justify-end gap-16">
-			<div class="flex flex-col gap-16 callout p-8 rounded">
+			<div class="flex flex-col gap-16 callout p-8 rounded-8">
 				<p>
 					After submitting,
 					I will review your request and
@@ -179,7 +184,11 @@
 				</p>
 			</div>
 			<div class="place-self-end flex gap-16">
-				<button>Cancel</button>
+				<button
+					onclick={(event) => { setVisibility(event, false); }}
+				>
+					Cancel
+				</button>
 				<button type="submit">Submit</button>
 			</div>
 		</div>
