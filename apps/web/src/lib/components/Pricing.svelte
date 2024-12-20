@@ -42,11 +42,11 @@
 	}
 
 	.plan-label {
-		@apply flex flex-auto flex-col p-16 pt-8 rounded-4 interactive;
+		@apply flex flex-auto flex-col p-16 pt-8 rounded-4 selectable;
 	}
 
 	.plan-radio:checked + .plan-label {
-		@apply interactive-selected;
+		@apply selected;
 	}
 
 	.plan-title {

@@ -1,70 +1,56 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	const { component, code, position = 'default' }: {
+	type Props = {
 		component?: Snippet;
-		code?: Snippet;
+		docs?: Snippet;
 		position?: 'default' | 'center';
-	} = $props();
+	};
+
+	const { component, docs, position = 'default' }: Props = $props();
 </script>
 
 <style lang="postcss">
-	.component-container {
-		@apply border-r border-solid border-neutral-300;
+	.split {
+		@apply h-svh grid grid-cols-2;
+
+		grid-auto-rows: minmax(0, 1fr);
 	}
 
 	.center {
 		@apply flex flex-col items-center;
 	}
 
-	.code-container {
-		@apply bg-neutral-200
-			text-neutral-500 pl-32 pr-16
-			overscroll-contain overflow-y-scroll;
+	.docs-container {
+		@apply flex flex-col h-full;
 
-		& :global(pre) {
-			@apply overflow-scroll p-8 overscroll-contain text-small;
-		}
-
-		& :global(pre), :global(p), :global(ul) {
-			@apply mb-20;
-		}
-
-		& :global(code:not(pre code)) {
-			@apply bg-neutral-300 px-4 rounded;
-		}
-
-		& :global(ul) {
-			@apply list-disc;
-		}
-
-		& :global(li) {
-			@apply mb-8;
-		}
+		background-color: oklch(from var(--color-grey-100) l c h / 40%);
 	}
 
-	.code {
-		@apply flex flex-col items-center  h-full;
+	.docs {
+		@apply grid gap-24 p-inline-16 py-24 overflow-y-scroll m-y-auto;
 
-		max-width: 700px;
+		grid-auto-rows: min-content;
+		justify-items: start;
+		overscroll-behavior: contain;
+
+		& :global(*) {
+			max-width: min(720px, 100%);
+		}
 	}
 </style>
 
-<div class="h-svh grid grid-cols-2">
-	<div class="component-container" class:center={position === 'center'}>
+<div class="split">
+	<div class:center={position === 'center'}>
 		<div class="flex-auto"></div>
 		<div class="flex-none max-w-full">
 			{@render component?.()}
 		</div>
 		<div class="flex-auto"></div>
 	</div>
-	{#if code}
-		<div class="code-container">
-			<div class="code">
-				<div class="flex-auto min-h-16"></div>
-				<div class="flex-none w-full">
-					{@render code()}
-				</div>
-				<div class="flex-auto min-h-32"></div>
+	{#if docs}
+		<div class="docs-container">
+			<div class="note docs">
+				{@render docs()}
 			</div>
 		</div>
 	{/if}

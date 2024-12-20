@@ -11,9 +11,9 @@
 		grid-column: 1 / -1;
 		grid-auto-rows: min-content;
 
-		--max-width: min(75ch, 100%);
+		--max-width: min(720px, 100%);
 
-		& :global(*) {
+		& :global(*:not(code)) {
 			grid-column: 3 / 5;
 			max-width: var(--max-width);
 		}

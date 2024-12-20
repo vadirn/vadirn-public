@@ -52,11 +52,16 @@
 	}
 
 	& pre {
-		@apply p-8 text-caption rounded
-			overflow-scroll;
+		@apply py-8 text-caption rounded
+			overflow-scroll w-full;
 
 		overscroll-behavior-x: contain;
 		tab-size: 4ch;
+		scroll-padding-inline: 1rem;
+		
+		& code {
+			@apply block w-fit p-inline-8;
+		}
 	}
 
 	& .code {

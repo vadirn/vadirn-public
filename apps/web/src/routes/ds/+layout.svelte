@@ -12,7 +12,7 @@
 	}
 
 	main {
-		@apply flex-auto border-l border-solid border-neutral-300;
+		@apply flex-auto border-0 border-l-1 border-solid border-neutral-300;
 	}
 
 	.nav-item {
@@ -24,11 +24,7 @@
 	}
 
 	.selected {
-		@apply bg-yellow-500;
-
-		a {
-			@apply text-grey-100;
-		}
+		@apply bg-yellow-100 dark:bg-yellow-400;
 	}
 </style>
 
