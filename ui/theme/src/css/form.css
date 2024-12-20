@@ -13,6 +13,7 @@ button[type="submit"] {
 
 input:not([type="checkbox"], [type="radio"]) {
 	@apply text-inherit w-full rounded-4 border-grey-200
-		border-1 border-solid px-16 py-8 bg-white
-		bg-background;
+		border-1 border-solid px-16 py-8
+		bg-background
+		dark:border-grey-400 dark:text-white;
 }

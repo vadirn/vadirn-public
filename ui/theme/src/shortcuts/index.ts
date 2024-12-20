@@ -1,5 +1,5 @@
 export const shortcuts = {
-	'text-title': 'font-size-title line-height-title',
+	'text-title': 'font-size-title line-height-title tracking-tight',
 	'text-heading': 'font-size-heading line-height-heading',
 	'text-body': 'font-size-body line-height-body',
 	'text-small': 'font-size-small line-height-small',

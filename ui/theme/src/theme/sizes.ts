@@ -1,4 +1,4 @@
-import { px, rem } from '../utils/style';
+import { rem } from '../utils/style';
 
 export const baseSize = {
 	0: rem(0),
@@ -49,11 +49,4 @@ export const maxHeight = height;
 export const spacing = {
 	...baseSize,
 	none: 0,
-};
-
-export const lineWidth = {
-	none: 0,
-	thin: px(0.5),
-	1: px(1),
-	8: px(8),
 };

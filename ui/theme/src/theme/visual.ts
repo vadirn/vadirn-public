@@ -1,4 +1,4 @@
-import { rem } from '../utils/style';
+import { px, rem } from '../utils/style';
 
 export const borderRadius = {
 	none: '0',
@@ -17,4 +17,12 @@ export const boxShadow = {
 export const ringWidth = {
 	DEFAULT: '3px',
 	none: '0',
+};
+
+export const lineWidth = {
+	none: 0,
+	thin: px(0.5),
+	1: px(1),
+	2: px(2),
+	8: px(8),
 };

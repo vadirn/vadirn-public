@@ -26,6 +26,10 @@ body {
 	}
 }
 
+code {
+	@apply font-mono font-size-mono line-height-body;
+}
+
 a {
 	@apply text-current underline underline-offset-2 decoration-thin;
 

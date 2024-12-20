@@ -7,6 +7,7 @@ export const fontSize = {
 	title: rem(34),
 	heading: rem(20),
 	body: rem(16),
+	mono: rem(14),
 	small: rem(12),
 };
 
@@ -36,4 +37,10 @@ export const fontWeight = {
 	700: '700',
 	800: '800',
 	900: '900',
+};
+
+export const letterSpacing = {
+	tight: '-0.05ch',
+	normal: '0',
+	wide: '0.05ch',
 };

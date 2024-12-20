@@ -1,50 +1,40 @@
-import { concat, style, where } from '../utils/style';
+import { concat, style } from '../utils/style';
 
 export const resetPreflight = {
 	getCSS: () => concat(
 		style('*, ::before, ::after', { boxSizing: 'border-box' }),
-		style(where(
-			'html, body, div, span, applet, object, iframe, '
-			+ 'h1, h2, h3, h4, h5, h6, p, blockquote, pre, '
-			+ 'a, abbr, acronym, address, big, cite, code, '
-			+ 'del, dfn, em, img, ins, kbd, q, s, samp, '
-			+ 'small, strike, strong, sub, sup, tt, var, '
-			+ 'b, u, i, center, '
-			+ 'dl, dt, dd, ol, ul, li, '
-			+ 'fieldset, form, label, legend, '
-			+ 'table, caption, tbody, tfoot, thead, tr, th, td, '
-			+ 'article, aside, canvas, details, embed, '
-			+ 'figure, figcaption, footer, header, hgroup, '
-			+ 'menu, nav, output, ruby, section, summary, '
-			+ 'time, mark, audio, video',
-		), {
-			padding: '0',
+		style('*', {
 			margin: '0',
-			font: 'inherit',
-			fontSize: '100%',
-			verticalAlign: 'baseline',
-			border: '0',
+			padding: '0',
 		}),
-		style(where(
-			'article, aside, details, figcaption, figure, '
-			+ 'footer, header, hgroup, menu, nav, section',
-		), {
+		style('img, picture, video, canvas, svg', {
 			display: 'block',
+			maxInlineSize: '100%',
 		}),
-		// style(where('body'), {
-		// 	lineHeight: '1',
-		// }),
-		style(where('ol, ul'), {
+		style('input, button, textarea, select', {
+			font: 'inherit',
+			color: 'inherit',
+			letterSpacing: 'inherit',
+			wordSpacing: 'inherit',
+		}),
+		style('p, h1, h2, h3, h4, h5, h6', {
+			font: 'inherit',
+			overflowWrap: 'break-word',
+		}),
+		style('h1, h2, h3, h4, h5, h6', {
+			textWrap: 'balance',
+		}),
+		style('ol, ul', {
 			listStyle: 'none',
 		}),
-		style(where('blockquote, q'), {
+		style('blockquote, q', {
 			quotes: 'none',
 		}),
-		style(where('blockquote::before, blockquote::after, '
-			+ 'q::before, q::after'), {
+		style('blockquote::before, blockquote::after, '
+			+ 'q::before, q::after', {
 			content: ['\'\'', 'none'],
 		}),
-		style(where('table'), {
+		style('table', {
 			borderSpacing: '0',
 			borderCollapse: 'collapse',
 		}),

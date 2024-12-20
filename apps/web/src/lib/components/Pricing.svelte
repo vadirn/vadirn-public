@@ -8,6 +8,8 @@
 	};
 
 	const { labelledby, setVisibility = noop }: Props = $props();
+
+	const closeModal = (event: Event) => setVisibility(event, false);
 </script>
 
 <style lang="postcss">
@@ -149,7 +151,7 @@
 			</label>
 		</div>
 	</div>
-	<div class="flex flex-col lg:flex-row gap-16">
+	<div class="flex flex-col gap-16 lg:(flex-row gap-32)">
 		<div class="flex-1 flex flex-col gap-16">
 			<Field.Input
 				name="name"
@@ -171,7 +173,7 @@
 			/>
 		</div>
 		<div class="flex-1 flex flex-col justify-end gap-16">
-			<div class="flex flex-col gap-16 callout p-8 rounded-8">
+			<div class="flex flex-col gap-16">
 				<p>
 					After submitting,
 					I will review your request and
@@ -185,7 +187,8 @@
 			</div>
 			<div class="place-self-end flex gap-16">
 				<button
-					onclick={(event) => { setVisibility(event, false); }}
+					onclick={closeModal}
+					type="button"
 				>
 					Cancel
 				</button>
