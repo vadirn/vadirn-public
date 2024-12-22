@@ -2,18 +2,24 @@
 	@apply outline-none ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
 }
 
-button {
-	@apply text-inherit inline-flex items-center 
+:where(button) {
+	@apply flex text-inherit inline-flex items-center justify-center
 		interactive border-none rounded-full p-0 px-16 h-32;
 }
 
-button[type="submit"] {
+:where(button[type="submit"]) {
 	@apply interactive-primary;
 }
 
-input:not([type="checkbox"], [type="radio"]) {
-	@apply text-inherit w-full rounded-4 border-grey-200
-		border-1 border-solid px-16 py-8
-		bg-background
-		dark:border-grey-400 dark:text-white;
+:where(input:not([type="checkbox"], [type="radio"]), textarea) {
+	@apply text-inherit w-full rounded-4 border-0
+		px-16 py-8 bg-grey-50
+		dark:(bg-grey-800 text-white);
+}
+
+:where(textarea) {
+	@apply py-8; 
+
+	min-height: 2.25rem;
+	resize: vertical;
 }

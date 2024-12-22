@@ -65,7 +65,7 @@
 	}
 
 	& .code {
-		@apply bg-neutral-100 py-24 grid grid-cols-subgrid gap-24;
+		@apply bg-grey-50 dark:bg-grey-900 py-24 grid grid-cols-subgrid gap-24;
 
 		grid-column: 1 / -1;
 	}

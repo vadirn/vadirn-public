@@ -21,5 +21,5 @@
 </style>
 
 <div class="note">
-	{@render children()}
+	{@render children?.()}
 </div>

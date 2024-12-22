@@ -5,5 +5,5 @@
 </script>
 
 <div class={className} use:portal>
-	{@render children()}
+	{@render children?.()}
 </div>

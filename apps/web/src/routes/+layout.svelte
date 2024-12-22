@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MediaQuery } from '@libs/runes/media-query';
+	import { MediaQuery } from 'svelte/reactivity';
 	import { shortcuts } from '@libs/shortcuts';
 	import { isEditingText } from '@libs/standard/dom';
 	import { getLogoState } from '$lib/cache/logo-state';
@@ -33,7 +33,7 @@
 	const darkMode = new MediaQuery('(prefers-color-scheme: dark)');
 
 	$effect(() => {
-		if (darkMode.matches) {
+		if (darkMode.current) {
 			document.documentElement.classList.add('dark');
 
 			return;
@@ -46,4 +46,4 @@
 
 <svelte:document {onkeydown} />
 
-{@render children()}
+{@render children?.()}

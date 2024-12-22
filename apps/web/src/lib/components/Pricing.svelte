@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { noop, type Fn } from '@libs/standard/function';
 	import { Field } from '@ui/components/field';
+	import type { SubmitFunction } from '@sveltejs/kit';
+	import { enhance } from '$app/forms';
 
 	type Props = {
 		labelledby: string;
@@ -10,15 +12,37 @@
 	const { labelledby, setVisibility = noop }: Props = $props();
 
 	const closeModal = (event: Event) => setVisibility(event, false);
+
+	const FormStates = {
+		Idle: 'idle',
+		Submitting: 'submitting',
+		Success: 'success',
+		Error: 'error',
+	} as const;
+	type FormState = typeof FormStates[keyof typeof FormStates];
+	let formState: FormState = $state('idle');
+
+	const submitFunction: SubmitFunction = ({ cancel }) => {
+		if (formState === FormStates.Submitting) {
+			return cancel();
+		}
+
+		formState = FormStates.Submitting;
+
+		return async ({ result }) => {
+			formState = FormStates.Success;
+			console.log(result);
+		};
+	};
 </script>
 
 <style lang="postcss">
 	.modal {
-		@apply w-full p-16 pb-24 bg-background rounded-8 shadow-modal;
+		@apply p-16 pb-24 bg-background rounded-8 shadow-modal;
 	}
 
 	.pricing {
-		@apply flex flex-col gap-16 mb-16;
+		@apply flex flex-col gap-16 mb-24;
 
 		@screen lg {
 			@apply flex-row;
@@ -75,9 +99,16 @@
 	.plan-radio:focus-visible + .plan-label {
 		@apply ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
 	}
+
+	.fields {
+		@apply flex flex-col gap-24;
+
+		/* max-width: 480px; */
+		margin-inline-start: auto;
+	}
 </style>
 
-<form class="modal">
+<form class="modal" method="POST" use:enhance={submitFunction}>
 	<h2 id={labelledby} class="mb-16">Get a Quote</h2>
 	<p class="mb-8">Choose a tier that best suits your needs:</p>
 	<div class="pricing">
@@ -86,6 +117,7 @@
 				id="plan-basic"
 				name="plan"
 				class="plan-radio"
+				required
 				type="radio"
 				value="basic"
 			/>
@@ -106,13 +138,14 @@
 		</div>
 		<div>
 			<input
-				id="plan-comprehensive"
+				id="plan-advanced"
 				name="plan"
 				class="plan-radio"
+				required
 				type="radio"
-				value="comprehensive"
+				value="advanced"
 			/>
-			<label class="plan-label colorize" for="plan-comprehensive">
+			<label class="plan-label colorize" for="plan-advanced">
 				<h3 class="plan-title">
 					<i class="icon-select"></i>
 					Legacy Revamp
@@ -129,13 +162,14 @@
 		</div>
 		<div>
 			<input
-				id="plan-ongoing"
+				id="plan-monthly"
 				name="plan"
 				class="plan-radio"
+				required
 				type="radio"
-				value="ongoing"
+				value="monthly"
 			/>
-			<label class="plan-label colorize" for="plan-ongoing">
+			<label class="plan-label colorize" for="plan-monthly">
 				<h3 class="plan-title">
 					<i class="icon-select"></i>
 					Continuous Consult
@@ -151,49 +185,57 @@
 			</label>
 		</div>
 	</div>
-	<div class="flex flex-col gap-16 lg:(flex-row gap-32)">
-		<div class="flex-1 flex flex-col gap-16">
-			<Field.Input
-				name="name"
-				label="Name"
-				placeholder="Jane Smith"
-				required
-			/>
-			<Field.Input
-				name="email"
-				label="Email"
-				placeholder="jane.smith@acme.com"
-				required
-				type="email"
-			/>
-			<Field.Input
-				name="company"
-				label="Company"
-				placeholder="Acme Corp"
-			/>
+	<div class="fields">
+		<Field.Input
+			name="name"
+			error="Name is required"
+			label="Name"
+			placeholder="Jane Smith"
+			required
+		/>
+		<Field.Input
+			name="email"
+			label="Email"
+			placeholder="jane.smith@acme.com"
+			required
+			type="email"
+		/>
+		<Field.Input
+			name="company"
+			label="Company"
+			placeholder="Acme Corp"
+		/>
+		<Field.Textarea
+			name="message"
+			label="Describe your project"
+			placeholder="Tech stack, project goals, etc."
+		/>
+		<div class="flex flex-col gap-8">
+			<p>
+				After submitting,
+				I will review your request and
+				get back to you within 3 business days.
+			</p>
+			<p class="text-small text-grey-600
+				dark:text-yellow-100 text-balance">
+				I respect your privacy.
+				Your information will not be shared with third parties.
+			</p>
 		</div>
-		<div class="flex-1 flex flex-col justify-end gap-16">
-			<div class="flex flex-col gap-16">
-				<p>
-					After submitting,
-					I will review your request and
-					get back to you within 3 business days.
-				</p>
-				<p class="text-small text-grey-600
-					dark:text-yellow-100 text-balance">
-					I respect your privacy.
-					Your information will not be shared with third parties.
-				</p>
-			</div>
-			<div class="place-self-end flex gap-16">
-				<button
-					onclick={closeModal}
-					type="button"
-				>
-					Cancel
-				</button>
-				<button type="submit">Submit</button>
-			</div>
+		<div class="place-self-end flex gap-16">
+			<button
+				onclick={closeModal}
+				type="button"
+			>
+				Cancel
+			</button>
+			<button disabled={formState === FormStates.Submitting} type="submit">
+				{#if formState === FormStates.Submitting}
+					Loading...
+				{:else}
+					Submit
+				{/if}
+			</button>
 		</div>
 	</div>
 </form>

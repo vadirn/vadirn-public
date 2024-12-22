@@ -44,6 +44,6 @@
 	</nav>
 
 	<main>
-		{@render children()}
+		{@render children?.()}
 	</main>
 </div>

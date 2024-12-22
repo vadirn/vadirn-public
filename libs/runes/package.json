@@ -1,8 +1,6 @@
 {
 	"name": "@libs/runes",
-	"exports": {
-		"./media-query": "./src/media-query.svelte.ts"
-	},
+	"exports": {},
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {

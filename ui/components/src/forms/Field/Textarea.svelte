@@ -1,24 +1,24 @@
 <script lang="ts" >
-	type InputProps = {
+	type TextareaProps = {
 		className?: string;
 		name: string;
 		label: string;
 		error?: string;
-		type?: string;
 		placeholder?: string;
 		required?: boolean;
 		autocomplete?: AutoFill;
+		rows?: number;
 	};
 	const {
 		className,
 		name,
 		label,
 		error,
-		type = 'text',
 		placeholder = '',
 		required = false,
 		autocomplete = 'off',
-	}: InputProps = $props();
+		rows = 2,
+	}: TextareaProps = $props();
 </script>
 
 <style lang="postcss">
@@ -49,7 +49,7 @@
 		</span>
 	</div>
 
-	<input
+	<textarea
 		id="input-{name}"
 		{name}
 		class:has-error="{error}"
@@ -57,6 +57,6 @@
 		{autocomplete}
 		{placeholder}
 		{required}
-		{type}
-	/>
+		{rows}
+	></textarea>
 </div>

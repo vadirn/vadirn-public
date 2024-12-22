@@ -10,8 +10,8 @@ export const borderRadius = {
 };
 
 export const boxShadow = {
-	modal: '0 10px 15px -3px oklch(0 0 0 / 0.4), '
-		+ '0 4px 6px -4px oklch(0 0 0 / 0.6)',
+	modal: '0 10px 15px -3px oklch(0 0 0 / 0.2), '
+		+ '0 4px 6px -4px oklch(0 0 0 / 0.4)',
 };
 
 export const ringWidth = {

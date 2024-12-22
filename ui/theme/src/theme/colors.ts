@@ -2,6 +2,7 @@ import { colorVariables } from '../preflights/colors';
 import { cssVar } from '../utils/style';
 
 type ColorVariants = {
+	50?: string;
 	100?: string;
 	200?: string;
 	300?: string;

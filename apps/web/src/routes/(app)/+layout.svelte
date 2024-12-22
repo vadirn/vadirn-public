@@ -60,7 +60,7 @@
 		]}
 		logoState={getLogoState()} />
 
-	{@render children()}
+	{@render children?.()}
 
 	<div class="spacer"></div>
 

@@ -6,5 +6,5 @@
 </script>
 
 <NoteTitle />
-{@render children()}
+{@render children?.()}
 <NextNoteToRead />

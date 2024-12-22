@@ -3,6 +3,7 @@ import { concat, style, where } from '../utils/style';
 export const colorVariables = {
 	'--color-white': 'oklch(100% 0 0)',
 	'--color-black': 'oklch(0% 0 0)',
+	'--color-grey-50': 'oklch(96% 0 0)',
 	'--color-grey-100': 'oklch(90% 0 0)',
 	'--color-grey-200': 'oklch(81.25% 0 0)',
 	'--color-grey-300': 'oklch(72.5% 0 0)',
