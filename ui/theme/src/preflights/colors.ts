@@ -13,6 +13,7 @@ export const colorVariables = {
 	'--color-grey-700': 'oklch(37.5% 0 0)',
 	'--color-grey-800': 'oklch(28.75% 0 0)',
 	'--color-grey-900': 'oklch(20% 0 0)',
+	'--color-red-50': 'oklch(96% 0.01 31)',
 	'--color-red-100': 'oklch(90% 0.05 31)',
 	'--color-red-200': 'oklch(81.25% 0.1 31)',
 	'--color-red-300': 'oklch(72.5% 0.16 31)',

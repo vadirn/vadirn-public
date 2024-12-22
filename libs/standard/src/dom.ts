@@ -52,3 +52,11 @@ export function isEditableElement(element: Element | null) {
 export function isEditingText(event: KeyboardEvent) {
 	return isEditableElement(document.activeElement) || event.isComposing;
 }
+
+export function preventDefault(event: Event) {
+	event.preventDefault();
+}
+
+export function stopPropagation(event: Event) {
+	event.stopPropagation();
+}

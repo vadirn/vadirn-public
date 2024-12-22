@@ -1,11 +1,9 @@
 <script lang="ts" >
-	type TextareaProps = {
-		className?: string;
-		name: string;
-		label: string;
-		error?: string;
+	import CustomField from './Custom.svelte';
+	import type { FieldProps } from './types';
+
+	type Props = FieldProps & {
 		placeholder?: string;
-		required?: boolean;
 		autocomplete?: AutoFill;
 		rows?: number;
 	};
@@ -13,50 +11,38 @@
 		className,
 		name,
 		label,
-		error,
 		placeholder = '',
 		required = false,
 		autocomplete = 'off',
 		rows = 2,
-	}: TextareaProps = $props();
+		validationMessage,
+	}: Props = $props();
 </script>
 
 <style lang="postcss">
-	label {
-		@apply block mb-8 flex-auto;
-	}
-
-	.required::after {
-		@apply text-red-400;
-
-		content: ' * ';
-	}
-
-	.error {
-		@apply text-red-400 text-small mb-8;
-	}
-
 	.has-error {
-		@apply border-red-400 focus-visible:ring-red-400;
+		@apply bg-red-50 dark:bg-red-800 focus-visible:ring-red-400;
 	}
 </style>
 
-<div class={className}>
-	<div class="flex items-end gap-8">
-		<label class:required for="input-{name}">{label}</label>
-		<span id="input-{name}-error" class="error" aria-live="polite">
-			{error}
-		</span>
-	</div>
-
-	<textarea
-		id="input-{name}"
-		{name}
-		class:has-error="{error}"
-		aria-describedby="input-{name}-error"
-		{autocomplete}
-		{placeholder}
-		{required}
-		{rows}
-	></textarea>
-</div>
+<CustomField
+	{name}
+	{className}
+	{label}
+	{required}
+	{validationMessage}>
+	{#snippet input({ id, describedBy, error, onInput, onInvalid })}
+		<textarea
+			{id}
+			{name}
+			class:has-error={error}
+			aria-describedby={describedBy}
+			{autocomplete}
+			{placeholder}
+			{required}
+			{rows}
+			oninput={onInput}
+			oninvalid={onInvalid}
+		></textarea>
+	{/snippet}
+</CustomField>

@@ -117,11 +117,13 @@ export const style = () => ([
 								'!/:/u',
 								'!/^(?:this|id|name|style|class)$/u',
 								'!/^--/u',
+								'!/^on/u',
 							],
 							sort: 'alphabetical',
 						},
 						// `bind:` directives (other then `bind:this`), and `on:` directives.
 						['/^bind:/u', '!bind:this', '/^on:/u'],
+						{ match: '/^on/u', sort: 'alphabetical' },
 						// `use:` directives. (Alphabetical order within the same group.)
 						{ match: '/^use:/u', sort: 'alphabetical' },
 						// `transition:` directive.

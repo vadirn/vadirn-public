@@ -1,62 +1,49 @@
 <script lang="ts" >
-	type InputProps = {
-		className?: string;
-		name: string;
-		label: string;
-		error?: string;
+	import CustomField from './Custom.svelte';
+	import type { FieldProps } from './types';
+
+	type Props = FieldProps & {
 		type?: string;
 		placeholder?: string;
-		required?: boolean;
 		autocomplete?: AutoFill;
 	};
+
 	const {
 		className,
 		name,
 		label,
-		error,
 		type = 'text',
 		placeholder = '',
 		required = false,
 		autocomplete = 'off',
-	}: InputProps = $props();
+		validationMessage,
+	}: Props = $props();
 </script>
 
 <style lang="postcss">
-	label {
-		@apply block mb-8 flex-auto;
-	}
-
-	.required::after {
-		@apply text-red-400;
-
-		content: ' * ';
-	}
-
-	.error {
-		@apply text-red-400 text-small mb-8;
-	}
-
 	.has-error {
-		@apply border-red-400 focus-visible:ring-red-400;
+		@apply bg-red-50 dark:bg-red-800 focus-visible:ring-red-400;
 	}
 </style>
 
-<div class={className}>
-	<div class="flex items-end gap-8">
-		<label class:required for="input-{name}">{label}</label>
-		<span id="input-{name}-error" class="error" aria-live="polite">
-			{error}
-		</span>
-	</div>
-
-	<input
-		id="input-{name}"
-		{name}
-		class:has-error="{error}"
-		aria-describedby="input-{name}-error"
-		{autocomplete}
-		{placeholder}
-		{required}
-		{type}
-	/>
-</div>
+<CustomField
+	{name}
+	{className}
+	{label}
+	{required}
+	{validationMessage}>
+	{#snippet input({ id, describedBy, error, onInput, onInvalid })}
+		<input
+			{id}
+			{name}
+			class:has-error={error}
+			aria-describedby={describedBy}
+			{autocomplete}
+			{placeholder}
+			{required}
+			{type}
+			oninput={onInput}
+			oninvalid={onInvalid}
+		/>
+	{/snippet}
+</CustomField>
