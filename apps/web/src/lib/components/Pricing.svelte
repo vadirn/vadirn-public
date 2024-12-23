@@ -2,6 +2,7 @@
 	import { preventDefault } from '@libs/standard/dom';
 	import { noop, type Fn } from '@libs/standard/function';
 	import { Field } from '@ui/components/field';
+	import { PersistedState } from '@libs/runes/persisted-state';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
 
@@ -22,6 +23,11 @@
 	} as const;
 	type FormState = typeof FormStates[keyof typeof FormStates];
 	let formState: FormState = $state('idle');
+	const planField = new PersistedState('contact-form-plan');
+	const nameField = new PersistedState('contact-form-name');
+	const emailField = new PersistedState('contact-form-email');
+	const companyField = new PersistedState('contact-form-company');
+	const messageField = new PersistedState('contact-form-message');
 
 	const submitFunction: SubmitFunction = ({ cancel, formElement }) => {
 		const isFormValid = formElement.checkValidity();
@@ -138,6 +144,7 @@
 						required
 						type="radio"
 						value="basic"
+						bind:group={planField.value}
 						oninput={onInput}
 						oninvalid={onInvalid}
 					/>
@@ -164,6 +171,7 @@
 						required
 						type="radio"
 						value="advanced"
+						bind:group={planField.value}
 						oninput={onInput}
 						oninvalid={preventDefault}
 					/>
@@ -190,6 +198,7 @@
 						required
 						type="radio"
 						value="monthly"
+						bind:group={planField.value}
 						oninput={onInput}
 						oninvalid={preventDefault}
 					/>
@@ -220,6 +229,7 @@
 			validationMessage={{
 				valueMissing: 'Please enter your name',
 			}}
+			bind:value={nameField.value}
 		/>
 		<Field.Input
 			name="email"
@@ -231,16 +241,19 @@
 				valueMissing: 'Please enter your email',
 				typeMismatch: 'Please enter a valid email',
 			}}
+			bind:value={emailField.value}
 		/>
 		<Field.Input
 			name="company"
 			label="Company"
 			placeholder="Acme Corp"
+			bind:value={companyField.value}
 		/>
 		<Field.Textarea
 			name="message"
 			label="Describe your project"
 			placeholder="Tech stack, project goals, etc."
+			bind:value={messageField.value}
 		/>
 		<div class="flex flex-col gap-8">
 			<p>
@@ -254,19 +267,25 @@
 				Your information will not be shared with third parties.
 			</p>
 		</div>
-		<div class="place-self-end flex gap-16">
-			<button
-				type="button"
-				onclick={closeModal}
-			>
-				Cancel
-			</button>
+		<div class="flex flex-row-reverse gap-16">
 			<button disabled={formState === FormStates.Submitting} type="submit">
 				{#if formState === FormStates.Submitting}
 					Loading...
 				{:else}
 					Submit
 				{/if}
+			</button>
+			<button
+				type="button"
+				onclick={closeModal}
+			>
+				Cancel
+			</button>
+			<div class="flex-auto"></div>
+			<button
+				type="reset"
+			>
+				Start over
 			</button>
 		</div>
 	</div>

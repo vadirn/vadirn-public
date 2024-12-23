@@ -1,6 +1,11 @@
 import { monorepo } from '@tools/monorepo';
 import pluginImportX from 'eslint-plugin-import-x';
+import {
+	createTypeScriptImportResolver,
+} from 'eslint-import-resolver-typescript';
 import { setDefaultFiles } from './utils.js';
+
+const { createNodeResolver } = pluginImportX;
 
 export const project = [
 	monorepo.resolve('tsconfig.json'),
@@ -11,18 +16,24 @@ export const project = [
 	monorepo.ui('*', 'tsconfig.json'),
 ];
 
-export const deps = () => setDefaultFiles({
+export const importRules = () => setDefaultFiles({
 	settings: {
 		'import-x/parsers': {
 			'svelte-eslint-parser': ['.svelte'],
 			'@typescript-eslint/parser': ['.ts'],
 			'espree': ['.js'],
 		},
-		'import-x/resolver': {
-			'eslint-import-resolver-typescript': {
-				projectService: true,
-			},
-		},
+		'import-x/resolver-next': [
+			createNodeResolver({
+				extensions: ['.mjs', '.cjs', '.js', '.ts', '.svelte'],
+			}),
+			createTypeScriptImportResolver({
+				project,
+			}),
+			// 'eslint-import-resolver-typescript': {
+			// 	projectService: true,
+			// },
+		],
 	},
 	plugins: { 'import-x': pluginImportX },
 	rules: {

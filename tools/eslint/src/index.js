@@ -1,7 +1,7 @@
 import { monorepo } from '@tools/monorepo';
 import globals from 'globals';
 import { parser } from 'typescript-eslint';
-import { deps, project } from './deps.js';
+import { importRules, project } from './import-rules.js';
 import { recommended } from './recommended.js';
 import { style } from './style.js';
 import { svelte } from './svelte.js';
@@ -27,7 +27,7 @@ export default [
 	},
 	...recommended(),
 	...svelte(),
-	...deps(),
+	...importRules(),
 	...style(),
 	...final(),
 ];

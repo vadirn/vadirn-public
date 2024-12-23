@@ -17,6 +17,6 @@ export const final = () => setDefaultFiles({
 				allowInterfaces: 'never', allowObjectTypes: 'always',
 			},
 		],
-
+		'prefer-const': ['error', { destructuring: 'all' }],
 	},
 });

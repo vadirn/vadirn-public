@@ -2,6 +2,7 @@ import SvelteEslintPlugin from 'eslint-plugin-svelte';
 import SvelteEslintParser from 'svelte-eslint-parser';
 import { parser } from 'typescript-eslint';
 
+/** @type {() => import('eslint').Linter.Config[]} */
 export const svelte = () => ([
 	...SvelteEslintPlugin.configs['flat/recommended'],
 	{

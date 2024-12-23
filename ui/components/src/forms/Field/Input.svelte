@@ -3,15 +3,17 @@
 	import type { FieldProps } from './types';
 
 	type Props = FieldProps & {
+		value?: string;
 		type?: string;
 		placeholder?: string;
 		autocomplete?: AutoFill;
 	};
 
-	const {
+	let {
 		className,
 		name,
 		label,
+		value = $bindable(''),
 		type = 'text',
 		placeholder = '',
 		required = false,
@@ -42,6 +44,7 @@
 			{placeholder}
 			{required}
 			{type}
+			bind:value
 			oninput={onInput}
 			oninvalid={onInvalid}
 		/>

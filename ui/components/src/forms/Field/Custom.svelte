@@ -1,4 +1,6 @@
 <script lang="ts" >
+	import { onMount } from 'svelte';
+	import { on } from 'svelte/events';
 	import type { FieldProps } from './types';
 
 	const {
@@ -22,6 +24,7 @@
 		'badInput',
 	] as const;
 
+	let element: HTMLElement;
 	let error: string | undefined = $state();
 
 	const onInvalid = (event: Event) => {
@@ -44,6 +47,20 @@
 			error = undefined;
 		}
 	};
+
+	onMount(() => {
+		// find parent form element
+		const form = element.closest('form');
+
+		if (!form) return;
+
+		// cleanup errors on reset
+		const off = on(form, 'reset', () => {
+			error = undefined;
+		});
+
+		return off;
+	});
 </script>
 
 <style lang="postcss">
@@ -62,7 +79,7 @@
 	}
 </style>
 
-<div class={className}>
+<div bind:this={element} class={className}>
 	<div class="flex items-end gap-8">
 		<label class:required for="input-{name}">{label}</label>
 		<span id="input-{name}-error" class="error" aria-live="polite">

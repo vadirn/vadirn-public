@@ -1,10 +1,16 @@
 {
 	"name": "@libs/runes",
-	"exports": {},
+	"exports": {
+		"./persisted-state": "./src/persisted-state.svelte.ts"
+	},
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",
-		"@tools/tsconfig": "workspace:*"
+		"@tools/tsconfig": "workspace:*",
+		"svelte": "5.15.0"
+	},
+	"dependencies": {
+		"@libs/standard": "workspace:*"
 	}
 }
