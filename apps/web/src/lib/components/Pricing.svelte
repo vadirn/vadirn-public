@@ -268,7 +268,11 @@
 			</p>
 		</div>
 		<div class="flex flex-row-reverse gap-16">
-			<button disabled={formState === FormStates.Submitting} type="submit">
+			<button
+				disabled={formState === FormStates.Submitting}
+				tabindex="0"
+				type="submit"
+			>
 				{#if formState === FormStates.Submitting}
 					Loading...
 				{:else}
@@ -276,6 +280,7 @@
 				{/if}
 			</button>
 			<button
+				tabindex="0"
 				type="button"
 				onclick={closeModal}
 			>
@@ -283,6 +288,7 @@
 			</button>
 			<div class="flex-auto"></div>
 			<button
+				tabindex="0"
 				type="reset"
 			>
 				Start over
