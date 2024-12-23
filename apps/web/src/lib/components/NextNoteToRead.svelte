@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getNextNoteTitle, getNotePath } from '$lib/cache/notes';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 
-	const title = $derived(getNextNoteTitle($page));
+	const title = $derived(getNextNoteTitle(page));
 </script>
 
 <style lang="postcss">

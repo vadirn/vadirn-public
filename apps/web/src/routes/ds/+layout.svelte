@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { ds } from '$lib/paths/ds';
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	const { children } = $props();
 
-	const selectedPath = $derived($page.url.pathname);
+	const selectedPath = $derived(page.url.pathname);
 </script>
 
 <style lang="postcss">
