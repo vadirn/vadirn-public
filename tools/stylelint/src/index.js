@@ -17,6 +17,7 @@ export default {
 		'at-rule-no-unknown': [true,
 			{
 				ignoreAtRules: [
+					'unocss',
 					'tailwind',
 					'apply',
 					'layer',

@@ -1,9 +1,9 @@
-*:focus-visible {
+*:focus-visible, .focus-visible *:focus {
 	@apply outline-none ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
 }
 
 :where(button) {
-	@apply flex text-inherit inline-flex items-center justify-center
+	@apply text-inherit inline-flex items-center justify-center
 		interactive border-none rounded-full p-0 px-16 h-32;
 }
 

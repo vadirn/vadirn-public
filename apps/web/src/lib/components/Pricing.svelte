@@ -112,7 +112,8 @@
 		}
 	}
 
-	.plan-radio:focus-visible + .plan-label {
+	.plan-radio:focus-visible + .plan-label,
+	:global(.focus-visible) .plan-radio:focus + .plan-label {
 		@apply ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
 	}
 
@@ -270,7 +271,6 @@
 		<div class="flex flex-row-reverse gap-16">
 			<button
 				disabled={formState === FormStates.Submitting}
-				tabindex="0"
 				type="submit"
 			>
 				{#if formState === FormStates.Submitting}
@@ -280,7 +280,6 @@
 				{/if}
 			</button>
 			<button
-				tabindex="0"
 				type="button"
 				onclick={closeModal}
 			>
@@ -288,7 +287,6 @@
 			</button>
 			<div class="flex-auto"></div>
 			<button
-				tabindex="0"
 				type="reset"
 			>
 				Start over

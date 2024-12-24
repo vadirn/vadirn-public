@@ -81,7 +81,6 @@
 	<Modal isBrowser={browser} isVisible={true} labelledby="pricing-plans">
 		{#snippet trigger(setVisibility: Fn<void, [Event, boolean]>)}
 			<button
-				tabindex="0"
 				type="button"
 				onclick={(event) => { setVisibility(event, true); }}
 			>

@@ -10,6 +10,10 @@ export const final = () => setDefaultFiles({
 				// eslint-disable-next-line @stylistic/max-len
 				message: 'Use console.info() instead of console.log() for production code.',
 			},
+			{
+				selector: 'CallExpression[callee.name="logAndReturn"]',
+				message: 'Not allowed in production code.',
+			},
 		],
 		'@typescript-eslint/no-empty-object-type': [
 			'error',

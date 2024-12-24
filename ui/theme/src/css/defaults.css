@@ -12,7 +12,7 @@ body {
 }
 
 #modals {
-	@apply hidden;
+	@apply hidden p-24;
 
 	&:has(*) {
 		@apply flex flex-col fixed inset-0

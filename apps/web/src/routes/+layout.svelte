@@ -4,7 +4,6 @@
 	import { isEditingText } from '@libs/standard/dom';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
-	import 'uno.css';
 	import '@ui/theme/css';
 
 	const { children } = $props();
@@ -12,8 +11,10 @@
 	const logoState = getLogoState();
 	onNavigate(logoState.updateIndex);
 
+	let keyboardNavigating = $state(false);
+
 	const onkeydown = shortcuts({
-		d: (event) => {
+		'd': (event) => {
 			if (isEditingText(event)) return;
 
 			const value = localStorage.getItem('theme');
@@ -28,7 +29,17 @@
 			localStorage.setItem('theme', 'dark');
 			document.documentElement.classList.add('dark');
 		},
+		'tab': () => {
+			keyboardNavigating = true;
+		},
+		'shift+tab': () => {
+			keyboardNavigating = true;
+		},
 	});
+
+	const onmousedown = () => {
+		keyboardNavigating = false;
+	};
 
 	const darkMode = new MediaQuery('(prefers-color-scheme: dark)');
 
@@ -42,8 +53,19 @@
 		document.documentElement.classList.remove('dark');
 	});
 
+	$effect(() => {
+		if (keyboardNavigating) {
+			document.body.classList.add('focus-visible');
+
+			return;
+		}
+
+		document.body.classList.remove('focus-visible');
+	});
 </script>
 
-<svelte:document {onkeydown} />
+<svelte:document {onkeydown} {onmousedown} />
+
+{keyboardNavigating}
 
 {@render children?.()}

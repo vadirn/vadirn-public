@@ -30,9 +30,6 @@ export const importRules = () => setDefaultFiles({
 			createTypeScriptImportResolver({
 				project,
 			}),
-			// 'eslint-import-resolver-typescript': {
-			// 	projectService: true,
-			// },
 		],
 	},
 	plugins: { 'import-x': pluginImportX },

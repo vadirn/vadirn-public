@@ -10,7 +10,8 @@
 		"./promise": "./src/promise.ts",
 		"./string": "./src/string.ts",
 		"./style": "./src/style.ts",
-		"./type": "./src/type.ts"
+		"./type": "./src/type.ts",
+		"./dev": "./src/dev.ts"
 	},
 	"scripts": {},
 	"type": "module",

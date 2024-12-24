@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Layers, portal } from '@ui/actions/portal';
 	import { shortcuts } from '@libs/shortcuts';
-	import { assertFalse } from '@libs/standard/error';
+	import { isNil } from '@libs/standard/common';
 	import { getFocusableElements } from '@libs/standard/dom';
-	import { isNil, notNil } from '@libs/standard/common';
-	import type { Snippet } from 'svelte';
+	import { assertFalse } from '@libs/standard/error';
+	import { getLayer, Layers, portal } from '@ui/actions/portal';
+	import { tick, type Snippet } from 'svelte';
 	import type { Fn } from '@libs/standard/function';
 
 	type Props = {
@@ -32,10 +32,16 @@
 			+ 'creating a modal with isVisible = true',
 	);
 
-	function setVisibility(event: Event, value: boolean) {
+	async function setVisibility(event: Event, value: boolean) {
 		// prevent bubbling, so that $effect doesn't take over the click
 		event.stopPropagation();
 		isVisible = value;
+		await tick();
+		const modalLayer = getLayer(Layers.Modals);
+
+		if (modalLayer && isVisible) {
+			modalLayer.scrollTop = 0;
+		}
 	}
 
 	const closeOnClickOutside = (event: MouseEvent) => {
@@ -48,55 +54,47 @@
 		'esc': () => {
 			isVisible = false;
 		},
+		// take over focus management and pick focusable elements manually
+		// makes Safari behave consistently with other browsers
 		'tab': (event) => {
 			if (isNil(element)) return;
+			event.preventDefault();
+
 			const activeElement = document.activeElement as HTMLElement;
-
 			const focusableElements = getFocusableElements(element);
-			const firstFocusableElement = focusableElements[0];
-			const lastFocusableElement = focusableElements[
-				focusableElements.length - 1
-			];
+			const currentIndex = focusableElements.indexOf(activeElement);
 
-			if (!element.contains(activeElement)) {
-				event.preventDefault();
-				if (notNil(firstFocusableElement)) {
-					firstFocusableElement.focus();
-
-					return;
-				}
+			if (
+				currentIndex === -1
+				|| currentIndex === focusableElements.length - 1
+			) {
 				activeElement?.blur();
+				focusableElements[0]?.focus();
+
+				return;
 			}
 
-			if (activeElement !== lastFocusableElement) return;
-
-			event.preventDefault();
-			firstFocusableElement?.focus();
+			focusableElements[currentIndex + 1]?.focus();
 		},
 		'shift+tab': (event) => {
 			if (isNil(element)) return;
+			event.preventDefault();
+
 			const activeElement = document.activeElement as HTMLElement;
-
 			const focusableElements = getFocusableElements(element);
-			const firstFocusableElement = focusableElements[0];
-			const lastFocusableElement = focusableElements[
-				focusableElements.length - 1
-			];
+			const currentIndex = focusableElements.indexOf(activeElement);
 
-			if (!element.contains(activeElement)) {
-				event.preventDefault();
-				if (notNil(lastFocusableElement)) {
-					lastFocusableElement.focus();
-
-					return;
-				}
+			if (
+				currentIndex === -1
+				|| currentIndex === 0
+			) {
 				activeElement?.blur();
+				focusableElements[focusableElements.length - 1]?.focus();
+
+				return;
 			}
 
-			if (activeElement !== firstFocusableElement) return;
-
-			event.preventDefault();
-			lastFocusableElement?.focus();
+			focusableElements[currentIndex - 1]?.focus();
 		},
 	});
 
@@ -121,7 +119,7 @@
 {#if isVisible && isBrowser}
 	<div
 		bind:this={element}
-		class="p-24 flex-none m-auto"
+		class="flex-none m-auto"
 		aria-labelledby={labelledby}
 		role="dialog"
 		use:portal={Layers.Modals}
