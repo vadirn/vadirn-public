@@ -1,19 +1,24 @@
 <script lang="ts">
+	import { PersistedState } from '@libs/runes/persisted-state';
 	import { preventDefault } from '@libs/standard/dom';
 	import { noop, type Fn } from '@libs/standard/function';
 	import { Field } from '@ui/components/field';
-	import { PersistedState } from '@libs/runes/persisted-state';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import { enhance } from '$app/forms';
 
 	type Props = {
 		labelledby: string;
-		setVisibility?: Fn<void, [Event, boolean]>;
+		setModalVisibility?: Fn<void, [Event, boolean]>;
+		setModalScroll?: Fn<void, [number]>;
 	};
 
-	const { labelledby, setVisibility = noop }: Props = $props();
+	const {
+		labelledby,
+		setModalVisibility = noop,
+		setModalScroll = noop,
+	}: Props = $props();
 
-	const closeModal = (event: Event) => setVisibility(event, false);
+	const closeModal = (event: Event) => setModalVisibility(event, false);
 
 	const FormStates = {
 		Idle: 'idle',
@@ -44,6 +49,17 @@
 			formState = FormStates.Success;
 			console.log(result);
 		};
+	};
+
+	const resetForm = (event) => {
+		event.preventDefault();
+		event.target?.reset();
+		if (document.activeElement instanceof HTMLElement) {
+			document.activeElement.blur();
+		}
+
+		// also reset scroll position of Pricing modal
+		setModalScroll(0);
 	};
 </script>
 
@@ -125,7 +141,12 @@
 	}
 </style>
 
-<form class="modal" method="POST" use:enhance={submitFunction}>
+<form
+	class="modal"
+	method="POST"
+	onreset={resetForm}
+	use:enhance={submitFunction}
+>
 	<h2 id={labelledby} class="mb-16">Get a Quote</h2>
 	<Field.Custom
 		name="plan-basic"

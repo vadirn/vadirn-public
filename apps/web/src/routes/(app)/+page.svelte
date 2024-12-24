@@ -79,16 +79,20 @@
 	</p>
 
 	<Modal isBrowser={browser} isVisible={true} labelledby="pricing-plans">
-		{#snippet trigger(setVisibility: Fn<void, [Event, boolean]>)}
+		{#snippet trigger(setModalVisibility: Fn<void, [Event, boolean]>)}
 			<button
 				type="button"
-				onclick={(event) => { setVisibility(event, true); }}
+				onclick={(event) => { setModalVisibility(event, true); }}
 			>
 				Get a quote
 			</button>
 		{/snippet}
-		{#snippet body(setVisibility: Fn<void, [Event, boolean]>)}
-			<Pricing labelledby="pricing-plans" {setVisibility} />
+		{#snippet body({ setModalVisibility, setModalScroll })}
+			<Pricing
+				labelledby="pricing-plans"
+				{setModalScroll}
+				{setModalVisibility}
+			/>
 		{/snippet}
 	</Modal>
 

@@ -8,7 +8,10 @@
 	import type { Fn } from '@libs/standard/function';
 
 	type Props = {
-		body?: Snippet<[Fn<void, [Event, boolean]>]>;
+		body?: Snippet<[{
+			setModalVisibility: Fn<void, [Event, boolean]>;
+			setModalScroll: Fn<void, [number]>;
+		}]>;
 		trigger?: Snippet<[Fn<void, [Event, boolean]>]>;
 		isBrowser?: boolean;
 		labelledby: string;
@@ -32,16 +35,20 @@
 			+ 'creating a modal with isVisible = true',
 	);
 
-	async function setVisibility(event: Event, value: boolean) {
+	function setModalScroll(value: number) {
+		const modalLayer = getLayer(Layers.Modals);
+
+		if (modalLayer && isVisible) {
+			modalLayer.scrollTo({ top: value });
+		}
+	}
+
+	async function setModalVisibility(event: Event, value: boolean) {
 		// prevent bubbling, so that $effect doesn't take over the click
 		event.stopPropagation();
 		isVisible = value;
 		await tick();
-		const modalLayer = getLayer(Layers.Modals);
-
-		if (modalLayer && isVisible) {
-			modalLayer.scrollTop = 0;
-		}
+		setModalScroll(0);
 	}
 
 	const closeOnClickOutside = (event: MouseEvent) => {
@@ -114,7 +121,7 @@
 	});
 </script>
 
-{@render trigger?.(setVisibility)}
+{@render trigger?.(setModalVisibility)}
 
 {#if isVisible && isBrowser}
 	<div
@@ -124,6 +131,6 @@
 		role="dialog"
 		use:portal={Layers.Modals}
 	>
-		{@render body?.(setVisibility)}
+		{@render body?.({ setModalVisibility, setModalScroll })}
 	</div>
 {/if}

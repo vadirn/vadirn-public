@@ -66,6 +66,4 @@
 
 <svelte:document {onkeydown} {onmousedown} />
 
-{keyboardNavigating}
-
 {@render children?.()}
