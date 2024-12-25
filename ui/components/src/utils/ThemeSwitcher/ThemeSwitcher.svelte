@@ -16,6 +16,12 @@
 		[Themes.Dark]: 'Switch to System',
 		[Themes.System]: 'Switch to Light',
 	}[themeController.state]);
+
+	const title = $derived({
+		[Themes.Light]: 'Current theme: Light',
+		[Themes.Dark]: 'Current theme: Dark',
+		[Themes.System]: 'Current theme: System',
+	}[themeController.state]);
 </script>
 
 <style lang="postcss">
@@ -24,4 +30,7 @@
 	}
 </style>
 
-<button onclick={themeController.toggle}>{label} <Shortcut keys="d" /></button>
+<button {title} onclick={themeController.toggle}>
+	{label}
+	<Shortcut keys="d" />
+</button>

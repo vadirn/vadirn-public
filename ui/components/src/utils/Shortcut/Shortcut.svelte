@@ -19,6 +19,8 @@
 			meta: '⌘',
 		}[key] ?? key.toUpperCase();
 	}
+
+	const formattedShortcut = _keys.map(formatKey).join('+');
 </script>
 
 <style lang="postcss">
@@ -42,7 +44,7 @@
 	}
 </style>
 
-<span class="shortcut">
+<span class="shortcut" title="Keyboard shortcut: {formattedShortcut}">
 	{#each _keys as key, i}
 		<kbd>{formatKey(key)}</kbd>
 		{#if i < _keys.length - 1}
