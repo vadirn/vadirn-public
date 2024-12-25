@@ -4,7 +4,8 @@ const modifierKeys = [
 	['meta', 'metaKey'],
 	['shift', 'shiftKey'],
 ] as const;
-const aliasedKeys = new Map([
+
+export const aliasedKeys = new Map([
 	['control', 'ctrl'],
 	['option', 'alt'],
 	['cmd', 'meta'],
@@ -36,6 +37,10 @@ export function getPressedKeys(event: KeyboardEvent) {
 }
 
 export function normalizeShortcut(shortcut: string) {
+	return getNormalizedKeys(shortcut).sort().join('+');
+}
+
+export function getNormalizedKeys(shortcut: string) {
 	const keys = shortcut.split('+');
 	const normalizedKeys = new Set<string>();
 
@@ -46,5 +51,5 @@ export function normalizeShortcut(shortcut: string) {
 		normalizedKeys.add(aliasedKey ?? normalizedKey);
 	}
 
-	return [...normalizedKeys].sort().join('+');
+	return [...normalizedKeys];
 }

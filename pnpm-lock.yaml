@@ -29,6 +29,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@domain/all':
+        specifier: workspace:*
+        version: link:../../domain/all
       '@libs/routing':
         specifier: workspace:*
         version: link:../../libs/routing
@@ -116,7 +119,7 @@ importers:
         specifier: workspace:*
         version: link:../../tools/tsconfig
 
-  domain/contact-form: {}
+  domain/all: {}
 
   libs/result:
     dependencies:
@@ -375,12 +378,18 @@ importers:
 
   ui/components:
     dependencies:
+      '@libs/runes':
+        specifier: workspace:*
+        version: link:../../libs/runes
       '@libs/shortcuts':
         specifier: workspace:*
         version: link:../../libs/shortcuts
       '@libs/standard':
         specifier: workspace:*
         version: link:../../libs/standard
+      '@libs/state-controller':
+        specifier: workspace:*
+        version: link:../../libs/state-controller
       '@ui/actions':
         specifier: workspace:*
         version: link:../actions

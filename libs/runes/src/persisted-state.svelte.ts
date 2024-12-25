@@ -2,13 +2,13 @@ import { on } from 'svelte/events';
 import { createSubscriber } from 'svelte/reactivity';
 import { isNonEmptyString } from '@libs/standard/string';
 
-export class PersistedState {
+export class PersistedState<Value extends string = string> {
 	#storage = getStorage();
 	#version = $state(0);
 	#subscribe: () => void;
 	#fallbackValue: string | null;
 
-	constructor(readonly key: string, fallbackValue: string | null = null) {
+	constructor(readonly key: string, fallbackValue: Value | null = null) {
 		this.#fallbackValue = fallbackValue;
 		this.#subscribe = createSubscriber((update) => {
 			const off = on(window, 'storage', (event) => {
@@ -21,14 +21,16 @@ export class PersistedState {
 		});
 	}
 
-	get value(): string | null {
+	get value(): Value | null {
 		this.#subscribe(); // track external updates
 		void this.#version; // track internal updates
 
-		return this.#storage.getItem(this.key) ?? this.#fallbackValue ?? null;
+		return this.#storage.getItem(this.key) as Value
+			?? this.#fallbackValue
+			?? null;
 	}
 
-	set value(value: string) {
+	set value(value: Value | null) {
 		this.#version += 1;
 
 		if (isNonEmptyString(value)) {

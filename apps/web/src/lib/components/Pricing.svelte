@@ -6,6 +6,7 @@
 	import { attachMethods } from '@libs/state-controller';
 	import { tick } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
+	import type { ContactFormData } from '@domain/all/contact-form';
 	import { enhance } from '$app/forms';
 
 	type Props = {
@@ -38,9 +39,19 @@
 			email: new PersistedState('contact-form-email'),
 			company: new PersistedState('contact-form-company'),
 			message: new PersistedState('contact-form-message'),
-		};
+		} satisfies Record<keyof ContactFormData, PersistedState>;
 
 		protected constructor() {}
+
+		resetFields = () => {
+			for (const field of Object.values(this.fields)) {
+				field.value = '';
+			}
+		};
+
+		resetMessage = () => {
+			this.message = '';
+		};
 
 		static create() {
 			const instance = new this();
@@ -49,10 +60,11 @@
 				[FormStates.Idle]: {
 					startSubmitting: () => {
 						instance.state = FormStates.Submitting;
-						instance.message = '';
+						instance.resetMessage();
 					},
 					handleReset: async () => {
 						setModalScroll(0);
+						instance.resetMessage();
 						// some browsers (Safari) change focus on reset
 						// ensure disabled elements are released first
 						await tick();
@@ -84,14 +96,14 @@
 						reset: async (event: Event) => {
 							event.preventDefault();
 							instance.state = FormStates.Idle;
+							instance.resetMessage();
 							(event.target as HTMLElement).closest('form')?.reset();
 						},
 						submit: (event: Event) => {
 							event.preventDefault();
 							// clean up fields when done
-							for (const field of Object.values(instance.fields)) {
-								field.value = '';
-							}
+							instance.resetFields();
+							instance.resetMessage();
 							closeModal(event);
 						},
 					};
@@ -217,7 +229,7 @@
 	}
 
 	.form-message {
-		@apply text-red-400 text-small w-fit;
+		@apply text-small w-fit;
 
 		margin-inline-start: auto;
 	}
@@ -378,8 +390,12 @@
 				Your information will not be shared with third parties.
 			</p>
 		</div>
-		{#if formController.message && formController.state === FormStates.Error}
-			<p class="form-message">
+		{#if formController.message}
+			<p
+				class="form-message"
+				class:text-green-400={formController.state === FormStates.Success}
+				class:text-red-400={formController.state === FormStates.Error}
+			>
 				{formController.message}
 			</p>
 		{/if}

@@ -17,10 +17,16 @@
 	],
 	"references": [
 		{
+			"path": "../../libs/runes"
+		},
+		{
 			"path": "../../libs/shortcuts"
 		},
 		{
 			"path": "../../libs/standard"
+		},
+		{
+			"path": "../../libs/state-controller"
 		},
 		{
 			"path": "../actions"

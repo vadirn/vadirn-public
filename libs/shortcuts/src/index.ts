@@ -3,6 +3,8 @@ import {
 	normalizeShortcut,
 } from './utils';
 
+export { getNormalizedKeys } from './utils';
+
 export function shortcuts(
 	shortcuts: Record<string, (event: KeyboardEvent) => unknown>,
 	options: { preventDefault?: boolean; stopPropagation?: boolean } = {},

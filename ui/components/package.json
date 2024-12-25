@@ -4,7 +4,9 @@
 		"./logo": "./src/content/Logo/index.ts",
 		"./navigation": "./src/content/Navigation/index.ts",
 		"./field": "./src/forms/Field/index.ts",
-		"./modal": "./src/overlays/Modal/index.ts"
+		"./modal": "./src/overlays/Modal/index.ts",
+		"./shortcut": "./src/utils/Shortcut/index.ts",
+		"./theme-switcher": "./src/utils/ThemeSwitcher/index.ts"
 	},
 	"scripts": {
 		"lint": "eslint . && stylelint **/*.{css,svelte}"
@@ -18,8 +20,10 @@
 		"svelte-check": "4.1.1"
 	},
 	"dependencies": {
+		"@libs/runes": "workspace:*",
 		"@libs/shortcuts": "workspace:*",
 		"@libs/standard": "workspace:*",
+		"@libs/state-controller": "workspace:*",
 		"@ui/actions": "workspace:*"
 	}
 }

@@ -5,6 +5,7 @@ const cache = new Map<string, unknown>();
 export const Keys = {
 	LogoState: 'logo-state',
 	Shortcuts: 'shortcuts',
+	ThemeController: 'theme-controller',
 } as const;
 
 /** Get or create cache entry */

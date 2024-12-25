@@ -1,11 +1,15 @@
 <script lang="ts">
 	import { Navigation } from '@ui/components/navigation';
+	import { ThemeSwitcher } from '@ui/components/theme-switcher';
 	import { getLogoState } from '$lib/cache/logo-state';
+	import { getThemeController } from '$lib/cache/theme-controller';
 	import { app } from '$lib/paths/app';
 	import { ds } from '$lib/paths/ds';
 
 	const { children } = $props();
 	const { nav: navClassName } = __styles();
+
+	const themeController = getThemeController();
 </script>
 
 <style lang="postcss">
@@ -38,15 +42,11 @@
 	}
 
 	footer {
-		@apply hidden pb-16 text-small;
+		@apply pb-16 text-small;
 
 		grid-row: -1 / span 1;
 		grid-column: 3/-3;
 		place-self:  end;
-
-		@screen lg {
-			display: block;
-		}
 	}
 </style>
 
@@ -65,8 +65,11 @@
 	<div class="spacer"></div>
 
 	<footer>
-		<ul class="flex gap-16">
-			<li><a href={ds.logo.toString()}>Components</a></li>
+		<ul class="flex justify-center items-center gap-16">
+			<li><ThemeSwitcher {themeController} /></li>
+			<li class="hidden lg:block">
+				<a href={ds.logo.toString()}>Components</a>
+			</li>
 		</ul>
 	</footer>
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { MediaQuery } from 'svelte/reactivity';
 	import { shortcuts } from '@libs/shortcuts';
 	import { isEditingText } from '@libs/standard/dom';
 	import { stateController } from '@libs/state-controller';
+	import { getThemeController } from '$lib/cache/theme-controller';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
 	import '@ui/theme/css';
@@ -25,21 +25,13 @@
 		},
 	});
 
+	const themeController = getThemeController();
+
 	const onkeydown = shortcuts({
 		'd': (event) => {
 			if (isEditingText(event)) return;
 
-			const value = localStorage.getItem('theme');
-
-			if (value === 'dark') {
-				localStorage.removeItem('theme');
-				document.documentElement.classList.remove('dark');
-
-				return;
-			}
-
-			localStorage.setItem('theme', 'dark');
-			document.documentElement.classList.add('dark');
+			themeController.toggle();
 		},
 		'tab': () => {
 			keyboardNavigating.startNavigating();
@@ -63,10 +55,8 @@
 		document.body.classList.remove('focus-visible');
 	});
 
-	const darkMode = new MediaQuery('(prefers-color-scheme: dark)');
-
 	$effect(() => {
-		if (darkMode.current) {
+		if (themeController.inDarkMode) {
 			document.documentElement.classList.add('dark');
 
 			return;

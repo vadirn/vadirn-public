@@ -1,15 +1,16 @@
 import { fail } from '@sveltejs/kit';
+import type { ContactFormData } from '@domain/all/contact-form';
 
 export const actions = {
 	default: async ({ request }) => {
-		const data = await request.formData();
+		const formData = await request.formData();
 
-		await new Promise(resolve => setTimeout(resolve, 3000));
+		const data = Object.fromEntries(formData.entries()) as ContactFormData;
 
 		console.log(data);
 
-		return fail(400, { message: 'Something went wrong' });
+		return fail(400, { message: 'Something went wrong 🤔' });
 
-		// return { message: 'Thanks for reaching out' };
+		// return { message: 'Message received. Thanks for reaching out!' };
 	},
 };
