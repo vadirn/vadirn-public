@@ -1,3 +1,5 @@
+import { fail } from '@sveltejs/kit';
+
 export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
@@ -6,6 +8,8 @@ export const actions = {
 
 		console.log(data);
 
-		return { success: true };
+		return fail(400, { message: 'Something went wrong' });
+
+		// return { message: 'Thanks for reaching out' };
 	},
 };

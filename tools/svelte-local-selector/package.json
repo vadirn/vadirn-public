@@ -12,7 +12,7 @@
 		"css-tree": "3.1.0",
 		"magic-string": "0.30.17",
 		"postcss": "8.4.49",
-		"svelte": "5.15.0",
+		"svelte": "5.16.0",
 		"zimmerframe": "1.1.2"
 	}
 }

@@ -2,6 +2,7 @@
 	import { MediaQuery } from 'svelte/reactivity';
 	import { shortcuts } from '@libs/shortcuts';
 	import { isEditingText } from '@libs/standard/dom';
+	import { stateController } from '@libs/state-controller';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { onNavigate } from '$app/navigation';
 	import '@ui/theme/css';
@@ -11,7 +12,18 @@
 	const logoState = getLogoState();
 	onNavigate(logoState.updateIndex);
 
-	let keyboardNavigating = $state(false);
+	const keyboardNavigating = stateController('idle', {
+		idle: {
+			startNavigating: () => {
+				keyboardNavigating.state = 'navigating';
+			},
+		},
+		navigating: {
+			stopNavigating: () => {
+				keyboardNavigating.state = 'idle';
+			},
+		},
+	});
 
 	const onkeydown = shortcuts({
 		'd': (event) => {
@@ -30,16 +42,26 @@
 			document.documentElement.classList.add('dark');
 		},
 		'tab': () => {
-			keyboardNavigating = true;
+			keyboardNavigating.startNavigating();
 		},
 		'shift+tab': () => {
-			keyboardNavigating = true;
+			keyboardNavigating.startNavigating();
 		},
 	});
 
 	const onmousedown = () => {
-		keyboardNavigating = false;
+		keyboardNavigating.stopNavigating();
 	};
+
+	$effect(() => {
+		if (keyboardNavigating.state === 'navigating') {
+			document.body.classList.add('focus-visible');
+
+			return;
+		}
+
+		document.body.classList.remove('focus-visible');
+	});
 
 	const darkMode = new MediaQuery('(prefers-color-scheme: dark)');
 
@@ -53,15 +75,6 @@
 		document.documentElement.classList.remove('dark');
 	});
 
-	$effect(() => {
-		if (keyboardNavigating) {
-			document.body.classList.add('focus-visible');
-
-			return;
-		}
-
-		document.body.classList.remove('focus-visible');
-	});
 </script>
 
 <svelte:document {onkeydown} {onmousedown} />

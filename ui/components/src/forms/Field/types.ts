@@ -13,6 +13,7 @@ export type FieldProps = {
 	name: string;
 	label: string;
 	required?: boolean;
+	disabled?: boolean;
 	validationMessage?: Partial<{
 		valueMissing: string;
 		typeMismatch: string;

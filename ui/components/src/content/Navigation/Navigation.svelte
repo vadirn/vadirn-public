@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { classNames as c } from '@libs/standard/style';
 	import { Logo, type LogoState } from '../Logo';
 	import type { NavigationLink } from './types';
 
 	const { links = [], logoState, className }: {
 		links?: NavigationLink[];
 		logoState: LogoState;
-		className?: string;
+		className?: string | Record<string, boolean>;
 	} = $props();
 
 	const blankProps = { target: '_blank', rel: 'noopener noreferrer' };
@@ -18,7 +17,7 @@
 	}
 </style>
 
-<nav class={c(className)}>
+<nav class={className}>
 	<Logo {logoState} />
 	<ul>
 		{#each links as link}

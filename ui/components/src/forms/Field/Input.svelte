@@ -17,6 +17,7 @@
 		type = 'text',
 		placeholder = '',
 		required = false,
+		disabled = false,
 		autocomplete = 'off',
 		validationMessage,
 	}: Props = $props();
@@ -41,6 +42,7 @@
 			class:has-error={error}
 			aria-describedby={describedBy}
 			{autocomplete}
+			{disabled}
 			{placeholder}
 			{required}
 			{type}

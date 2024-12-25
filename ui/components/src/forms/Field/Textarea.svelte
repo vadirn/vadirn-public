@@ -16,6 +16,7 @@
 		value = $bindable(''),
 		placeholder = '',
 		required = false,
+		disabled = false,
 		autocomplete = 'off',
 		rows = 2,
 		validationMessage,
@@ -41,6 +42,7 @@
 			class:has-error={error}
 			aria-describedby={describedBy}
 			{autocomplete}
+			{disabled}
 			{placeholder}
 			{required}
 			{rows}
