@@ -1,11 +1,18 @@
 import { resultOf } from '@libs/result';
-import { kv } from '@vercel/kv';
+import { createClient, VercelKV } from '@vercel/kv';
 
-export function add(
-	key: string,
-	value: Record<string, string | number | boolean>,
-) {
-	console.log('add', key, value);
+type DatabaseConfig = {
+	url: string;
+	token: string;
+};
 
-	return resultOf(kv.lpush(key, value));
+export class Database {
+	kv: VercelKV;
+	constructor(config: DatabaseConfig) {
+		this.kv = createClient(config);
+	}
+
+	add = (key: string, value: Record<string, string | number | boolean>) => {
+		return resultOf(this.kv.lpush(key, value));
+	};
 }

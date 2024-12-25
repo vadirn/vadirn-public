@@ -5,3 +5,5 @@ export type ContactFormData = {
 	company?: string;
 	message?: string;
 }
+
+export const ContactRequests = 'contact-requests';

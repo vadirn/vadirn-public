@@ -11,6 +11,7 @@
 		"lint": "eslint . && stylelint **/*.{css,svelte}"
 	},
 	"dependencies": {
+		"@core/database": "workspace:*",
 		"@domain/all": "workspace:*",
 		"@libs/routing": "workspace:*",
 		"@libs/runes": "workspace:*",

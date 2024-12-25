@@ -78,7 +78,7 @@
 		ensuring long-term success for your projects.
 	</p>
 
-	<Modal isBrowser={browser} isVisible={true} labelledby="pricing-plans">
+	<Modal isBrowser={browser} labelledby="pricing-plans">
 		{#snippet trigger(setModalVisibility: Fn<void, [Event, boolean]>)}
 			<button
 				type="button"

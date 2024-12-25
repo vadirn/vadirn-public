@@ -1,5 +1,9 @@
+import {
+	ContactRequests,
+	type ContactFormData,
+} from '@domain/all/contact-form';
 import { fail } from '@sveltejs/kit';
-import type { ContactFormData } from '@domain/all/contact-form';
+import { db } from '$lib/server/database';
 
 export const actions = {
 	default: async ({ request }) => {
@@ -7,10 +11,12 @@ export const actions = {
 
 		const data = Object.fromEntries(formData.entries()) as ContactFormData;
 
-		console.log(data);
+		const result = await db.add(ContactRequests, data);
+
+		if (result.ok) {
+			return { message: 'Message received. Thanks for reaching out!' };
+		}
 
 		return fail(400, { message: 'Something went wrong 🤔' });
-
-		// return { message: 'Message received. Thanks for reaching out!' };
 	},
 };
