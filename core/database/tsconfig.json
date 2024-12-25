@@ -1,0 +1,11 @@
+{
+	"extends": "@tools/tsconfig/base.json",
+	"include": [
+		"src/**/*"
+	],
+	"references": [
+		{
+			"path": "../../libs/result"
+		}
+	]
+}

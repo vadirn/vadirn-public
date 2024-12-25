@@ -1,0 +1,16 @@
+{
+	"name": "@libs/result",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"scripts": {},
+	"type": "module",
+	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/testing": "workspace:*",
+		"@tools/tsconfig": "workspace:*"
+	},
+	"dependencies": {
+		"@libs/standard": "workspace:*"
+	}
+}

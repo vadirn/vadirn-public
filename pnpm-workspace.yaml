@@ -1,0 +1,7 @@
+packages:
+  - 'apps/*'
+  - 'ui/*'
+  - 'core/*'
+  - 'domain/*'
+  - 'libs/*'
+  - 'tools/*'

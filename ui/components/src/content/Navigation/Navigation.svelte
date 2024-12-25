@@ -1,0 +1,31 @@
+<script lang="ts">
+	import { Logo, type LogoState } from '../Logo';
+	import type { NavigationLink } from './types';
+
+	const { links = [], logoState, className }: {
+		links?: NavigationLink[];
+		logoState: LogoState;
+		className?: string | Record<string, boolean>;
+	} = $props();
+
+	const blankProps = { target: '_blank', rel: 'noopener noreferrer' };
+</script>
+
+<style lang="postcss">
+	ul {
+		@apply flex gap-16 pt-4 ml-32;
+	}
+</style>
+
+<nav class={className}>
+	<Logo {logoState} />
+	<ul>
+		{#each links as link}
+			<li>
+				<a
+					href={link.href}
+					{...(link.blank && blankProps)}>{link.title}</a>
+			</li>
+		{/each}
+	</ul>
+</nav>

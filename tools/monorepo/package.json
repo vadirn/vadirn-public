@@ -1,0 +1,14 @@
+{
+	"name": "@tools/monorepo",
+	"type": "module",
+	"exports": {
+		".": "./src/index.js"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"devDependencies": {
+		"@tools/jsconfig": "workspace:*",
+		"find-up": "7.0.0"
+	}
+}

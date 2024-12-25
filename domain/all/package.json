@@ -1,0 +1,8 @@
+{
+	"name": "@domain/all",
+	"exports": {
+		"./contact-form": "./src/contact-form.ts"
+	},
+	"scripts": {},
+	"type": "module"
+}

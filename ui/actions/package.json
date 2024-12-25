@@ -1,0 +1,12 @@
+{
+	"name": "@ui/actions",
+	"exports": {
+		"./portal": "./src/portal.ts"
+	},
+	"scripts": {},
+	"type": "module",
+	"devDependencies": {
+		"@tools/eslint": "workspace:*",
+		"@tools/tsconfig": "workspace:*"
+	}
+}

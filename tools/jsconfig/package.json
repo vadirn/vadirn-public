@@ -1,0 +1,7 @@
+{
+	"name": "@tools/jsconfig",
+	"type": "module",
+	"exports": {
+		"./base.json": "./src/base.json"
+	}
+}
