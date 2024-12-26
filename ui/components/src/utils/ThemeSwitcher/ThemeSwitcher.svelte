@@ -26,7 +26,7 @@
 
 <style lang="postcss">
 	button {
-		@apply h-auto py-4 px-8;
+		@apply min-h-auto py-4 px-8;
 	}
 </style>
 
