@@ -40,7 +40,8 @@ export const height = {
 	...baseSize,
 	auto: 'auto',
 	full: '100%',
-	screen: '100svh',
+	svh: '100svh',
+	dvh: '100dvh',
 };
 
 export const minHeight = height;

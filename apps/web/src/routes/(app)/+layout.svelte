@@ -14,7 +14,7 @@
 
 <style lang="postcss">
 	.layout {
-		@apply grid gap-y-20 min-h-screen pt-32 m-auto;
+		@apply grid gap-y-20 min-h-svh pt-32 m-auto;
 
 		grid-template-rows: min-content min-content min-content 1fr;
 		grid-template-columns:

@@ -16,7 +16,7 @@ body {
 
 	&:has(*) {
 		@apply flex flex-col fixed inset-0
-			items-center max-h-svh overflow-y-scroll;
+			items-center overflow-y-scroll;
 
 		background: oklch(from var(--color-grey-900) l c h / 60%);
 
