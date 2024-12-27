@@ -30,6 +30,6 @@
 	})}
 />
 
-<div class="note">
+<main class="note">
 	{@render children?.()}
-</div>
+</main>
