@@ -1,4 +1,5 @@
 import type { MetaTags } from '@ui/components/meta';
+import type { DeepPartial } from '@libs/standard/type';
 import { assets } from '$app/paths';
 
 const meta = {
@@ -10,7 +11,7 @@ const meta = {
 
 const baseCardUrl = assets + '/base-card.webp';
 
-export function getMeta(overrides: Partial<MetaTags> = {}): MetaTags {
+export function getMeta(overrides: DeepPartial<MetaTags> = {}): MetaTags {
 	// const title = overrides.title ?? meta.title;
 	// const description = overrides.description ?? meta.description;
 	const { openGraph, twitter, ...baseOverrides } = overrides;
@@ -24,6 +25,8 @@ export function getMeta(overrides: Partial<MetaTags> = {}): MetaTags {
 			type: 'website',
 			image: baseCardUrl,
 			description: meta.description,
+			site_name: 'vadirn.io',
+			url: baseOverrides.canonical,
 			...openGraph,
 		},
 		twitter: {

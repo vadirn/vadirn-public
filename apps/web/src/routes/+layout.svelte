@@ -7,6 +7,7 @@
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { getMeta } from '$lib/cache/meta';
 	import { onNavigate } from '$app/navigation';
+	import { page } from '$app/state';
 	import '@ui/theme/css';
 
 	const { children } = $props();
@@ -69,7 +70,7 @@
 
 </script>
 
-<Meta {...getMeta()} />
+<Meta {...getMeta({ canonical: page.url.href })} />
 
 <svelte:document {onkeydown} {onmousedown} />
 

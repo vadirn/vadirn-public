@@ -8,21 +8,22 @@ export type PrimaryMetaTags = {
 
 export type OpenGraphMetaTags = {
 	title: string;
+	site_name: string;
+	description: string;
 	type: string;
 	image: string;
 	url: string;
-	description?: string;
 };
 
 export type TwitterMetaTags = {
-	card?: 'summary' | 'summary_large_image' | 'app' | 'player';
-	creator?: string;
-	title?: string;
-	description?: string;
-	image?: string;
+	card: 'summary' | 'summary_large_image' | 'app' | 'player';
+	creator: string;
+	title: string;
+	description: string;
+	image: string;
 };
 
 export type MetaTags = PrimaryMetaTags & {
-	openGraph?: OpenGraphMetaTags;
-	twitter?: TwitterMetaTags;
+	openGraph: OpenGraphMetaTags;
+	twitter: TwitterMetaTags;
 };
