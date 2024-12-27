@@ -2,8 +2,11 @@
 	import { shortcuts } from '@libs/shortcuts';
 	import { isEditingText } from '@libs/standard/dom';
 	import { stateController } from '@libs/state-controller';
+	import { Meta } from '@ui/components/meta';
 	import { getThemeController } from '$lib/cache/theme-controller';
+	import { getRootMeta } from '$lib/cache/meta';
 	import { getLogoState } from '$lib/cache/logo-state';
+	import { page } from '$app/state';
 	import { onNavigate } from '$app/navigation';
 	import '@ui/theme/css';
 
@@ -66,6 +69,8 @@
 	});
 
 </script>
+
+<Meta {...getRootMeta({ canonical: page.url.href })} />
 
 <svelte:document {onkeydown} {onmousedown} />
 

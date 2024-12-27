@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ds } from '$lib/paths/ds';
+	import { docs } from '$lib/paths/docs';
 	import { page } from '$app/state';
 	const { children } = $props();
 
@@ -38,8 +38,8 @@
 	<nav>
 		<ul class="flex flex-col gap-4">
 			<li class="nav-item"><a href="/">&larr;&nbsp;Back</a></li>
-			{@render navItem(ds.logo.toString(), 'Logo')}
-			{@render navItem(ds.navigation.toString(), 'Navigation')}
+			{@render navItem(docs.logo.toString(), 'Logo')}
+			{@render navItem(docs.navigation.toString(), 'Navigation')}
 		</ul>
 	</nav>
 

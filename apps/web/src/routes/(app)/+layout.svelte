@@ -4,7 +4,7 @@
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { getThemeController } from '$lib/cache/theme-controller';
 	import { app } from '$lib/paths/app';
-	import { ds } from '$lib/paths/ds';
+	import { docs } from '$lib/paths/docs';
 
 	const { children } = $props();
 	const { nav: navClassName } = __styles();
@@ -68,7 +68,7 @@
 		<ul class="flex justify-center items-center gap-16">
 			<li><ThemeSwitcher {themeController} /></li>
 			<li class="hidden lg:block">
-				<a href={ds.logo.toString()}>Components</a>
+				<a href={docs.logo.toString()}>Components</a>
 			</li>
 		</ul>
 	</footer>

@@ -1,9 +1,12 @@
 <script lang="ts">
+	import { Meta } from '@ui/components/meta';
+	import { getMeta, notesCardUrl } from '$lib/cache/meta';
+
 	const { children } = $props();
 </script>
 
 <style lang="postcss">
-	div {
+	main {
 		@apply mb-48 lg:mb-0;
 
 		grid-template-columns: subgrid;
@@ -20,6 +23,13 @@
 	}
 </style>
 
-<div class="note">
+<Meta
+	{...getMeta({
+		openGraph: { image: notesCardUrl },
+		twitter: { image: notesCardUrl },
+	})}
+/>
+
+<main class="note">
 	{@render children?.()}
-</div>
+</main>
