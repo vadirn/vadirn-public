@@ -6,7 +6,7 @@
 </script>
 
 <style lang="postcss">
-	div {
+	main {
 		@apply mb-48 lg:mb-0;
 
 		grid-template-columns: subgrid;
