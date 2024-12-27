@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { Meta } from '@ui/components/meta';
+	import { getMeta, notesCardUrl } from '$lib/cache/meta';
+
 	const { children } = $props();
 </script>
 
@@ -19,6 +22,13 @@
 		}
 	}
 </style>
+
+<Meta
+	{...getMeta({
+		openGraph: { image: notesCardUrl },
+		twitter: { image: notesCardUrl },
+	})}
+/>
 
 <div class="note">
 	{@render children?.()}

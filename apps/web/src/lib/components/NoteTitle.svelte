@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { isNonEmptyString } from '@libs/standard/string';
+	import { Meta } from '@ui/components/meta';
 	import { getCurrentNoteTitle } from '$lib/cache/notes';
 	import { page } from '$app/state';
 
@@ -7,5 +8,6 @@
 </script>
 
 {#if isNonEmptyString(title)}
+	<Meta {title} />
 	<h1>{title}</h1>
 {/if}

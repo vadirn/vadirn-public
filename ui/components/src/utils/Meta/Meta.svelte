@@ -1,9 +1,10 @@
 <script lang="ts">
+	import type { DeepPartial } from '@libs/standard/type';
 	import type {
 		MetaTags,
 	} from './types';
 
-	type Props = MetaTags;
+	type Props = DeepPartial<MetaTags>;
 
 	const {
 		title,
@@ -17,7 +18,9 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	{#if title}
+		<title>{title}</title>
+	{/if}
 	{#if canonical}
 		<link href={canonical} rel="canonical" />
 	{/if}
@@ -47,14 +50,14 @@
 		{#if openGraph.description}
 			<meta content={openGraph.description} property="og:description" />
 		{/if}
+		{#if openGraph.site_name}
+			<meta content={openGraph.site_name} property="og:site_name" />
+		{/if}
 	{/if}
 
 	{#if twitter}
 		{#if twitter.card}
 			<meta name="twitter:card" content={twitter.card} />
-		{/if}
-		{#if twitter.site}
-			<meta name="twitter:site" content={twitter.site} />
 		{/if}
 		{#if twitter.creator}
 			<meta name="twitter:creator" content={twitter.creator} />

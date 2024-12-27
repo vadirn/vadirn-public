@@ -4,10 +4,10 @@
 	import { stateController } from '@libs/state-controller';
 	import { Meta } from '@ui/components/meta';
 	import { getThemeController } from '$lib/cache/theme-controller';
+	import { getRootMeta } from '$lib/cache/meta';
 	import { getLogoState } from '$lib/cache/logo-state';
-	import { getMeta } from '$lib/cache/meta';
-	import { onNavigate } from '$app/navigation';
 	import { page } from '$app/state';
+	import { onNavigate } from '$app/navigation';
 	import '@ui/theme/css';
 
 	const { children } = $props();
@@ -70,7 +70,7 @@
 
 </script>
 
-<Meta {...getMeta({ canonical: page.url.href })} />
+<Meta {...getRootMeta({ canonical: page.url.href })} />
 
 <svelte:document {onkeydown} {onmousedown} />
 

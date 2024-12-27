@@ -1,5 +1,5 @@
-import type { MetaTags } from '@ui/components/meta';
 import type { DeepPartial } from '@libs/standard/type';
+import type { MetaTags } from '@ui/components/meta';
 import { assets } from '$app/paths';
 
 const meta = {
@@ -11,31 +11,43 @@ const meta = {
 
 const baseCardUrl = assets + '/base-card.webp';
 
-export function getMeta(overrides: DeepPartial<MetaTags> = {}): MetaTags {
-	// const title = overrides.title ?? meta.title;
-	// const description = overrides.description ?? meta.description;
-	const { openGraph, twitter, ...baseOverrides } = overrides;
+export const notesCardUrl = assets + '/notes-card.webp';
 
+export function getMeta<T extends DeepPartial<MetaTags>>(
+	overrides: T = {} as T,
+) {
 	return {
-		title: meta.title,
-		description: meta.description,
-		...baseOverrides,
+		...overrides,
 		openGraph: {
-			title: meta.title,
-			type: 'website',
-			image: baseCardUrl,
-			description: meta.description,
-			site_name: 'vadirn.io',
-			url: baseOverrides.canonical,
-			...openGraph,
+			title: overrides.title,
+			description: overrides.description,
+			url: overrides.canonical,
+			...overrides.openGraph,
 		},
 		twitter: {
-			title: meta.title,
+			title: overrides.title,
+			description: overrides.description,
+			...overrides.twitter,
+		},
+	};
+}
+
+export function getRootMeta(overrides: DeepPartial<MetaTags> = {}): MetaTags {
+	return getMeta({
+		title: meta.title,
+		description: meta.description,
+		...overrides,
+		openGraph: {
+			type: 'website',
+			image: baseCardUrl,
+			site_name: 'vadirn.io',
+			...overrides.openGraph,
+		},
+		twitter: {
 			card: 'summary_large_image',
 			creator: '@vadirn',
 			image: baseCardUrl,
-			description: meta.description,
-			...twitter,
+			...overrides.twitter,
 		},
-	};
+	});
 }
