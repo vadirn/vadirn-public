@@ -56,6 +56,7 @@
 		links={[
 			{ title: 'Notes', href: app.notes.toString() },
 			{ title: 'Github', href: 'https://github.com/vadirn', blank: true },
+			{ title: 'LinkedIn', href: 'https://linkedin.com/in/vadirn/', blank: true },
 		]}
 		logoState={getLogoState()} />
 
