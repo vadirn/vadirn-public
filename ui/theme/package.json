@@ -13,12 +13,12 @@
 		"@tools/eslint": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"@unocss/extractor-svelte": "0.65.3",
-		"@unocss/postcss": "0.65.3",
-		"@unocss/preset-mini": "0.65.3",
-		"postcss": "8.4.49",
+		"@unocss/extractor-svelte": "65.4.3",
+		"@unocss/postcss": "65.4.3",
+		"@unocss/preset-mini": "65.4.3",
+		"postcss": "8.5.1",
 		"postcss-import": "16.1.0",
-		"postcss-preset-env": "10.1.2",
-		"unocss": "0.65.3"
+		"postcss-preset-env": "10.1.3",
+		"unocss": "65.4.3"
 	}
 }
