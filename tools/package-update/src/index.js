@@ -10,6 +10,8 @@ import { awaitYesNoInput, closeReadline } from './interaction.js';
 import { findPackages } from './packages.js';
 
 async function main() {
+	const cachedAnswers = {};
+
 	const directories = [
 		monorepo.apps(),
 		monorepo.ui(),
@@ -35,8 +37,8 @@ async function main() {
 
 		process.stdout.write(`Checking ${name}...\n`);
 
-		const patch = await getUpdatePatch(dependencies ?? {});
-		const devPatch = await getUpdatePatch(devDependencies ?? {});
+		const patch = await getUpdatePatch(dependencies ?? {}, cachedAnswers);
+		const devPatch = await getUpdatePatch(devDependencies ?? {}, cachedAnswers);
 
 		if (Object.keys(patch).length > 0 || Object.keys(devPatch).length > 0) {
 			await writeUpdatedDependencies(pkg, {
@@ -49,11 +51,22 @@ async function main() {
 	closeReadline();
 }
 
-async function getUpdatePatch(dependencies) {
+async function getUpdatePatch(dependencies, cachedAnswers) {
 	const patch = {};
 
 	for (const [name, version] of Object.entries(dependencies)) {
 		if (version.includes('workspace:')) continue;
+
+		const cachedVersion = cachedAnswers[name];
+
+		if (cachedVersion) {
+			process.stdout.write(
+				`Updating ${name} from ${version} to ${cachedVersion}\n`,
+			);
+			patch[name] = cachedVersion;
+			continue;
+		}
+
 		const latestVersion = await getLatestVersion(name);
 
 		if (version === latestVersion) continue;
@@ -63,6 +76,7 @@ async function getUpdatePatch(dependencies) {
 		);
 
 		if (shouldUpdate) {
+			cachedAnswers[name] = latestVersion;
 			patch[name] = latestVersion;
 		}
 	}
