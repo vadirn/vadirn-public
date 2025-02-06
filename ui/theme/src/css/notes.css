@@ -1,5 +1,5 @@
 .callout {
-	@apply text-black dark:text-white;
+	@apply color-black dark:text-white;
 
 	background: oklch(from var(--color-yellow-100) l c h / 40%);
 
@@ -73,7 +73,7 @@
 	}
 
 	& code:not(pre code) {
-		@apply bg-grey-200 px-4 rounded text-black;
+		@apply bg-grey-200 px-4 rounded color-black;
 	}
 
 	& .callout {

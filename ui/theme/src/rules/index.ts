@@ -1,9 +1,5 @@
-import type { DynamicRule } from 'unocss';
-import type { Theme } from '../theme';
+import { colorRules } from './color';
+import { sizeRules } from './size';
+import { typographyRules } from './typography';
 
-const listRule: DynamicRule<Theme> = [
-	/^list-(.+)$/,
-	([, type]) => ({ 'list-style': type }),
-];
-
-export const rules = [listRule];
+export const rules = [...colorRules, ...sizeRules, ...typographyRules];

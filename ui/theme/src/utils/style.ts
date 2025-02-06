@@ -54,6 +54,10 @@ export function mediaQuery(query: string) {
 	return `@media (${query})`;
 }
 
+export function supports(query: string) {
+	return `@supports (${query})`;
+}
+
 export function mediaQueryDark() {
 	return mediaQuery('prefers-color-scheme: dark');
 }

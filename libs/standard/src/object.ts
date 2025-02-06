@@ -13,3 +13,14 @@ export function merge<Target extends object, Objects extends object[]>(
 ): MergeArrayOfObjects<Target, Objects> {
 	return Object.assign(target, ...objects);
 }
+
+export function isPropertyOf<T extends object>(
+	key: unknown,
+	object: T,
+): key is keyof T {
+	return typeof key === 'string'
+		|| typeof key === 'number'
+		|| typeof key === 'symbol'
+		? key in object
+		: false;
+}

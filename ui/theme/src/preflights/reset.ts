@@ -1,6 +1,8 @@
 import { concat, style } from '../utils/style';
+import type { Preflight } from 'unocss';
+import type { Theme } from '../theme';
 
-export const resetPreflight = {
+export const resetPreflight: Preflight<Theme> = {
 	getCSS: () => concat(
 		style('*, ::before, ::after', { boxSizing: 'border-box' }),
 		style('*', {

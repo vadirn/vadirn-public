@@ -1,82 +1,80 @@
-import { colorVariables } from '../preflights/colors';
-import { cssVar } from '../utils/style';
+/* eslint-disable @stylistic/quote-props */
+import { getColorVar } from '../variables/colors';
 
-type ColorVariants = {
-	50?: string;
-	100?: string;
-	200?: string;
-	300?: string;
-	400?: string;
-	500?: string;
-	600?: string;
-	700?: string;
-	800?: string;
-	900?: string;
+export const colors = {
+	inherit: 'inherit',
+	current: 'currentColor',
+	transparent: 'transparent',
+	white: getColorVar('white'),
+	black: getColorVar('black'),
+	grey: {
+		'50': getColorVar('grey', '50'),
+		'100': getColorVar('grey', '100'),
+		'200': getColorVar('grey', '200'),
+		'300': getColorVar('grey', '300'),
+		'400': getColorVar('grey', '400'),
+		'500': getColorVar('grey', '500'),
+		'600': getColorVar('grey', '600'),
+		'700': getColorVar('grey', '700'),
+		'800': getColorVar('grey', '800'),
+		'900': getColorVar('grey', '900'),
+	},
+	red: {
+		'50': getColorVar('red', '50'),
+		'100': getColorVar('red', '100'),
+		'200': getColorVar('red', '200'),
+		'300': getColorVar('red', '300'),
+		'400': getColorVar('red', '400'),
+		'500': getColorVar('red', '500'),
+		'600': getColorVar('red', '600'),
+		'700': getColorVar('red', '700'),
+		'800': getColorVar('red', '800'),
+		'900': getColorVar('red', '900'),
+	},
+	yellow: {
+		'100': getColorVar('yellow', '100'),
+		'200': getColorVar('yellow', '200'),
+		'300': getColorVar('yellow', '300'),
+		'400': getColorVar('yellow', '400'),
+		'500': getColorVar('yellow', '500'),
+		'600': getColorVar('yellow', '600'),
+		'700': getColorVar('yellow', '700'),
+		'800': getColorVar('yellow', '800'),
+		'900': getColorVar('yellow', '900'),
+	},
+	green: {
+		'100': getColorVar('green', '100'),
+		'200': getColorVar('green', '200'),
+		'300': getColorVar('green', '300'),
+		'400': getColorVar('green', '400'),
+		'500': getColorVar('green', '500'),
+		'600': getColorVar('green', '600'),
+		'700': getColorVar('green', '700'),
+		'800': getColorVar('green', '800'),
+		'900': getColorVar('green', '900'),
+	},
+	blue: {
+		'100': getColorVar('blue', '100'),
+		'200': getColorVar('blue', '200'),
+		'300': getColorVar('blue', '300'),
+		'400': getColorVar('blue', '400'),
+		'500': getColorVar('blue', '500'),
+		'600': getColorVar('blue', '600'),
+		'700': getColorVar('blue', '700'),
+		'800': getColorVar('blue', '800'),
+		'900': getColorVar('blue', '900'),
+	},
+	neutral: {
+		'100': getColorVar('neutral', '100'),
+		'200': getColorVar('neutral', '200'),
+		'300': getColorVar('neutral', '300'),
+		'400': getColorVar('neutral', '400'),
+		'500': getColorVar('neutral', '500'),
+		'600': getColorVar('neutral', '600'),
+		'700': getColorVar('neutral', '700'),
+		'800': getColorVar('neutral', '800'),
+		'900': getColorVar('neutral', '900'),
+	},
+	background: getColorVar('background'),
+	foreground: getColorVar('foreground'),
 };
-
-type ColorTokens = {
-	inherit: 'inherit';
-	current: 'currentColor';
-	transparent: 'transparent';
-	white: string;
-	black: string;
-	grey: ColorVariants;
-	red: ColorVariants;
-	yellow: ColorVariants;
-	green: ColorVariants;
-	blue: ColorVariants;
-	neutral: ColorVariants;
-	background: string;
-	foreground: string;
-};
-
-export const colors = getColorTokens(colorVariables);
-
-// from colorVariables form color tokens
-function getColorTokens(colors: typeof colorVariables) {
-	const colorTokens: Partial<ColorTokens> = {
-		inherit: 'inherit',
-		current: 'currentColor',
-		transparent: 'transparent',
-	};
-
-	for (const colorVariable of keys(colors)) {
-		const [colorName, variant] = getColorPath(colorVariable);
-
-		if (!colorName) {
-			throw new Error(`Invalid color variable: ${colorVariable}`);
-		}
-
-		if (!variant) {
-			colorTokens[colorName] = cssVar(colorVariable);
-			continue;
-		}
-
-		colorTokens[colorName] ??= {} as ColorVariants;
-		if (typeof colorTokens[colorName] !== 'object') continue;
-
-		colorTokens[colorName][variant] = cssVar(colorVariable);
-	}
-
-	return colorTokens as ColorTokens;
-}
-
-function getColorPath<ColorVariable extends string>(
-	colorVariable: ColorVariable,
-) {
-	if (colorVariable.startsWith('--color-')) {
-		const parts = colorVariable.replace('--color-', '').split('-') as
-		ColorVariable extends `--color-${infer Color}` ?
-			Color extends `${infer ColorName}-${infer ColorVariant}` ?
-					[ColorName, ColorVariant]
-				: [Color]
-			: never;
-
-		return parts;
-	}
-	throw new Error(`Invalid color variable: ${colorVariable}`);
-}
-
-function keys<T extends Record<string, unknown>>(obj: T) {
-	return Object.keys(obj) as (keyof T)[];
-}

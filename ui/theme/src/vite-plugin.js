@@ -1,10 +1,10 @@
-import UnoVite from 'unocss/vite';
+import SvelteScopedVite from '@unocss/svelte-scoped/vite';
 
 /** @returns {import('vite').PluginOption} */
 export function unocssPlugin({
 	configFile,
 }) {
-	return UnoVite({
+	return SvelteScopedVite({
 		configFile,
 	});
 }

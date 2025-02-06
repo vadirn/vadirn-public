@@ -1,30 +1,31 @@
-import { rem } from '../utils/style';
+/* eslint-disable @stylistic/quote-props */
+import { getSizeVar } from '../variables/sizes';
 
-export const baseSize = {
-	0: rem(0),
-	1: rem(1),
-	2: rem(2),
-	4: rem(4),
-	8: rem(8),
-	16: rem(16),
-	20: rem(20),
-	24: rem(24),
-	32: rem(32),
-	40: rem(40),
-	48: rem(48),
-	56: rem(56),
-	64: rem(64),
-	72: rem(72),
-	80: rem(80),
-	96: rem(96),
-	128: rem(128),
-	144: rem(144),
-	192: rem(192),
-	prose: '65ch',
+const sizes = {
+	'0': getSizeVar('0'),
+	'1': getSizeVar('1'),
+	'2': getSizeVar('2'),
+	'4': getSizeVar('4'),
+	'8': getSizeVar('8'),
+	'16': getSizeVar('16'),
+	'20': getSizeVar('20'),
+	'24': getSizeVar('24'),
+	'32': getSizeVar('32'),
+	'40': getSizeVar('40'),
+	'48': getSizeVar('48'),
+	'56': getSizeVar('56'),
+	'64': getSizeVar('64'),
+	'72': getSizeVar('72'),
+	'80': getSizeVar('80'),
+	'96': getSizeVar('96'),
+	'128': getSizeVar('128'),
+	'144': getSizeVar('144'),
+	'192': getSizeVar('192'),
+	'prose': getSizeVar('prose'),
 };
 
 export const width = {
-	...baseSize,
+	...sizes,
 	auto: 'auto',
 	full: '100%',
 	screen: '100vw',
@@ -37,7 +38,7 @@ export const minWidth = width;
 export const maxWidth = width;
 
 export const height = {
-	...baseSize,
+	...sizes,
 	auto: 'auto',
 	full: '100%',
 	svh: '100svh',
@@ -48,6 +49,6 @@ export const minHeight = height;
 export const maxHeight = height;
 
 export const spacing = {
-	...baseSize,
+	...sizes,
 	none: 0,
 };

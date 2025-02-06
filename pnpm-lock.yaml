@@ -436,6 +436,9 @@ importers:
       '@unocss/preset-mini':
         specifier: 65.4.3
         version: 65.4.3
+      '@unocss/svelte-scoped':
+        specifier: 65.4.3
+        version: 65.4.3
       postcss:
         specifier: 8.5.1
         version: 8.5.1
@@ -1653,6 +1656,9 @@ packages:
   '@unocss/rule-utils@65.4.3':
     resolution: {integrity: sha512-bzRRdb9mb82IvgOt3KiRyUh/njRfJC3hoV84lMyUPryT8YTEP/hl6kt2KQ2l1K3WDz7ZPQXVi2eqUbqc+AUpwg==}
     engines: {node: '>=14'}
+
+  '@unocss/svelte-scoped@65.4.3':
+    resolution: {integrity: sha512-roR4HRUABLkOYqDgnwWECnv4JvDwhXQG/6NKUnMk9IQYWy1p3AQvD8xp0wzWQ8zr7dNMF41JgYlWH6YnXdRYOg==}
 
   '@unocss/transformer-attributify-jsx@65.4.3':
     resolution: {integrity: sha512-GI0joW6+jG3sLMzqDxT/Nr0lGarHKsXQzpKQt1LfBGEDgNSQZtDZ1IGlkdZeErRFvWcDLWU0xm2LikLS4Az8kw==}
@@ -4910,6 +4916,16 @@ snapshots:
     dependencies:
       '@unocss/core': 65.4.3
       magic-string: 0.30.17
+
+  '@unocss/svelte-scoped@65.4.3':
+    dependencies:
+      '@unocss/config': 65.4.3
+      '@unocss/preset-uno': 65.4.3
+      '@unocss/reset': 65.4.3
+      css-tree: 3.1.0
+      magic-string: 0.30.17
+    transitivePeerDependencies:
+      - supports-color
 
   '@unocss/transformer-attributify-jsx@65.4.3':
     dependencies:
