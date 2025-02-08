@@ -8,6 +8,8 @@
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { page } from '$app/state';
 	import { onNavigate } from '$app/navigation';
+	import '@ui/theme/css';
+
 	const { children } = $props();
 
 	const logoState = getLogoState();

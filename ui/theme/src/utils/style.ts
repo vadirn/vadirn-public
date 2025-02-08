@@ -89,3 +89,11 @@ export function rem(px: number, base: number = 16) {
 
 	return `${px / base}rem`;
 }
+
+export function negative(value: string | number) {
+	if (typeof value === 'number') {
+		return value * -1;
+	}
+
+	return `calc(${value} * -1)`;
+}

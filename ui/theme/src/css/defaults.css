@@ -1,0 +1,57 @@
+body {
+	min-height: var(--height-svh);
+	overflow: scroll;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-body);
+	line-height: var(--line-height-body);
+	color: var(--color-black);
+	background-color: var(--color-white);
+
+	@supports (scrollbar-gutter: stable)  {
+		overflow: auto;
+		scrollbar-gutter: stable;
+		
+	}
+}
+
+.dark {
+	body {
+		color: var(--color-white);
+		background-color: var(--color-black);
+	}
+
+	.shiki, .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--shiki-dark-bg) !important;
+	}
+}
+
+a {
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: var(--line-width-thin);
+	text-decoration-style: solid;
+	text-decoration-color: inherit;
+	text-underline-offset: var(--size-2);
+	cursor: pointer;
+	border-radius: var(--radius-4);
+
+	&:hover {
+		opacity: 0.6;
+	}
+}
+
+b {
+	font-weight: var(--font-weight-bold);
+}
+
+code {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-mono);
+	line-height: var(--line-height-body);
+}
+
+*:focus-visible {
+	outline: var(--line-width-2) solid var(--color-yellow-300);
+	outline-offset: var(--size-2);
+}

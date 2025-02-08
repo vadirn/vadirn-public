@@ -60,7 +60,7 @@
 		scroll-padding-inline: 1rem;
 		
 		& code {
-			@apply block w-fit p-inline-8;
+			@apply block w-fit px-8;
 
 			text-size-adjust: 100%;
 		}

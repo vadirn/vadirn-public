@@ -8,7 +8,7 @@ export const typographyRules: Rule<Theme>[] = [
 		([, fontFamily], { theme }) => {
 			if (isPropertyOf(fontFamily, theme.fontFamily)) {
 				return {
-					fontFamily: theme.fontFamily[fontFamily],
+					'font-family': theme.fontFamily[fontFamily],
 				};
 			}
 		},
@@ -18,7 +18,7 @@ export const typographyRules: Rule<Theme>[] = [
 		([, size], { theme }) => {
 			if (isPropertyOf(size, theme.fontSize)) {
 				return {
-					fontSize: theme.fontSize[size],
+					'font-size': theme.fontSize[size],
 				};
 			}
 		},
@@ -28,7 +28,7 @@ export const typographyRules: Rule<Theme>[] = [
 		([, lineHeight], { theme }) => {
 			if (isPropertyOf(lineHeight, theme.lineHeight)) {
 				return {
-					lineHeight: theme.lineHeight[lineHeight],
+					'line-height': theme.lineHeight[lineHeight],
 				};
 			}
 		},
@@ -38,7 +38,7 @@ export const typographyRules: Rule<Theme>[] = [
 		([, fontWeight], { theme }) => {
 			if (isPropertyOf(fontWeight, theme.fontWeight)) {
 				return {
-					fontWeight: theme.fontWeight[fontWeight],
+					'font-weight': theme.fontWeight[fontWeight],
 				};
 			}
 		},

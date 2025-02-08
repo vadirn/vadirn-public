@@ -27,7 +27,7 @@
 	}
 
 	.docs {
-		@apply grid gap-24 p-inline-16 py-24 overflow-y-scroll m-y-auto;
+		@apply grid gap-24 px-16 py-24 overflow-y-scroll my-auto;
 
 		grid-auto-rows: min-content;
 		justify-items: start;

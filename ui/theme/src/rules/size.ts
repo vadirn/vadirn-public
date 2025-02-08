@@ -18,7 +18,7 @@ export const sizeRules: Rule<Theme>[] = [
 		([, width], { theme }) => {
 			if (isPropertyOf(width, theme.minWidth)) {
 				return {
-					minWidth: theme.minWidth[width],
+					'min-width': theme.minWidth[width],
 				};
 			}
 		},
@@ -28,7 +28,7 @@ export const sizeRules: Rule<Theme>[] = [
 		([, width], { theme }) => {
 			if (isPropertyOf(width, theme.maxWidth)) {
 				return {
-					maxWidth: theme.maxWidth[width],
+					'max-width': theme.maxWidth[width],
 				};
 			}
 		},
@@ -48,7 +48,7 @@ export const sizeRules: Rule<Theme>[] = [
 		([, height], { theme }) => {
 			if (isPropertyOf(height, theme.minHeight)) {
 				return {
-					minHeight: theme.minHeight[height],
+					'min-height': theme.minHeight[height],
 				};
 			}
 		},
@@ -58,7 +58,7 @@ export const sizeRules: Rule<Theme>[] = [
 		([, height], { theme }) => {
 			if (isPropertyOf(height, theme.maxHeight)) {
 				return {
-					maxHeight: theme.maxHeight[height],
+					'max-height': theme.maxHeight[height],
 				};
 			}
 		},

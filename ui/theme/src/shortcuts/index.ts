@@ -7,22 +7,22 @@ export const shortcuts = {
 	'interactive':
 		'color-black bg-grey-100 hover:bg-grey-200 active:bg-grey-100 '
 		+ dark(
-			'text-white bg-grey-500 hover:bg-grey-600 active:bg-grey-500',
+			'color-white bg-grey-500 hover:bg-grey-600 active:bg-grey-500',
 		),
 	'interactive-primary':
 		'color-black bg-yellow-100 hover:bg-yellow-200 active:bg-yellow-100 '
 		+ dark(
-			'text-white bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-400',
+			'color-white bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-400',
 		),
 	'selectable':
 		'color-black bg-grey-100 hover:bg-grey-200 active:bg-grey-200 '
 		+ dark(
-			'text-white bg-grey-500 hover:bg-grey-600 active:bg-grey-600',
+			'color-white bg-grey-500 hover:bg-grey-600 active:bg-grey-600',
 		),
 	'selected':
 		'color-black bg-yellow-100 hover:bg-yellow-100 active:bg-yellow-100 '
 		+ dark(
-			'text-white bg-yellow-400 hover:bg-yellow-400 active:bg-yellow-400',
+			'color-white bg-yellow-400 hover:bg-yellow-400 active:bg-yellow-400',
 		),
 };
 

@@ -50,5 +50,6 @@ export const maxHeight = height;
 
 export const spacing = {
 	...sizes,
+	auto: 'auto',
 	none: 0,
 };

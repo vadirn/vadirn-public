@@ -23,7 +23,7 @@ export const colorRules: Rule<Theme>[] = [
 
 			if (isNonEmptyString(colorValue)) {
 				return {
-					backgroundColor: colorValue,
+					'background-color': colorValue,
 				};
 			}
 		},
