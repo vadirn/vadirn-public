@@ -17,28 +17,35 @@
 		display: grid;
 		grid-template-rows: min-content min-content min-content 1fr;
 		grid-template-columns:
+			[full-start]
 			minmax(0, 1fr)
+			[bleed-start]
 			minmax(8px, 40px)
+			[content-start first-column-start]
 			minmax(0, 700px)
+			[first-column-end second-column-start]
 			minmax(0, 700px)
+			[second-column-end content-end]
 			minmax(8px, 40px)
-			minmax(0, 1fr);
+			[bleed-end]
+			minmax(0, 1fr)
+			[full-end];
 		grid-auto-rows: min-content;
 		row-gap: var(--size-20);
 		min-height: var(--height-svh);
 		padding-top: var(--size-32);
 		margin: auto;
 
-		@screen lg {
+		@media (--gt-tablet) {
 			column-gap: var(--size-24);
 		}
 	}
 
 	:local(.nav) {
-		grid-column: 3 / span 4;
+		grid-column: content;
 		margin-left: calc(-1 * var(--size-32));
 
-		@screen lg {
+		@media (--gt-tablet) {
 			grid-column: 3 / span 2;
 		}
 	}
@@ -70,7 +77,7 @@
 	<footer>
 		<ul class="flex justify-center items-center gap-16">
 			<li><ThemeSwitcher {themeController} /></li>
-			<li class="hidden lg:block">
+			<li class="none gt-tablet:block">
 				<a href={docs.logo.toString()}>Components</a>
 			</li>
 		</ul>

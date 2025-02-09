@@ -419,12 +419,18 @@ importers:
 
   ui/theme:
     devDependencies:
+      '@csstools/postcss-global-data':
+        specifier: 3.0.0
+        version: 3.0.0(postcss@8.5.1)
       '@libs/standard':
         specifier: workspace:*
         version: link:../../libs/standard
       '@tools/eslint':
         specifier: workspace:*
         version: link:../../tools/eslint
+      '@tools/monorepo':
+        specifier: workspace:*
+        version: link:../../tools/monorepo
       '@tools/stylelint':
         specifier: workspace:*
         version: link:../../tools/stylelint
@@ -586,6 +592,12 @@ packages:
 
   '@csstools/postcss-gamut-mapping@2.0.7':
     resolution: {integrity: sha512-gzFEZPoOkY0HqGdyeBXR3JP218Owr683u7KOZazTK7tQZBE8s2yhg06W1tshOqk7R7SWvw9gkw2TQogKpIW8Xw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      postcss: ^8.4
+
+  '@csstools/postcss-global-data@3.0.0':
+    resolution: {integrity: sha512-3dR5+RDhPW1uqPWZUyTBSVn03gGbxzoSyCEpXugy9UMtXeyKjrB84dX3V8eggzooCsX8wcraKehzdouNO+MlsA==}
     engines: {node: '>=18'}
     peerDependencies:
       postcss: ^8.4
@@ -3960,6 +3972,10 @@ snapshots:
       '@csstools/css-color-parser': 3.0.7(@csstools/css-parser-algorithms@3.0.4(@csstools/css-tokenizer@3.0.3))(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-parser-algorithms': 3.0.4(@csstools/css-tokenizer@3.0.3)
       '@csstools/css-tokenizer': 3.0.3
+      postcss: 8.5.1
+
+  '@csstools/postcss-global-data@3.0.0(postcss@8.5.1)':
+    dependencies:
       postcss: 8.5.1
 
   '@csstools/postcss-gradients-interpolation-method@5.0.7(postcss@8.5.1)':

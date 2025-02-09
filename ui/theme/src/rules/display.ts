@@ -18,4 +18,6 @@ export const displayRules: Rule<Theme>[] = [
 	['block', { display: 'block' }],
 	['inline-block', { display: 'inline-block' }],
 	['inline', { display: 'inline' }],
+
+	['none', { display: 'none' }],
 ];

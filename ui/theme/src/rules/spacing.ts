@@ -13,8 +13,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(axis, axes)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(axes, axis)
 			) {
 				return {
 					[axes[axis][0]]: theme.spacing[spacing],
@@ -32,8 +32,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(direction, directions)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(directions, direction)
 			) {
 				return {
 					'padding-inline': theme.spacing[spacing],
@@ -52,8 +52,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(side, sides)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(sides, side)
 			) {
 				return {
 					[sides[side]]: theme.spacing[spacing],
@@ -64,7 +64,7 @@ export const spacingRules: Rule<Theme>[] = [
 	[
 		/^p-(.+)$/,
 		([, spacing], { theme }) => {
-			if (isPropertyOf(spacing, theme.spacing)) {
+			if (isPropertyOf(theme.spacing, spacing)) {
 				return {
 					padding: theme.spacing[spacing],
 				};
@@ -81,8 +81,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(axis, axes)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(axes, axis)
 			) {
 				const value = isNegative
 					? negative(theme.spacing[spacing])
@@ -104,8 +104,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(direction, directions)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(directions, direction)
 			) {
 				return {
 					[directions[direction]]: theme.spacing[spacing],
@@ -124,8 +124,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(side, sides)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(sides, side)
 			) {
 				return {
 					[sides[side]]: theme.spacing[spacing],
@@ -136,7 +136,7 @@ export const spacingRules: Rule<Theme>[] = [
 	[
 		/^m-(.+)$/,
 		([, spacing], { theme }) => {
-			if (isPropertyOf(spacing, theme.spacing)) {
+			if (isPropertyOf(theme.spacing, spacing)) {
 				return {
 					margin: theme.spacing[spacing],
 				};
@@ -146,7 +146,7 @@ export const spacingRules: Rule<Theme>[] = [
 	[
 		/^gap-(.+)$/,
 		([, spacing], { theme }) => {
-			if (isPropertyOf(spacing, theme.spacing)) {
+			if (isPropertyOf(theme.spacing, spacing)) {
 				return {
 					gap: theme.spacing[spacing],
 				};
@@ -162,8 +162,8 @@ export const spacingRules: Rule<Theme>[] = [
 			} as const;
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(axis, axes)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(axes, axis)
 			) {
 				return {
 					[axes[axis]]: theme.spacing[spacing],

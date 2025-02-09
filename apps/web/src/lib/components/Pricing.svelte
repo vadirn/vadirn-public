@@ -159,7 +159,7 @@
 	.pricing {
 		@apply flex flex-col gap-16 mb-24;
 
-		@screen lg {
+		@media (--gt-tablet) {
 			@apply flex-row;
 		}
 

@@ -1,0 +1,4 @@
+@custom-media --portrait (orientation: portrait);
+@custom-media --landscape (orientation: landscape);
+@custom-media --lt-tablet (max-width: 1023px);
+@custom-media --gt-tablet (min-width: 1024px);

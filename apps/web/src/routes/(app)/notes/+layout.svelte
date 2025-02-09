@@ -7,7 +7,7 @@
 
 <style lang="postcss">
 	main {
-		@apply mb-48 lg:mb-0;
+		@apply mb-48 gt-tablet:mb-0;
 
 		grid-template-columns: subgrid;
 		grid-row: 2 / -1;

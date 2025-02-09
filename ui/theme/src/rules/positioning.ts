@@ -21,8 +21,8 @@ export const positioningRules: Rule<Theme>[] = [
 			};
 
 			if (
-				isPropertyOf(spacing, theme.spacing)
-				&& isPropertyOf(side, sides)
+				isPropertyOf(theme.spacing, spacing)
+				&& isPropertyOf(sides, side)
 			) {
 				return {
 					[sides[side]]: isNegative
@@ -37,7 +37,7 @@ export const positioningRules: Rule<Theme>[] = [
 		([match, spacing], { theme }) => {
 			const isNegative = match.startsWith('-');
 
-			if (isPropertyOf(spacing, theme.spacing)) {
+			if (isPropertyOf(theme.spacing, spacing)) {
 				return {
 					inset: isNegative
 						? negative(theme.spacing[spacing])

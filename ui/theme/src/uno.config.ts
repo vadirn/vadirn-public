@@ -1,5 +1,8 @@
 import extractorSvelte from '@unocss/extractor-svelte';
-import { defineConfig, transformerVariantGroup } from 'unocss';
+import {
+	defineConfig,
+	transformerVariantGroup,
+} from 'unocss';
 import { preflights } from './preflights';
 import { rules } from './rules';
 import { shortcuts } from './shortcuts';

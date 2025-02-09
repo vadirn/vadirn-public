@@ -6,7 +6,7 @@ export const typographyRules: Rule<Theme>[] = [
 	[
 		/^font-family-(.+)$/,
 		([, fontFamily], { theme }) => {
-			if (isPropertyOf(fontFamily, theme.fontFamily)) {
+			if (isPropertyOf(theme.fontFamily, fontFamily)) {
 				return {
 					'font-family': theme.fontFamily[fontFamily],
 				};
@@ -16,7 +16,7 @@ export const typographyRules: Rule<Theme>[] = [
 	[
 		/^font-size-(.+)$/,
 		([, size], { theme }) => {
-			if (isPropertyOf(size, theme.fontSize)) {
+			if (isPropertyOf(theme.fontSize, size)) {
 				return {
 					'font-size': theme.fontSize[size],
 				};
@@ -26,7 +26,7 @@ export const typographyRules: Rule<Theme>[] = [
 	[
 		/^line-height-(.+)$/,
 		([, lineHeight], { theme }) => {
-			if (isPropertyOf(lineHeight, theme.lineHeight)) {
+			if (isPropertyOf(theme.lineHeight, lineHeight)) {
 				return {
 					'line-height': theme.lineHeight[lineHeight],
 				};
@@ -36,7 +36,7 @@ export const typographyRules: Rule<Theme>[] = [
 	[
 		/^font-weight-(.+)$/,
 		([, fontWeight], { theme }) => {
-			if (isPropertyOf(fontWeight, theme.fontWeight)) {
+			if (isPropertyOf(theme.fontWeight, fontWeight)) {
 				return {
 					'font-weight': theme.fontWeight[fontWeight],
 				};

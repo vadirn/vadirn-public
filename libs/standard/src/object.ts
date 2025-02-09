@@ -15,8 +15,8 @@ export function merge<Target extends object, Objects extends object[]>(
 }
 
 export function isPropertyOf<T extends object>(
-	key: unknown,
 	object: T,
+	key: unknown,
 ): key is keyof T {
 	return typeof key === 'string'
 		|| typeof key === 'number'

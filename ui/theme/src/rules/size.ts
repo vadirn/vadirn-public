@@ -6,7 +6,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^w-(.+)$/,
 		([, width], { theme }) => {
-			if (isPropertyOf(width, theme.width)) {
+			if (isPropertyOf(theme.width, width)) {
 				return {
 					width: theme.width[width],
 				};
@@ -16,7 +16,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^min-w-(.+)$/,
 		([, width], { theme }) => {
-			if (isPropertyOf(width, theme.minWidth)) {
+			if (isPropertyOf(theme.minWidth, width)) {
 				return {
 					'min-width': theme.minWidth[width],
 				};
@@ -26,7 +26,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^max-w-(.+)$/,
 		([, width], { theme }) => {
-			if (isPropertyOf(width, theme.maxWidth)) {
+			if (isPropertyOf(theme.maxWidth, width)) {
 				return {
 					'max-width': theme.maxWidth[width],
 				};
@@ -36,7 +36,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^h-(.+)$/,
 		([, height], { theme }) => {
-			if (isPropertyOf(height, theme.height)) {
+			if (isPropertyOf(theme.height, height)) {
 				return {
 					height: theme.height[height],
 				};
@@ -46,7 +46,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^min-h-(.+)$/,
 		([, height], { theme }) => {
-			if (isPropertyOf(height, theme.minHeight)) {
+			if (isPropertyOf(theme.minHeight, height)) {
 				return {
 					'min-height': theme.minHeight[height],
 				};
@@ -56,7 +56,7 @@ export const sizeRules: Rule<Theme>[] = [
 	[
 		/^max-h-(.+)$/,
 		([, height], { theme }) => {
-			if (isPropertyOf(height, theme.maxHeight)) {
+			if (isPropertyOf(theme.maxHeight, height)) {
 				return {
 					'max-height': theme.maxHeight[height],
 				};

@@ -41,7 +41,7 @@ export const getSizeVar = (key: SizeKey) => {
 export const getSizeValue = (key: SizeKey) => {
 	const sizeVariable = `--size-${key}`;
 
-	if (isPropertyOf(sizeVariable, sizes)) {
+	if (isPropertyOf(sizes, sizeVariable)) {
 		return sizes[sizeVariable];
 	}
 

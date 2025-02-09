@@ -16,7 +16,7 @@
 		grid-column: 3 / span 2;
 		text-wrap: balance;
 
-		@screen lg {
+		@media (--gt-tablet) {
 			grid-column: 3 / span 1;
 		}
 
@@ -33,7 +33,7 @@
 
 		grid-column: 3 / span 2;
 
-		@screen lg {
+		@media (--gt-tablet) {
 			grid-column: 3 / span 1;
 		}
 	}
@@ -45,18 +45,18 @@
 	.notes {
 		grid-column: 3 / span 2;
 
-		@screen lg {
+		@media (--gt-tablet) {
 			grid-row: 2 / span 2;
 			grid-column: 4 / span 1;
 		}
 
 		&::before {
-			@apply absolute bottom-0 hidden h-full -ml-23px
+			@apply absolute bottom-0 none h-full -ml-23px
 				border-r-1 border-r-solid border-yellow-200;
 
 			content: '';
 
-			@screen lg {
+			@media (--gt-tablet) {
 				display: block;
 			}
 		}

@@ -10,11 +10,11 @@ export function getColorValue(
 	const [colorName, colorVariant] = color?.split('-') ?? [];
 
 	if (
-		isPropertyOf(colorName, theme.colors)
+		isPropertyOf(theme.colors, colorName)
 	) {
 		const colorValue = theme.colors[colorName];
 
-		if (isRecord(colorValue) && isPropertyOf(colorVariant, colorValue)) {
+		if (isRecord(colorValue) && isPropertyOf(colorValue, colorVariant)) {
 			return colorValue[colorVariant];
 		}
 

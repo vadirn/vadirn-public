@@ -1,8 +1,8 @@
-export const media = {
-	portrait: '(orientation: portrait)',
-	landscape: '(orientation: landscape)',
-};
+import { getMediaQueryVar } from '../variables/media';
 
-export const breakpoints = {
-	lg: '1024px',
+export const media = {
+	'portrait': getMediaQueryVar('portrait'),
+	'landscape': getMediaQueryVar('landscape'),
+	'lt-tablet': getMediaQueryVar('lt-tablet'),
+	'gt-tablet': getMediaQueryVar('gt-tablet'),
 };
