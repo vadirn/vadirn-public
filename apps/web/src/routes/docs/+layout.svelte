@@ -8,23 +8,33 @@
 
 <style lang="postcss">
 	nav {
-		@apply flex-none w-[180px] py-16 min-h-svh;
+		flex: none;
+		width: var(--size-192);
+		min-height: 100svh;
+		padding-block: var(--size-16);
 	}
 
 	main {
-		@apply flex-auto border-0 border-l-1 border-solid border-neutral-300;
+		flex: 1 1 auto;
+		border-left: var(--line-width-1) solid var(--color-grey-300);
 	}
 
 	.nav-item {
-		@apply block;
+		display: block;
 
 		a {
-			@apply block px-16 py-4 no-underline;
+			display: block;
+			padding: var(--size-4) var(--size-16);
+			text-decoration: none;
 		}
 	}
 
 	.selected {
-		@apply bg-yellow-100 dark:bg-yellow-400;
+		background-color: var(--color-yellow-100);
+
+		:global(.dark) & {
+			background-color: var(--color-yellow-400);
+		}
 	}
 </style>
 

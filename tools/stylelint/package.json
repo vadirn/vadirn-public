@@ -8,7 +8,7 @@
 	},
 	"type": "module",
 	"devDependencies": {
-		"@stylistic/stylelint-plugin": "3.1.1",
+		"@stylistic/stylelint-plugin": "3.1.2",
 		"@tools/eslint": "workspace:*",
 		"@tools/jsconfig": "workspace:*",
 		"postcss": "8.5.1",

@@ -17,25 +17,28 @@ We dismiss the option of using flags because it can easily cause confusion. Whil
 <div class="code">
 
 ```ts
-const buttonController = stateController('idle', {
+const buttonController = stateController("idle", {
 	idle: {
 		click: async () => {
-			buttonController.state = 'loading';
+			buttonController.state = "loading";
 			try {
 				// ... do something
-				buttonController.state = 'success';
-			}
-			catch {
-				buttonController.state = 'error';
+				buttonController.state = "success";
+			} catch {
+				buttonController.state = "error";
 			}
 		},
 	},
 	loading: {},
 	success: {
-		click: () => { buttonController.state = 'idle'; },
+		click: () => {
+			buttonController.state = "idle";
+		},
 	},
 	error: {
-		click: () => { buttonController.state = 'idle'; },
+		click: () => {
+			buttonController.state = "idle";
+		},
 	},
 });
 
@@ -63,9 +66,11 @@ type State<SM extends StateMethods> = keyof SM;
 // to get all the methods combined
 // luckily there is a way to do this:
 // https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type
-type UnionToIntersection<U> =
-	(U extends any ? (k: U) => void : never) extends
-	(k: infer I extends U) => void ? I : never;
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+	k: infer I extends U
+) => void
+	? I
+	: never;
 
 // this way we get
 type Methods<SM extends StateMethods> = UnionToIntersection<SM[keyof SM]>;
@@ -87,11 +92,8 @@ This is the actual core functionality of the state controller. It takes the cont
 ```ts
 export function attachMethods<
 	SM extends StateMethods,
-	SC extends IStateController<SM>,
->(
-	controller: SC,
-	stateMethods: SM,
-) {
+	SC extends IStateController<SM>
+>(controller: SC, stateMethods: SM) {
 	const methods = {} as Record<string, UnknownFn>;
 
 	for (const stateKey of Object.keys(stateMethods)) {
@@ -99,18 +101,15 @@ export function attachMethods<
 			if (methodKey in methods) continue; // skip if already exists
 
 			methods[methodKey] = (...args) => {
-				const availableMethods = stateMethods[controller.state!];
+				const availableMethods =
+					stateMethods[controller.state!];
 
 				return availableMethods?.[methodKey]?.(...args);
 			};
 		}
 	}
 
-	return merge(
-		controller,
-		{ stateMethods },
-		methods as Methods<SM>,
-	);
+	return merge(controller, { stateMethods }, methods as Methods<SM>);
 }
 ```
 
@@ -134,7 +133,7 @@ The state controller can be constructed manually from a regular object. As simpl
 ```ts
 function stateController<SM extends StateMethods>(
 	defaultState: State<SM>,
-	stateMethods: SM,
+	stateMethods: SM
 ) {
 	let state = $state<State<SM>>(defaultState);
 
@@ -167,18 +166,15 @@ class StateController<SM extends StateMethods> {
 
 	static create<SM extends StateMethods>(
 		defaultState: State<SM>,
-		stateMethods: SM,
+		stateMethods: SM
 	) {
-		return attachMethods(
-			new this(defaultState),
-			stateMethods,
-		);
+		return attachMethods(new this(defaultState), stateMethods);
 	}
 }
 
 function stateController<SM extends StateMethods>(
 	defaultState: State<SM>,
-	stateMethods: SM,
+	stateMethods: SM
 ) {
 	return StateController.create(defaultState, stateMethods);
 }
@@ -194,34 +190,37 @@ Let's also try to implement custom `ButtonController` class with baked-in state 
 
 ```ts
 class ButtonController {
-	state = $state<keyof this['stateMethods']>('idle');
+	state = $state<keyof this["stateMethods"]>("idle");
 	stateMethods = {
 		idle: {
-				click: async () => {
-					this.state = 'loading';
-					try {
-						// ... do something
-						this.state = 'success';
-					}
-					catch {
-						this.state = 'error';
-					}
-				},
+			click: async () => {
+				this.state = "loading";
+				try {
+					// ... do something
+					this.state = "success";
+				} catch {
+					this.state = "error";
+				}
 			},
-			loading: {},
-			success: {
-				click: () => { this.state = 'idle'; },
+		},
+		loading: {},
+		success: {
+			click: () => {
+				this.state = "idle";
 			},
-			error: {
-				click: () => { this.state = 'idle'; },
+		},
+		error: {
+			click: () => {
+				this.state = "idle";
 			},
-	}
+		},
+	};
 
 	protected constructor() {}
 
 	static create() {
 		const instance = new this();
-		
+
 		return attachMethods(instance, instance.stateMethods);
 	}
 }

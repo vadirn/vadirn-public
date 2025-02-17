@@ -8,7 +8,7 @@
 	import { getLogoState } from '$lib/cache/logo-state';
 	import { page } from '$app/state';
 	import { onNavigate } from '$app/navigation';
-	import '@ui/theme/css';
+	import '@ui/theme-next/css';
 
 	const { children } = $props();
 

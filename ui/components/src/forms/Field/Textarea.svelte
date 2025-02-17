@@ -25,7 +25,15 @@
 
 <style lang="postcss">
 	.has-error {
-		@apply bg-red-50 dark:bg-red-800 focus-visible:ring-red-400;
+		background-color: var(--color-red-50);
+
+		.dark & {
+			background-color: var(--color-red-800);
+		}
+
+		&:focus-visible {
+			outline-color: var(--color-red-400);
+		}
 	}
 </style>
 

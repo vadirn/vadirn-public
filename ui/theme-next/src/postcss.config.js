@@ -8,7 +8,7 @@ export function postcssConfig() {
 	return postcss([
 		postcssImport(),
 		postcssGlobalData({
-			files: [monorepo.ui('theme/src/css/media.css')],
+			files: [monorepo.ui('theme-next/src/css/media.css')],
 		}),
 		postcssPresetEnv({
 			stage: 0,

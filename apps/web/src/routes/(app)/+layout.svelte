@@ -5,6 +5,7 @@
 	import { getThemeController } from '$lib/cache/theme-controller';
 	import { app } from '$lib/paths/app';
 	import { docs } from '$lib/paths/docs';
+	import { browser } from '$app/environment';
 
 	const { children } = $props();
 	const { nav: navClassName } = __styles();
@@ -32,7 +33,7 @@
 			[full-end];
 		grid-auto-rows: min-content;
 		row-gap: var(--size-20);
-		min-height: var(--height-svh);
+		min-height: 100svh;
 		padding-top: var(--size-32);
 		margin: auto;
 
@@ -46,17 +47,31 @@
 		margin-left: calc(-1 * var(--size-32));
 
 		@media (--gt-tablet) {
-			grid-column: 3 / span 2;
+			grid-column: first-column;
 		}
 	}
 
 	footer {
-		@apply text-small;
-
 		grid-row: -1 / span 1;
-		grid-column: 3/-3;
+		grid-column: content;
 		place-self:  end;
 		padding-bottom: var(--size-16);
+	}
+
+	.footer-items {
+		display: flex;
+		gap: var(--size-16);
+		align-items: center;
+		justify-content: center;
+		min-height: var(--size-24);
+	}
+
+	.hide-on-mobile {
+		display: none;
+
+		@media (--gt-tablet) {
+			display: block;
+		}
 	}
 </style>
 
@@ -72,13 +87,11 @@
 
 	{@render children?.()}
 
-	<div class="spacer"></div>
-
-	<footer>
-		<ul class="flex justify-center items-center gap-16">
-			<li><ThemeSwitcher {themeController} /></li>
-			<li class="none gt-tablet:block">
-				<a href={docs.logo.toString()}>Components</a>
+	<footer class="text-small">
+		<ul class="footer-items">
+			<li><ThemeSwitcher isBrowser={browser} {themeController} /></li>
+			<li class="hide-on-mobile">
+				<a href={docs.logo.toString()}>Docs</a>
 			</li>
 		</ul>
 	</footer>

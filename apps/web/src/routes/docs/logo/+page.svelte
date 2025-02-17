@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Logo } from '@ui/components/logo';
+	import { Button } from '@ui/components/button';
 	import SplitScreen from '$lib/components/SplitScreen.svelte';
 	import { getLogoState } from '$lib/cache/logo-state';
 	import Docs from './docs.md';
@@ -14,7 +15,6 @@
 
 	{#snippet docs()}
 		<Docs />
-
-		<button onclick={logoState.updateIndex}>Change emoji</button>
+		<Button onclick={logoState.updateIndex}>Change emoji</Button>
 	{/snippet}
 </SplitScreen>

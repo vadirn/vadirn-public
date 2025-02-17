@@ -4,14 +4,12 @@
 
 <style lang="postcss">
 	ul {
-		@apply list-disc;
-
-		grid-column: 3 / span 2;
+		list-style-type: disc;
 	}
 </style>
 
-<h1>Notes</h1>
-<ul>
+<h1 class="text-heading bold mb-8">Notes</h1>
+<ul class="flex flex-col gap-4">
 	{#each notes as title}
 		<li>
 			<a href={getNotePath(title)}>{title}</a>

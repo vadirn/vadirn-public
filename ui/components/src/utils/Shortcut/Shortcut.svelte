@@ -25,15 +25,24 @@
 
 <style lang="postcss">
 	.shortcut {
-		@apply flex items-center;
+		display: flex;
+		align-items: center;
 	}
 
 	kbd {
-		@apply inline-flex items-center justify-center
-			text-inherit bg-grey-50 dark:bg-grey-400 rounded-4 w-16;
-
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--size-16);
 		aspect-ratio: 1/1;
 		line-height: 1;
+		color: var(--color-grey-900);
+		background-color: var(--color-grey-50);
+		border-radius: var(--radius-4);
+
+		.dark & {
+			background-color: var(--color-grey-400);
+		}
 	}
 
 	.separator {

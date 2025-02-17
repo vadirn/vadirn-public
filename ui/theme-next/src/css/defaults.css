@@ -1,5 +1,5 @@
 body {
-	min-height: var(--height-svh);
+	min-height: 100svh;
 	overflow: scroll;
 	font-family: var(--font-sans);
 	font-size: var(--font-size-body);
@@ -22,7 +22,7 @@ body {
 
 	.shiki, .shiki span {
 		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;
+		background-color: var(--color-grey-800) !important;
 	}
 }
 
@@ -51,7 +51,26 @@ code {
 	line-height: var(--line-height-body);
 }
 
-*:focus-visible {
-	outline: var(--line-width-2) solid var(--color-yellow-300);
-	outline-offset: var(--size-2);
+/** Interactive */
+textarea {
+	min-height: calc(2em + var(--size-4));
+	padding-right: var(--size-8);
+	padding-left: var(--size-8);
+	resize: vertical;
+}
+
+input:not([type="checkbox"], [type="radio"]), textarea {
+	width: 100%;
+	padding: var(--size-8) var(--size-16);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	background-color: var(--color-grey-50);
+	border: none;
+	border-radius: var(--radius-4);
+	
+	.dark & {
+		color: var(--color-white);
+		background-color: var(--color-grey-800);
+	}
 }
