@@ -27,7 +27,7 @@
 	.has-error {
 		background-color: var(--color-red-50);
 
-		.dark & {
+		:global(.dark) & {
 			background-color: var(--color-red-800);
 		}
 

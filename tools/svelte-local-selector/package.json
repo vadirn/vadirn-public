@@ -11,8 +11,8 @@
 		"acorn": "8.14.0",
 		"css-tree": "3.1.0",
 		"magic-string": "0.30.17",
-		"postcss": "8.5.1",
-		"svelte": "5.19.9",
+		"postcss": "8.5.2",
+		"svelte": "5.20.1",
 		"zimmerframe": "1.1.2"
 	}
 }

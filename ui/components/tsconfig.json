@@ -30,6 +30,9 @@
 		},
 		{
 			"path": "../actions"
+		},
+		{
+			"path": "../theme-next"
 		}
 	]
 }

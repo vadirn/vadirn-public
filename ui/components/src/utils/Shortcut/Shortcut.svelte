@@ -40,7 +40,7 @@
 		background-color: var(--color-grey-50);
 		border-radius: var(--radius-4);
 
-		.dark & {
+		:global(.dark) & {
 			background-color: var(--color-grey-400);
 		}
 	}

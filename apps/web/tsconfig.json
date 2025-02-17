@@ -25,6 +25,9 @@
 	],
 	"references": [
 		{
+			"path": "../../core/database"
+		},
+		{
 			"path": "../../libs/routing"
 		},
 		{
@@ -43,7 +46,7 @@
 			"path": "../../ui/components"
 		},
 		{
-			"path": "../../ui/theme"
+			"path": "../../ui/theme-next"
 		}
 	]
 }
