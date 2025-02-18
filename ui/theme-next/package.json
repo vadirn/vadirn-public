@@ -8,14 +8,17 @@
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {
-		"@libs/standard": "workspace:*",
 		"@csstools/postcss-global-data": "3.0.0",
+		"@fullhuman/postcss-purgecss": "7.0.2",
+		"@libs/standard": "workspace:*",
 		"@tools/eslint": "workspace:*",
 		"@tools/monorepo": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
+		"estree-walker": "3.0.3",
 		"postcss": "8.5.2",
 		"postcss-import": "16.1.0",
-		"postcss-preset-env": "10.1.4"
+		"postcss-preset-env": "10.1.4",
+		"svelte": "5.20.1"
 	}
 }
