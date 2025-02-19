@@ -33,6 +33,11 @@
 		margin-bottom: var(--line-height);
 	}
 
+	main :global(h1:not(:first-child)),
+	main :global(h2:not(:first-child)) {
+		margin-top: var(--line-height);
+	}
+
 	main :global(h1) {
 		font-size: var(--font-size-title);
 		font-weight: var(--font-weight-bold);

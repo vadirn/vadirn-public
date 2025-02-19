@@ -4,7 +4,7 @@ import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
 import { purgeCSSPlugin } from '@fullhuman/postcss-purgecss';
-import { svelteExtractor } from './extractor.js';
+import { svelteExtractor } from './postcss/svelteExtractor.js';
 
 export function postcssConfig() {
 	return postcss([
@@ -31,11 +31,20 @@ export function postcssConfig() {
 
 				return purgeCSSPlugin({
 					content: [
-						monorepo.ui('components/src/**/*.svelte'),
-						monorepo.apps('web/src/**/*.svelte'),
+						'**/*.svelte',
+						'**/*.html',
+						'**/*.md',
+						'**/*.js',
+						'**/*.ts',
 					],
 					safelist: [/^(?!\.)\w+$/],
-					defaultExtractor: svelteExtractor,
+					defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+					extractors: [
+						{
+							extensions: ['.svelte'],
+							extractor: svelteExtractor,
+						}
+					],
 					sourceMap: true,
 				}).OnceExit(root, { result });
 			},
