@@ -1,5 +1,5 @@
 {
-	"name": "@ui/theme-next",
+	"name": "@ui/theme",
 	"exports": {
 		".": "./src/index.ts",
 		"./css": "./src/css/index.css",

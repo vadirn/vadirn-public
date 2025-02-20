@@ -81,9 +81,9 @@ importers:
       '@tools/tsconfig':
         specifier: workspace:*
         version: link:../../tools/tsconfig
-      '@ui/theme-next':
+      '@ui/theme':
         specifier: workspace:*
-        version: link:../../ui/theme-next
+        version: link:../../ui/theme
       mdsvex:
         specifier: 0.12.3
         version: 0.12.3(svelte@5.20.1)
@@ -409,7 +409,7 @@ importers:
       '@ui/actions':
         specifier: workspace:*
         version: link:../actions
-      '@ui/theme-next':
+      '@ui/theme':
         specifier: workspace:*
         version: link:../theme-next
       svelte:
@@ -419,7 +419,7 @@ importers:
         specifier: 4.1.4
         version: 4.1.4(picomatch@4.0.2)(svelte@5.20.1)(typescript@5.7.2)
 
-  ui/theme-next:
+  ui/theme:
     devDependencies:
       '@csstools/postcss-global-data':
         specifier: 3.0.0

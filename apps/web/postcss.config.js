@@ -1,3 +1,3 @@
-import { postcssConfig } from '@ui/theme-next/postcss';
+import { postcssConfig } from '@ui/theme/postcss';
 
 export default postcssConfig();

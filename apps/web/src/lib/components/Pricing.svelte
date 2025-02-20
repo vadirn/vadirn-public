@@ -5,7 +5,7 @@
 	import { Field } from '@ui/components/field';
 	import { attachMethods } from '@libs/state-controller';
 	import { tick } from 'svelte';
-	import { themeVariant } from '@ui/theme-next';
+	import { themeVariant } from '@ui/theme';
 	import { isNonEmptyString } from '@libs/standard/string';
 	import { Button } from '@ui/components/button';
 	import type { SubmitFunction } from '@sveltejs/kit';

@@ -25,6 +25,6 @@
 		"@libs/standard": "workspace:*",
 		"@libs/state-controller": "workspace:*",
 		"@ui/actions": "workspace:*",
-		"@ui/theme-next": "workspace:*"
+		"@ui/theme": "workspace:*"
 	}
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { sizeVariant, themeVariant } from '@ui/theme-next';
+	import { sizeVariant, themeVariant } from '@ui/theme';
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
