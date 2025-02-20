@@ -13,6 +13,7 @@ async function main() {
 	const cachedAnswers = {};
 
 	const directories = [
+		monorepo.root,
 		monorepo.apps(),
 		monorepo.ui(),
 		monorepo.core(),

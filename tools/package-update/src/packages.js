@@ -5,7 +5,7 @@ import { join } from 'path';
  * Looks for _/package.json files in the given directories
  */
 export async function findPackages(...dirs) {
-	const packages = [];
+	const packages = new Set();
 
 	for (const dir of dirs) {
 		const files = await readdir(dir, { withFileTypes: true });
@@ -19,13 +19,24 @@ export async function findPackages(...dirs) {
 				);
 
 				if (await fileExists(packageJsonPath)) {
-					packages.push(packageJsonPath);
+					packages.add(packageJsonPath);
+				}
+			}
+
+			if (file.isFile() && file.name === 'package.json') {
+				const packageJsonPath = join(
+					file.parentPath,
+					file.name,
+				);
+
+				if (await fileExists(packageJsonPath)) {
+					packages.add(packageJsonPath);
 				}
 			}
 		}
 	}
 
-	return packages;
+	return [...packages];
 }
 
 async function fileExists(path) {
