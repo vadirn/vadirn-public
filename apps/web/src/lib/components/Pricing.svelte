@@ -2,12 +2,11 @@
 	import { PersistedState } from '@libs/runes/persisted-state';
 	import { preventDefault } from '@libs/standard/dom';
 	import { noop, type Fn } from '@libs/standard/function';
-	import { Field } from '@ui/components/field';
-	import { attachMethods } from '@libs/state-controller';
-	import { tick } from 'svelte';
-	import { themeVariant } from '@ui/theme';
 	import { isNonEmptyString } from '@libs/standard/string';
+	import { attachMethods } from '@libs/state-controller';
 	import { Button } from '@ui/components/button';
+	import { Field } from '@ui/components/field';
+	import { tick } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import type { ContactFormData } from '@domain/all/contact-form';
 	import { enhance } from '$app/forms';
@@ -178,9 +177,9 @@
 	}
 
 	h2 {
-		@apply text-heading;
-
+		font-size: var(--font-size-heading);
 		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
 		text-wrap: balance;
 	}
 
@@ -208,10 +207,10 @@
 	}
 
 	.plan-features {
-		@apply text-small;
-
 		flex: 1 1 auto;
 		margin-bottom: var(--size-20);
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
 	}
 
 	.icon-select {
@@ -238,16 +237,14 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-24);
-
-		/* max-width: 480px; */
 		margin-inline-start: auto;
 	}
 
 	.form-message {
-		@apply text-small;
-
 		width: fit-content;
 		margin-inline-start: auto;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
 	}
 </style>
 
@@ -270,7 +267,7 @@
 			<div class="pricing">
 				<div
 					class="selectable focusable"
-					{...themeVariant('error', isNonEmptyString(error))}
+					class:variant-error={isNonEmptyString(error)}
 				>
 					<input
 						id="plan-basic"
@@ -300,7 +297,7 @@
 				</div>
 				<div
 					class="selectable focusable"
-					{...themeVariant('error', isNonEmptyString(error))}
+					class:variant-error={isNonEmptyString(error)}
 				>
 					<input
 						id="plan-advanced"
@@ -330,7 +327,7 @@
 				</div>
 				<div
 					class="selectable focusable"
-					{...themeVariant('error', isNonEmptyString(error))}
+					class:variant-error={isNonEmptyString(error)}
 				>
 					<input
 						id="plan-monthly"
@@ -406,8 +403,8 @@
 				I will review your request and
 				get back to you within 3 business days.
 			</p>
-			<p class="text-small text-yellow-400
-				dark:text-yellow-100 text-balance">
+			<p class="text-small color-yellow-400
+				dark:color-yellow-100 wrap-balance">
 				I respect your privacy.
 				Your information will not be shared with third parties.
 			</p>

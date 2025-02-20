@@ -41,6 +41,7 @@
 <style lang="postcss">
 	dialog {
 		inset: 0;
+		max-width: 102ch;
 		margin: auto;
 		color: inherit;
 		background-color: var(--color-background);

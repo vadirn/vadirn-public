@@ -451,6 +451,9 @@ importers:
       postcss-import:
         specifier: 16.1.0
         version: 16.1.0(postcss@8.5.3)
+      postcss-nesting:
+        specifier: 13.0.1
+        version: 13.0.1(postcss@8.5.3)
       postcss-preset-env:
         specifier: 10.1.4
         version: 10.1.4(postcss@8.5.3)

@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { sizeVariant, themeVariant } from '@ui/theme';
 	import type { Snippet } from 'svelte';
 	import type { HTMLButtonAttributes } from 'svelte/elements';
 
@@ -29,19 +28,19 @@
 		cursor: default;
 		border: none;
 		border-radius: var(--radius-full);
+	}
 
-		&[data-size='small'] {
-			min-height: var(--size-24);
-			padding-inline: var(--size-8);
-		}
+	.small {
+		min-height: var(--size-24);
+		padding-inline: var(--size-8);
 	}
 </style>
 
 <button
 	class={[className, 'interactive']}
+	class:small={size === 'small'}
+	class:variant-primary={props.type === 'submit'}
 	{...props}
-	{...themeVariant('primary', props.type === 'submit')}
-	{...sizeVariant(size)}
 >
 	{@render children?.()}
 </button>

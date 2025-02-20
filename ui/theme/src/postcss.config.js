@@ -1,9 +1,9 @@
 import postcssGlobalData from '@csstools/postcss-global-data';
+import { purgeCSSPlugin } from '@fullhuman/postcss-purgecss';
 import { monorepo } from '@tools/monorepo';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssPresetEnv from 'postcss-preset-env';
-import { purgeCSSPlugin } from '@fullhuman/postcss-purgecss';
 import { svelteExtractor } from './postcss/svelteExtractor.js';
 
 export function postcssConfig() {
@@ -43,7 +43,7 @@ export function postcssConfig() {
 						{
 							extensions: ['.svelte'],
 							extractor: svelteExtractor,
-						}
+						},
 					],
 					sourceMap: true,
 				}).OnceExit(root, { result });
