@@ -1,4 +1,5 @@
 <script lang="ts" >
+	import { isNonEmptyString } from '@libs/standard/string';
 	import CustomField from './Custom.svelte';
 	import type { FieldProps } from './types';
 
@@ -24,8 +25,16 @@
 </script>
 
 <style lang="postcss">
-	.has-error {
-		@apply bg-red-50 dark:bg-red-800 focus-visible:ring-red-400;
+	textarea.variant-error {
+		background-color: var(--color-red-50);
+
+		:global(.dark) & {
+			background-color: var(--color-red-800);
+		}
+
+		&:focus-visible {
+			outline-color: var(--color-red-400);
+		}
 	}
 </style>
 
@@ -39,7 +48,7 @@
 		<textarea
 			{id}
 			{name}
-			class:has-error={error}
+			class:variant-error={isNonEmptyString(error)}
 			aria-describedby={describedBy}
 			{autocomplete}
 			{disabled}

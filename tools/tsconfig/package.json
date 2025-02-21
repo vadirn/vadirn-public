@@ -3,5 +3,8 @@
 	"type": "module",
 	"exports": {
 		"./base.json": "./src/base.json"
+	},
+	"devDependencies": {
+		"@types/node": "22.13.4"
 	}
 }

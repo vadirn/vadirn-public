@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { sleep } from '@libs/standard/promise';
 	import { stateController } from '@libs/state-controller';
+	import { Button } from '@ui/components/button';
 
 	let clicks = $state(0);
 
@@ -36,19 +37,40 @@
 	}[buttonController.state]);
 </script>
 
-<div class="flex items-center gap-16">
-	<button
-		class="min-w-fit w-[240px]"
+<style lang="postcss">
+	.root {
+		display: flex;
+		gap: var(--size-16);
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: var(--line-height);
+	}
+
+	:local(.button) {
+		width: 160px;
+	}
+
+	.stats {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-4);
+		margin: 0;
+	}
+</style>
+
+<div class="root">
+	<Button
+		class={__styles().button}
 		onclick={buttonController.click}
 	>
 		{label}
-	</button>
-	<ul class="text-small font-mono p-8 border-l border-neutral-400">
+	</Button>
+	<ul class="stats">
 		<li>State:
 			<span
-				class:text-green-400={buttonController.state === 'success'}
-				class:text-red-400={buttonController.state === 'error'}
-				class:text-yellow-400={buttonController.state === 'loading'}>
+				class:color-green-400={buttonController.state === 'success'}
+				class:color-red-400={buttonController.state === 'error'}
+				class:color-yellow-400={buttonController.state === 'loading'}>
 				{buttonController.state}
 			</span>
 		</li>

@@ -1,24 +1,24 @@
 {
 	"name": "@ui/theme",
 	"exports": {
-		"./uno": "./src/uno.config.ts",
-		"./postcss": "./src/postcss.config.js",
-		"./vite": "./src/vite-plugin.js",
-		"./css": "./src/css/index.css"
+		".": "./src/index.ts",
+		"./css": "./src/css/index.css",
+		"./postcss": "./src/postcss.config.js"
 	},
 	"scripts": {},
 	"type": "module",
 	"devDependencies": {
+		"@csstools/postcss-global-data": "3.0.0",
+		"@fullhuman/postcss-purgecss": "7.0.2",
 		"@libs/standard": "workspace:*",
 		"@tools/eslint": "workspace:*",
+		"@tools/monorepo": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"@unocss/extractor-svelte": "0.65.3",
-		"@unocss/postcss": "0.65.3",
-		"@unocss/preset-mini": "0.65.3",
-		"postcss": "8.4.49",
+		"estree-walker": "3.0.3",
+		"postcss": "8.5.3",
 		"postcss-import": "16.1.0",
-		"postcss-preset-env": "10.1.2",
-		"unocss": "0.65.3"
+		"postcss-preset-env": "10.1.4",
+		"svelte": "5.20.2"
 	}
 }

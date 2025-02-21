@@ -6,11 +6,13 @@
 </script>
 
 <style lang="postcss">
-	div {
-		@apply mt-24 color-neutral-500 font-italic;
+	.root {
+		margin-bottom: var(--size-24);
+		font-style: italic;
+		color: var(--color-neutral-500);
 	}
 </style>
 
-<div>
+<div class="root">
 	Something to read next: <a href={getNotePath(title)}>{title}</a>
 </div>

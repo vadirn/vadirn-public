@@ -10,37 +10,96 @@
 </script>
 
 <style lang="postcss">
-	.split {
-		@apply h-svh grid grid-cols-2;
+	.root {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns:
+			[left-column-start]
+			1fr
+			[left-column-end right-column-start]
+			1fr
+			[right-column-end];
+		height: 100svh;
+	}
 
-		grid-auto-rows: minmax(0, 1fr);
+	.left-column {
+		grid-column: left-column;
 	}
 
 	.center {
-		@apply flex flex-col items-center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 
-	.docs-container {
-		@apply flex flex-col h-full;
+	.right-column {
+		display: flex;
+		flex-direction: column;
+		grid-column: right-column;
+		padding: var(--size-24);
+		overflow-x: scroll;
+		overscroll-behavior: contain;
+		background-color: var(--color-grey-50);
 
-		background-color: oklch(from var(--color-grey-100) l c h / 40%);
+		:global(.dark) & {
+			background-color: var(--color-grey-700);
+		}
 	}
 
 	.docs {
-		@apply grid gap-24 p-inline-16 py-24 overflow-y-scroll m-y-auto;
+		--line-height: var(--line-height-body);
 
-		grid-auto-rows: min-content;
-		justify-items: start;
-		overscroll-behavior: contain;
+		max-width: min(720px, 100%);
 
-		& :global(*) {
-			max-width: min(720px, 100%);
+		:global(p), :global(ul), :global(table), :global(h1), :global(h2) {
+			margin-bottom: var(--line-height);
+		}
+
+		:global(h1) {
+			font-size: var(--font-size-title);
+			font-weight: var(--font-weight-bold);
+			line-height: var(--line-height-title);
+			letter-spacing: var(--letter-spacing-tight);
+		}
+
+		:global(h2) {
+			font-size: var(--font-size-heading);
+			font-weight: var(--font-weight-bold);
+			line-height: var(--line-height-heading);
+		}
+
+		:global(ul) {
+			padding-left: var(--size-24);
+			list-style-type: disc;
+		}
+
+		:global(pre) {
+			width: 100%;
+			padding: var(--size-8);
+			margin-bottom: var(--line-height);
+			overflow-x: scroll;
+			overscroll-behavior-x: contain;
+			background-color: var(--color-grey-100);
+			border-radius: var(--radius-8);
+		}
+
+		:global(pre code) {
+			display: block;
+			width: max-content;
+			padding-inline-end: var(--size-4);
+			font-size: var(--font-size-mono);
+			line-height: var(--line-height-body);
+			color: var(--color-black);
+
+			@media (--gt-tablet) {
+				margin-bottom: 0;
+			}
 		}
 	}
 </style>
 
-<div class="split">
-	<div class:center={position === 'center'}>
+<div class="root">
+	<div class="left-column" class:center={position === 'center'}>
 		<div class="flex-auto"></div>
 		<div class="flex-none max-w-full">
 			{@render component?.()}
@@ -48,8 +107,8 @@
 		<div class="flex-auto"></div>
 	</div>
 	{#if docs}
-		<div class="docs-container">
-			<div class="note docs">
+		<div class="right-column">
+			<div class="docs">
 				{@render docs()}
 			</div>
 		</div>

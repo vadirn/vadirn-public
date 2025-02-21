@@ -1,0 +1,54 @@
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+:where(*) {
+	padding: 0;
+	margin: 0;
+}
+
+:where(img, picture, video, canvas, svg) {
+	display: block;
+	max-inline-size: 100%;
+}
+
+:where(input, button, textarea, select) {
+	all: unset;
+	box-sizing: border-box;
+	font: inherit;
+	color: inherit;
+	word-spacing: inherit;
+	letter-spacing: inherit;
+}
+
+:where(p, h1, h2, h3, h4, h5, h6) {
+	font: inherit;
+	overflow-wrap: break-word;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+	text-wrap: balance;
+}	
+
+:where(ol, ul) {
+	list-style: none;
+}
+
+:where(blockquote, q) {
+	quotes: none;
+}
+
+:where(blockquote)::before, 
+:where(blockquote)::after, 
+:where(q)::before, 
+:where(q)::after {
+	content: '';
+	content: none;
+}
+
+:where(table) {
+	border-spacing: 0;
+	border-collapse: collapse;
+}

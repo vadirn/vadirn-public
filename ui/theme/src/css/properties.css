@@ -1,0 +1,176 @@
+:root {
+	/* Colors */
+	--color-white: oklch(100% 0 0);
+	--color-black: oklch(0% 0 0);
+	--color-grey-50: oklch(96% 0 0);
+	--color-grey-100: oklch(90% 0 0);
+	--color-grey-200: oklch(81.25% 0 0);
+	--color-grey-300: oklch(72.5% 0 0);
+	--color-grey-400: oklch(63.75% 0 0);
+	--color-grey-500: oklch(55% 0 0);
+	--color-grey-600: oklch(46.25% 0 0);
+	--color-grey-700: oklch(37.5% 0 0);
+	--color-grey-800: oklch(28.75% 0 0);
+	--color-grey-900: oklch(20% 0 0);
+	--color-red-50: oklch(96% 0.01 31);
+	--color-red-100: oklch(90% 0.05 31);
+	--color-red-200: oklch(81.25% 0.1 31);
+	--color-red-300: oklch(72.5% 0.16 31);
+	--color-red-400: oklch(63.75% 0.16 31);
+	--color-red-500: oklch(55% 0.16 31);
+	--color-red-600: oklch(46.25% 0.16 31);
+	--color-red-700: oklch(37.5% 0.14 31);
+	--color-red-800: oklch(28.75% 0.11 31);
+	--color-red-900: oklch(20% 0.07 31);
+	--color-yellow-50: oklch(96% 0.07 86);
+	--color-yellow-100: oklch(90% 0.11 86);
+	--color-yellow-200: oklch(81.25% 0.16 86);
+	--color-yellow-300: oklch(72.5% 0.14 86);
+	--color-yellow-400: oklch(63.75% 0.13 86);
+	--color-yellow-500: oklch(55% 0.11 86);
+	--color-yellow-600: oklch(46.25% 0.09 86);
+	--color-yellow-700: oklch(37.5% 0.07 86);
+	--color-yellow-800: oklch(28.75% 0.05 86);
+	--color-yellow-900: oklch(20% 0.04 86);
+	--color-green-100: oklch(90% 0.13 130);
+	--color-green-200: oklch(81.25% 0.13 130);
+	--color-green-300: oklch(72.5% 0.13 130);
+	--color-green-400: oklch(63.75% 0.13 130);
+	--color-green-500: oklch(55% 0.13 130);
+	--color-green-600: oklch(46.25% 0.12 130);
+	--color-green-700: oklch(37.5% 0.1 130);
+	--color-green-800: oklch(28.75% 0.07 130);
+	--color-green-900: oklch(20% 0.05 130);
+	--color-blue-100: oklch(90% 0.05 245);
+	--color-blue-200: oklch(81.25% 0.1 245);
+	--color-blue-300: oklch(72.5% 0.13 245);
+	--color-blue-400: oklch(63.75% 0.13 245);
+	--color-blue-500: oklch(55% 0.13 245);
+	--color-blue-600: oklch(46.25% 0.11 245);
+	--color-blue-700: oklch(37.5% 0.09 245);
+	--color-blue-800: oklch(28.75% 0.07 245);
+	--color-blue-900: oklch(20% 0.05 245);
+
+	/* Semantic Colors */
+	--color-neutral-100: var(--color-grey-100);
+	--color-neutral-200: var(--color-grey-200);
+	--color-neutral-300: var(--color-grey-300);
+	--color-neutral-400: var(--color-grey-400);
+	--color-neutral-500: var(--color-grey-500);
+	--color-neutral-600: var(--color-grey-600);
+	--color-neutral-700: var(--color-grey-700);
+	--color-neutral-800: var(--color-grey-800);
+	--color-neutral-900: var(--color-grey-900);
+	--color-background: var(--color-white);
+	--color-foreground: var(--color-black);
+
+	/* Sizes */
+	--size-0: 0;
+	--size-1: 0.0625rem;
+	--size-2: 0.125rem;
+	--size-4: 0.25rem;
+	--size-8: 0.5rem;
+	--size-16: 1rem;
+	--size-20: 1.25rem;
+	--size-24: 1.5rem;
+	--size-32: 2rem;
+	--size-40: 2.5rem;
+	--size-48: 3rem;
+	--size-56: 3.5rem;
+	--size-64: 4rem;
+	--size-72: 4.5rem;
+	--size-80: 5rem;
+	--size-96: 6rem;
+	--size-128: 8rem;
+	--size-144: 9rem;
+	--size-192: 12rem;
+	--size-prose: 65ch;
+	--size-full: 100%;
+
+	/* Radii */
+	--radius-none: 0;
+	--radius-4: 0.25rem;
+	--radius-8: 0.5rem;
+	--radius-12: 0.75rem;
+	--radius-16: 1rem;
+	--radius-full: 9999px;
+
+	/** Lines **/
+	--line-width-none: 0;
+	/* stylelint-disable-next-line number-max-precision */
+	--line-width-thin: 0.03125rem;
+	--line-width-1: 0.0625rem;
+	--line-width-2: 0.125rem;
+	--line-width-8: 0.5rem;
+	--border-thin: var(--line-width-thin) solid var(--border-color, currentColor);
+	--border-1: var(--line-width-1) solid var(--border-color, currentColor);
+	--border-2: var(--line-width-2) solid var(--border-color, currentColor);
+	--border-8: var(--line-width-8) solid var(--border-color, currentColor);
+
+	/* Shadows */
+	--shadow-modal: 0 10px 15px -3px oklch(0% 0 0 / 20%),
+		0 4px 6px -4px oklch(0% 0 0 / 40%);
+
+	/* Typography */
+	--font-sans: 
+		'Inter',
+		'ui-sans-serif',
+		'system-ui',
+		'sans-serif',
+		'Apple Color Emoji',
+		'Segoe UI Emoji',
+		'Segoe UI Symbol', 'Noto Color Emoji';
+	--font-mono: 
+		'ui-monospace',
+		'sfmono-regular',
+		'menlo',
+		'monaco',
+		'consolas',
+		'Liberation Mono',
+		'Courier New', 
+		'monospace';
+	--font-size-title: 2.125rem;
+	--font-size-heading: 1.25rem;
+	--font-size-body: 1rem;
+	--font-size-mono: 0.875rem;
+	--font-size-small: 0.75rem;
+	--line-height-title: 2.5rem;
+	--line-height-heading: 1.5rem;
+	--line-height-body: 1.25rem;
+	--line-height-small: 1rem;
+	--font-weight-100: 100;
+	--font-weight-200: 200;
+	--font-weight-300: 300;
+	--font-weight-400: 400;
+	--font-weight-500: 500;
+	--font-weight-600: 600;
+	--font-weight-700: 700;
+	--font-weight-800: 800;
+	--font-weight-900: 900;
+	--font-weight-thin: 100;
+	--font-weight-extralight: 200;
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--font-weight-extrabold: 800;
+	--font-weight-black: 900;
+	--letter-spacing-tight: -0.01em;
+	--letter-spacing-normal: 0;
+	--letter-spacing-wide: 0.01em;
+}
+
+.dark {
+	--color-neutral-100: var(--color-grey-900);
+	--color-neutral-200: var(--color-grey-800);
+	--color-neutral-300: var(--color-grey-700);
+	--color-neutral-400: var(--color-grey-600);
+	--color-neutral-500: var(--color-grey-500);
+	--color-neutral-600: var(--color-grey-400);
+	--color-neutral-700: var(--color-grey-300);
+	--color-neutral-800: var(--color-grey-200);
+	--color-neutral-900: var(--color-grey-100);
+	--color-background: var(--color-grey-900);
+	--color-foreground: var(--color-white);
+}

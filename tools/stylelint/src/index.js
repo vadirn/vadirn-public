@@ -14,17 +14,10 @@ export default {
 		'@stylistic/indentation': 'tab',
 		'@stylistic/max-line-length': 80,
 		'import-notation': null,
-		'at-rule-no-unknown': [true,
+		'at-rule-no-deprecated': [true,
 			{
 				ignoreAtRules: [
-					'unocss',
-					'tailwind',
 					'apply',
-					'layer',
-					'config',
-					'theme',
-					'variant',
-					'screen',
 				],
 			}],
 		'function-no-unknown': [true,
@@ -40,6 +33,15 @@ export default {
 					'local',
 				],
 			}],
+		'selector-class-pattern': [
+			'^([a-z][a-z0-9]*)(-[a-z0-9]+)*$|^[a-z]+:([a-z][a-z0-9]*)(-[a-z0-9]+)*$',
+			{
+				message:
+					selector => `Expected class selector "${selector}" `
+						+ `to be kebab-case or `
+						+ `prefixed with a valid prefix`,
+			},
+		],
 		'custom-property-pattern': null,
 		'hue-degree-notation': null,
 		'gamut/color-no-out-gamut-range': true,

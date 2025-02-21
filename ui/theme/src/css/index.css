@@ -1,4 +1,4 @@
-@import './uno.css';
+@import './reset.css';
+@import './properties.css';
 @import './defaults.css';
-@import './form.css';
-@import './notes.css';
+@import './utilities.css';

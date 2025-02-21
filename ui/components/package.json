@@ -3,6 +3,7 @@
 	"exports": {
 		"./logo": "./src/content/Logo/index.ts",
 		"./navigation": "./src/content/Navigation/index.ts",
+		"./button": "./src/forms/Button/index.ts",
 		"./field": "./src/forms/Field/index.ts",
 		"./modal": "./src/overlays/Modal/index.ts",
 		"./meta": "./src/utils/Meta/index.ts",
@@ -17,14 +18,13 @@
 		"@tools/eslint": "workspace:*",
 		"@tools/stylelint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"svelte": "5.16.0",
-		"svelte-check": "4.1.1"
-	},
-	"dependencies": {
+		"svelte": "5.20.2",
+		"svelte-check": "4.1.4",
 		"@libs/runes": "workspace:*",
 		"@libs/shortcuts": "workspace:*",
 		"@libs/standard": "workspace:*",
 		"@libs/state-controller": "workspace:*",
-		"@ui/actions": "workspace:*"
+		"@ui/actions": "workspace:*",
+		"@ui/theme": "workspace:*"
 	}
 }

@@ -1,50 +1,76 @@
 body {
-	@apply min-h-svh w-full text-black bg-white 
-		dark:text-white dark:bg-black 
-		text-body font-sans;
-	
+	min-height: 100svh;
 	overflow: scroll;
+	font-family: var(--font-sans);
+	font-size: var(--font-size-body);
+	line-height: var(--line-height-body);
+	color: var(--color-black);
+	background-color: var(--color-white);
 
-	@supports (scrollbar-gutter: stable) {
+	@supports (scrollbar-gutter: stable)  {
 		overflow: auto;
 		scrollbar-gutter: stable;
+		
 	}
 }
 
-#modals {
-	@apply hidden p-4 lg:p-24;
-
-	&:has(*) {
-		@apply flex flex-col fixed inset-0
-			items-center overflow-y-scroll;
-
-		background: oklch(from var(--color-grey-900) l c h / 60%);
-
-		.dark & {
-			background: oklch(from var(--color-grey-800) l c h / 90%);
-		}
+.dark {
+	body {
+		color: var(--color-white);
+		background-color: var(--color-black);
 	}
-}
 
-code {
-	@apply font-mono font-size-mono line-height-body;
+	.shiki, .shiki span {
+		color: var(--shiki-dark) !important;
+		background-color: var(--color-grey-800) !important;
+	}
 }
 
 a {
-	@apply text-current underline underline-offset-2 decoration-thin;
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: var(--line-width-thin);
+	text-decoration-style: solid;
+	text-decoration-color: inherit;
+	text-underline-offset: var(--size-2);
+	cursor: pointer;
+	border-radius: var(--radius-4);
 
 	&:hover {
-		@apply opacity-60;
+		opacity: 0.6;
 	}
 }
 
 b {
-	@apply font-bold;
+	font-weight: var(--font-weight-bold);
 }
 
-.dark {
-	.shiki, .shiki span {
-		color: var(--shiki-dark) !important;
-		background-color: var(--shiki-dark-bg) !important;  
+code {
+	font-family: var(--font-mono);
+	font-size: var(--font-size-mono);
+	line-height: var(--line-height-body);
+}
+
+/** Interactive */
+textarea {
+	min-height: calc(2em + var(--size-4));
+	padding-right: var(--size-8);
+	padding-left: var(--size-8);
+	resize: vertical;
+}
+
+input:not([type="checkbox"], [type="radio"]), textarea {
+	width: 100%;
+	padding: var(--size-8) var(--size-16);
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	background-color: var(--color-grey-50);
+	border: none;
+	border-radius: var(--radius-4);
+	
+	.dark & {
+		color: var(--color-white);
+		background-color: var(--color-grey-800);
 	}
 }

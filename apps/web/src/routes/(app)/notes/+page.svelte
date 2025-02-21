@@ -3,15 +3,18 @@
 </script>
 
 <style lang="postcss">
-	ul {
-		@apply list-disc;
+	.page-title {
+		font-size: var(--font-size-heading);
+		line-height: var(--line-height-heading);
+	}
 
-		grid-column: 3 / span 2;
+	ul {
+		list-style-type: disc;
 	}
 </style>
 
-<h1>Notes</h1>
-<ul>
+<h1 class="page-title">Notes</h1>
+<ul class="flex flex-col gap-4">
 	{#each notes as title}
 		<li>
 			<a href={getNotePath(title)}>{title}</a>

@@ -5,14 +5,14 @@
 </script>
 
 <style lang="postcss">
-	a {
-		@apply text-heading font-bold;
-
+	.text-heading {
+		font-weight: var(--font-weight-bold);
 		text-decoration-line: none;
 	}
 
 	figure {
-		@apply inline-block w-32;
+		display: inline-block;
+		width: var(--size-32);
 	}
 
 	.code {
@@ -85,7 +85,7 @@
 	}
 </style>
 
-<a href='/'><figure
+<a class='text-heading' href='/'><figure
 	class:ball={logoState.index === 2}
 	class:code={logoState.index === 0}
 	class:game={logoState.index === 3}

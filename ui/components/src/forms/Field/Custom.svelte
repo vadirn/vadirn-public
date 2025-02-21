@@ -65,24 +65,26 @@
 
 <style lang="postcss">
 	label {
-		@apply block mb-8 flex-auto;
+		display: block;
+		flex: auto;
+		margin-bottom: var(--size-8);
 	}
 
 	.required::after {
-		@apply text-red-400;
-
+		color: var(--color-red-400);
 		content: ' * ';
 	}
 
 	.error {
-		@apply text-red-400 text-small mb-8;
+		margin-bottom: var(--size-8);
+		color: var(--color-red-400);
 	}
 </style>
 
 <div bind:this={element} class={className}>
-	<div class="flex items-end gap-8">
+	<div class="flex flex-end gap-8">
 		<label class:required for="input-{name}">{label}</label>
-		<span id="input-{name}-error" class="error" aria-live="polite">
+		<span id="input-{name}-error" class="error text-small" aria-live="polite">
 			{error}
 		</span>
 	</div>

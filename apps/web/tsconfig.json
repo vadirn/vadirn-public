@@ -25,6 +25,9 @@
 	],
 	"references": [
 		{
+			"path": "../../core/database"
+		},
+		{
 			"path": "../../libs/routing"
 		},
 		{

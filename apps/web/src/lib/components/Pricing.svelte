@@ -2,8 +2,10 @@
 	import { PersistedState } from '@libs/runes/persisted-state';
 	import { preventDefault } from '@libs/standard/dom';
 	import { noop, type Fn } from '@libs/standard/function';
-	import { Field } from '@ui/components/field';
+	import { isNonEmptyString } from '@libs/standard/string';
 	import { attachMethods } from '@libs/state-controller';
+	import { Button } from '@ui/components/button';
+	import { Field } from '@ui/components/field';
 	import { tick } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 	import type { ContactFormData } from '@domain/all/contact-form';
@@ -11,7 +13,7 @@
 
 	type Props = {
 		labelledby: string;
-		setModalVisibility?: Fn<void, [Event, boolean]>;
+		setModalVisibility?: Fn<void, [boolean]>;
 		setModalScroll?: Fn<void, [number]>;
 	};
 
@@ -21,7 +23,7 @@
 		setModalScroll = noop,
 	}: Props = $props();
 
-	const closeModal = (event: Event) => setModalVisibility(event, false);
+	const closeModal = () => setModalVisibility(false);
 
 	const FormStates = {
 		Idle: 'idle',
@@ -104,7 +106,7 @@
 							// clean up fields when done
 							instance.resetFields();
 							instance.resetMessage();
-							closeModal(event);
+							closeModal();
 						},
 					};
 				},
@@ -153,85 +155,96 @@
 
 <style lang="postcss">
 	.modal {
-		@apply p-16 pb-24 bg-background rounded-8 shadow-modal;
+		padding: var(--size-16) var(--size-16) var(--size-24);
 	}
 
 	.pricing {
-		@apply flex flex-col gap-16 mb-24;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-16);
+		margin-bottom: var(--size-24);
 
-		@screen lg {
-			@apply flex-row;
+		@media (--gt-tablet) {
+			flex-direction: row;
 		}
 
 		div {
-			@apply relative flex items-stretch;
-
+			position: relative;
+			display: flex;
+			align-items: stretch;
 			min-width: 200px;
 		}
 	}
 
 	h2 {
-		@apply text-heading font-bold;
-
+		font-size: var(--font-size-heading);
+		font-weight: var(--font-weight-bold);
+		line-height: var(--line-height-heading);
 		text-wrap: balance;
 	}
 
-	.plan-radio {
-		@apply absolute opacity-0;
+	input[type='radio'] {
+		position: absolute;
+		opacity: 0;
 	}
 
-	.plan-label {
-		@apply flex flex-auto flex-col p-16 pt-8 rounded-4 selectable;
-
-		&.has-error {
-			@apply bg-red-50 hover:bg-red-100
-				dark:bg-red-800 dark:hover:bg-red-900 focus-visible:ring-red-400;
-		}
-	}
-
-	.plan-radio:checked + .plan-label {
-		@apply selected;
+	.selectable {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		padding: var(--size-8) var(--size-16) var(--size-16);
+		border-radius: var(--radius-4);
 	}
 
 	.plan-title {
-		@apply flex gap-8 items-center min-h-40 mb-20 font-bold;
-
-		white-space: balance;
+		display: flex;
+		gap: var(--size-8);
+		align-items: center;
+		min-height: var(--size-40);
+		margin-bottom: var(--size-20);
+		font-weight: var(--font-weight-bold);
+		text-wrap: balance;
 	}
 
 	.plan-features {
-		@apply flex-auto mb-20 text-small;
+		flex: 1 1 auto;
+		margin-bottom: var(--size-20);
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
 	}
 
 	.icon-select {
-		@apply relative block w-16 h-16 border-1
-			border-solid border-current rounded-full;
+		position: relative;
+		display: block;
+		width: var(--size-16);
+		height: var(--size-16);
+		border: var(--line-width-1) solid currentcolor;
+		border-radius: var(--radius-full);
 	}
 
-	.plan-radio:checked + .plan-label .icon-select {
+	.selectable:has(:checked) .icon-select {
 		&::before {
-			@apply block absolute inset-[3px] bg-current rounded-full;
-
+			position: absolute;
+			inset: 3px;
+			display: block;
 			content: '';
+			background-color: currentcolor;
+			border-radius: var(--radius-full);
 		}
 	}
 
-	.plan-radio:focus-visible + .plan-label,
-	:global(.focus-visible) .plan-radio:focus + .plan-label {
-		@apply ring-2 ring-offset-2 ring-blue-400 ring-offset-background;
-	}
-
 	.fields {
-		@apply flex flex-col gap-24;
-
-		/* max-width: 480px; */
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-24);
 		margin-inline-start: auto;
 	}
 
 	.form-message {
-		@apply text-small w-fit;
-
+		width: fit-content;
 		margin-inline-start: auto;
+		font-size: var(--font-size-small);
+		line-height: var(--line-height-small);
 	}
 </style>
 
@@ -252,11 +265,13 @@
 	>
 		{#snippet input({ error, onInput, onInvalid })}
 			<div class="pricing">
-				<div>
+				<div
+					class="selectable focusable"
+					class:variant-error={isNonEmptyString(error)}
+				>
 					<input
 						id="plan-basic"
 						name="plan"
-						class="plan-radio"
 						{disabled}
 						required
 						type="radio"
@@ -265,7 +280,7 @@
 						oninput={onInput}
 						oninvalid={onInvalid}
 					/>
-					<label class="plan-label" class:has-error={error} for="plan-basic">
+					<label class="plan-label" for="plan-basic">
 						<h3 class="plan-title">
 							<i class="icon-select"></i>
 							Basic Consult
@@ -280,11 +295,13 @@
 						<p class="plan-price">$5,000 - $15,000</p>
 					</label>
 				</div>
-				<div>
+				<div
+					class="selectable focusable"
+					class:variant-error={isNonEmptyString(error)}
+				>
 					<input
 						id="plan-advanced"
 						name="plan"
-						class="plan-radio"
 						{disabled}
 						required
 						type="radio"
@@ -293,7 +310,7 @@
 						oninput={onInput}
 						oninvalid={preventDefault}
 					/>
-					<label class="plan-label" class:has-error={error} for="plan-advanced">
+					<label class="plan-label" for="plan-advanced">
 						<h3 class="plan-title">
 							<i class="icon-select"></i>
 							Legacy Revamp
@@ -308,11 +325,13 @@
 						<p class="plan-price">$20,000 - $50,000+</p>
 					</label>
 				</div>
-				<div>
+				<div
+					class="selectable focusable"
+					class:variant-error={isNonEmptyString(error)}
+				>
 					<input
 						id="plan-monthly"
 						name="plan"
-						class="plan-radio"
 						{disabled}
 						required
 						type="radio"
@@ -321,7 +340,7 @@
 						oninput={onInput}
 						oninvalid={preventDefault}
 					/>
-					<label class="plan-label" class:has-error={error} for="plan-monthly">
+					<label class="plan-label" for="plan-monthly">
 						<h3 class="plan-title">
 							<i class="icon-select"></i>
 							Continuous Consult
@@ -384,8 +403,8 @@
 				I will review your request and
 				get back to you within 3 business days.
 			</p>
-			<p class="text-small text-yellow-400
-				dark:text-yellow-100 text-balance">
+			<p class="text-small color-yellow-400
+				dark:color-yellow-100 wrap-balance">
 				I respect your privacy.
 				Your information will not be shared with third parties.
 			</p>
@@ -393,34 +412,34 @@
 		{#if formController.message}
 			<p
 				class="form-message"
-				class:text-green-400={formController.state === FormStates.Success}
-				class:text-red-400={formController.state === FormStates.Error}
+				class:color-green-400={formController.state === FormStates.Success}
+				class:color-red-400={formController.state === FormStates.Error}
 			>
 				{formController.message}
 			</p>
 		{/if}
 		<div class="flex flex-row-reverse gap-16">
-			<button
+			<Button
 				type="submit"
 				onclick={formController.submit}
 			>
 				{submitLabel}
-			</button>
+			</Button>
 			{#if formController.state !== FormStates.Success}
-				<button
+				<Button
 					type="button"
 					onclick={closeModal}
 				>
 					Cancel
-				</button>
+				</Button>
 			{/if}
 			<div class="flex-auto"></div>
-			<button
+			<Button
 				type="reset"
 				onclick={formController.reset}
 			>
 				Start over
-			</button>
+			</Button>
 		</div>
 	</div>
 </form>
