@@ -16,6 +16,7 @@
 
 	main {
 		flex: 1 1 auto;
+		tab-size: 4;
 		border-left: var(--line-width-1) solid var(--color-grey-300);
 	}
 

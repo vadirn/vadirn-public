@@ -81,7 +81,7 @@
 		line-height: var(--line-height-small);
 		color: var(--color-black);
 		border-collapse: collapse;
-		background-color: var(--color-grey-100);
+		background-color: var(--color-grey-50);
 		border: var(--table-border);
 	}
 

@@ -31,11 +31,8 @@ export function postcssConfig() {
 
 				return purgeCSSPlugin({
 					content: [
-						'**/*.svelte',
-						'**/*.html',
-						'**/*.md',
-						'**/*.js',
-						'**/*.ts',
+						monorepo.ui('components/src/**/*.{svelte,html,md,js,ts}'),
+						monorepo.apps('web/src/**/*.{svelte,html,md,js,ts}'),
 					],
 					safelist: [/^(?!\.)\w+$/],
 					defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
