@@ -8,7 +8,7 @@
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"svelte": "5.20.2"
+		"svelte": "5.20.4"
 	},
 	"dependencies": {
 		"@libs/standard": "workspace:*"
