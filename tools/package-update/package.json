@@ -7,6 +7,7 @@
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",
 		"@tools/jsconfig": "workspace:*",
-		"@tools/monorepo": "workspace:*"
+		"@tools/monorepo": "workspace:*",
+		"chalk": "5.4.1"
 	}
 }

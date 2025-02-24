@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { monorepo } from '@tools/monorepo';
+import chalk from 'chalk';
 import {
 	getLatestVersion,
 	getPackageDependencies,
@@ -8,6 +9,8 @@ import {
 } from './dependencies.js';
 import { awaitYesNoInput, closeReadline } from './interaction.js';
 import { findPackages } from './packages.js';
+
+const write = (...args) => process.stdout.write(...args);
 
 async function main() {
 	const cachedAnswers = {};
@@ -22,10 +25,12 @@ async function main() {
 		monorepo.libs(),
 	];
 
-	process.stdout.write('Looking for packages in workspace directories:\n');
+	write('Looking for packages in workspace directories:\n');
 	for (const folder of directories) {
-		process.stdout.write(`- ${folder}\n`);
+		write(`\t- ${chalk.green(folder)}\n`);
 	}
+
+	write('\n');
 
 	const packages = await findPackages(...directories);
 
@@ -36,16 +41,23 @@ async function main() {
 			devDependencies,
 		} = await getPackageDependencies(pkg);
 
-		process.stdout.write(`Checking ${name}...\n`);
+		write(`Checking package ${chalk.green(name)}...\n`);
 
 		const patch = await getUpdatePatch(dependencies ?? {}, cachedAnswers);
 		const devPatch = await getUpdatePatch(devDependencies ?? {}, cachedAnswers);
+
+		const updatedDependenciesCount
+			= Object.keys(patch).length + Object.keys(devPatch).length;
 
 		if (Object.keys(patch).length > 0 || Object.keys(devPatch).length > 0) {
 			await writeUpdatedDependencies(pkg, {
 				dependencies: patch,
 				devDependencies: devPatch,
 			});
+		}
+
+		if (updatedDependenciesCount > 0) {
+			write('\n');
 		}
 	}
 
@@ -61,8 +73,14 @@ async function getUpdatePatch(dependencies, cachedAnswers) {
 		const cachedVersion = cachedAnswers[name];
 
 		if (cachedVersion) {
-			process.stdout.write(
-				`Updating ${name} from ${version} to ${cachedVersion}\n`,
+			write(
+				'\t- Auto-updating '
+				+ chalk.green(name)
+				+ ' from '
+				+ chalk.yellow(version)
+				+ ' to '
+				+ chalk.green(cachedVersion)
+				+ '\n',
 			);
 			patch[name] = cachedVersion;
 			continue;
@@ -73,7 +91,13 @@ async function getUpdatePatch(dependencies, cachedAnswers) {
 		if (version === latestVersion) continue;
 
 		const shouldUpdate = await awaitYesNoInput(
-			`Update ${name} from ${version} to ${latestVersion}?`,
+			'\t- Update '
+			+ chalk.green(name)
+			+ ' from '
+			+ chalk.yellow(version)
+			+ ' to '
+			+ chalk.green(latestVersion)
+			+ '?',
 		);
 
 		if (shouldUpdate) {
