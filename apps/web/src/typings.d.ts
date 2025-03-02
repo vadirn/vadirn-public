@@ -1,5 +1,7 @@
 declare module '*.md' {
-	export { SvelteComponentDev as default } from 'svelte/internal';
+	import { SvelteComponent } from 'svelte';
+
+	export default class MarkdownComponent extends SvelteComponent {}
 }
 
 declare function __styles(): Record<string, string>;

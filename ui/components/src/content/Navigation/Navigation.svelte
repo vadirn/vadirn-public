@@ -23,7 +23,7 @@
 <nav class={className}>
 	<Logo {logoState} />
 	<ul>
-		{#each links as link}
+		{#each links as link, idx (idx)}
 			<li>
 				<a
 					href={link.href}

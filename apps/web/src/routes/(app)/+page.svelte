@@ -113,8 +113,8 @@
 <div class="notes">
 	<h2 class="notes-title">Recent notes:</h2>
 	<ul class="notes-list">
-		{#each recentNotes as title}
-			<li >
+		{#each recentNotes as title, idx (idx)}
+			<li>
 				<a href={getNotePath(title.toLowerCase())}>{title}</a>
 			</li>
 		{/each}
