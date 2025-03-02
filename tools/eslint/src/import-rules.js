@@ -1,12 +1,7 @@
 import { monorepo } from '@tools/monorepo';
-import pluginImportX from 'eslint-plugin-import-x';
-import {
-	createTypeScriptImportResolver,
-} from 'eslint-import-resolver-typescript';
+import * as importPlugin from 'eslint-plugin-import';
 import { globSync } from 'glob';
 import { setDefaultFiles } from './utils.js';
-
-const { createNodeResolver } = pluginImportX;
 
 // use static paths for config, otherwise some of those might disappear
 export const project = [
@@ -19,27 +14,33 @@ export const project = [
 ];
 
 export const importRules = () => setDefaultFiles({
+	plugins: { import: importPlugin },
 	settings: {
-		'import-x/parsers': {
-			'svelte-eslint-parser': ['.svelte'],
-			'@typescript-eslint/parser': ['.ts'],
-			'espree': ['.js'],
-		},
-		'import-x/resolver-next': [
-			createNodeResolver({
-				extensions: ['.mjs', '.cjs', '.js', '.ts', '.svelte'],
-			}),
-			createTypeScriptImportResolver({
+		'import/resolver': {
+			typescript: {
 				project,
-			}),
-		],
+				tsconfigRootDir: monorepo.root,
+			},
+		},
 	},
-	plugins: { 'import-x': pluginImportX },
+	languageOptions: {
+		ecmaVersion: 'latest',
+		sourceType: 'module',
+		parserOptions: {
+			parser: {
+				'svelte-eslint-parser': ['.svelte'],
+				'@typescript-eslint/parser': ['.ts'],
+				'espree': ['.js'],
+			},
+		},
+	},
 	rules: {
-		...pluginImportX.configs.recommended.rules,
-		'import-x/no-named-as-default-member': 'off',
-		'import-x/no-duplicates': ['error', { considerQueryString: true }],
-		'import-x/order': ['error',
+		...importPlugin.flatConfigs.recommended.rules,
+		...importPlugin.flatConfigs.recommended.typescript,
+		'import/no-named-as-default-member': 'off',
+		'import/no-duplicates': 'off',
+		'no-duplicate-imports': 'error',
+		'import/order': ['error',
 			{
 				groups: [
 					'builtin',
@@ -52,9 +53,9 @@ export const importRules = () => setDefaultFiles({
 					'type',
 				],
 			}],
-		// disable no-unresolved until https://github.com/un-ts/eslint-plugin-import-x/issues/40?ysclid=m393mkvkc718566676
+
 		// $app is vite alias
-		'import-x/no-unresolved': [
+		'import/no-unresolved': [
 			'error',
 			{ ignore: ['^\\$app\\W', '^\\$env\\W'] },
 		],

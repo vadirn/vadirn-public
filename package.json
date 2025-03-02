@@ -17,8 +17,8 @@
 		"@bessonovs/set-project-references": "0.0.10",
 		"@tools/package-update": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"turbo": "2.4.2",
-		"typescript": "5.7.3",
+		"turbo": "2.4.4",
+		"typescript": "5.8.2",
 		"vitest": "3.0.7"
 	},
 	"workspaces": [

@@ -54,9 +54,9 @@
 </style>
 
 <span class="shortcut" title="Keyboard shortcut: {formattedShortcut}">
-	{#each _keys as key, i}
+	{#each _keys as key, idx (idx)}
 		<kbd>{formatKey(key)}</kbd>
-		{#if i < _keys.length - 1}
+		{#if idx < _keys.length - 1}
 			<span class="separator">&plus;</span>
 		{/if}
 	{/each}

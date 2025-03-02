@@ -15,7 +15,7 @@
 
 <h1 class="page-title">Notes</h1>
 <ul class="flex flex-col gap-4">
-	{#each notes as title}
+	{#each notes as title, idx (idx)}
 		<li>
 			<a href={getNotePath(title)}>{title}</a>
 		</li>
