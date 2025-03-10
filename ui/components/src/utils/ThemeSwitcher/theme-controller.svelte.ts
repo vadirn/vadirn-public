@@ -7,6 +7,7 @@ export const Themes = {
 	Dark: 'dark',
 	System: 'system',
 } as const;
+
 export type Theme = typeof Themes[keyof typeof Themes];
 type PersistedTheme = typeof Themes.Light | typeof Themes.Dark;
 

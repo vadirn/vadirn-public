@@ -12,14 +12,14 @@
 		"check-project-references": "set-project-references",
 		"set-project-references": "set-project-references --save"
 	},
-	"packageManager": "pnpm@10.4.1",
+	"packageManager": "pnpm@10.6.1",
 	"devDependencies": {
 		"@bessonovs/set-project-references": "0.0.10",
 		"@tools/package-update": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
 		"turbo": "2.4.4",
 		"typescript": "5.8.2",
-		"vitest": "3.0.7"
+		"vitest": "3.0.8"
 	},
 	"workspaces": [
 		"apps/*",

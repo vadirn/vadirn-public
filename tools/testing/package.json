@@ -7,11 +7,11 @@
 	},
 	"scripts": {},
 	"devDependencies": {
-		"@sveltejs/kit": "2.17.3",
+		"@sveltejs/kit": "2.19.0",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",
 		"@tools/eslint": "workspace:*",
 		"@tools/jsconfig": "workspace:*",
 		"jsdom": "26.0.0",
-		"vitest": "3.0.7"
+		"vitest": "3.0.8"
 	}
 }

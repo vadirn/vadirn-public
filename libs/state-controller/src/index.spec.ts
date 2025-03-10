@@ -30,17 +30,17 @@ describe('state controller', () => {
 	});
 	it('allows basic transitions (object)', async () => {
 		const stateController = <
-			SM extends Record<string, Record<string, AnyFn>>,
+			TStateMethods extends Record<string, Record<string, AnyFn>>,
 		>(
-			defaultState: keyof SM,
-			stateMethods: SM) => {
+			defaultState: keyof TStateMethods,
+			stateMethods: TStateMethods) => {
 			let state = defaultState;
 
 			const stateController = {
 				get state() {
 					return state;
 				},
-				set state(value: keyof SM) {
+				set state(value: keyof TStateMethods) {
 					state = value;
 				},
 			};

@@ -4,25 +4,26 @@ import type { UnionToIntersection } from '@libs/standard/type';
 
 type StateMethods = Record<string, Record<string, AnyFn>>;
 
-type State<SM extends StateMethods> = keyof SM | undefined;
+type State<TStateMethods extends StateMethods> =
+	keyof TStateMethods | undefined;
 
-type Methods<SM extends StateMethods> =
-	UnionToIntersection<SM[keyof SM]>;
+type Methods<TStateMethods extends StateMethods> =
+	UnionToIntersection<TStateMethods[keyof TStateMethods]>;
 
-type Controller<SM extends StateMethods> = {
-	state: State<SM>;
+type Controller<TStateMethods extends StateMethods> = {
+	state: State<TStateMethods>;
 };
 
-export class StateController<SM extends StateMethods> {
-	state = $state<State<SM>>();
+export class StateController<TSM extends StateMethods> {
+	state = $state<State<TSM>>();
 
-	protected constructor(defaultState: State<SM>) {
+	protected constructor(defaultState: State<TSM>) {
 		this.state = defaultState;
 	}
 
-	static create<SM extends StateMethods>(
-		defaultState: State<SM>,
-		stateMethods: SM,
+	static create<TStateMethods extends StateMethods>(
+		defaultState: State<TStateMethods>,
+		stateMethods: TStateMethods,
 	) {
 		return attachMethods(
 			new this(defaultState),
@@ -31,19 +32,19 @@ export class StateController<SM extends StateMethods> {
 	}
 }
 
-export function stateController<SM extends StateMethods>(
-	defaultState: State<SM>,
-	stateMethods: SM,
+export function stateController<TStateMethods extends StateMethods>(
+	defaultState: State<TStateMethods>,
+	stateMethods: TStateMethods,
 ) {
 	return StateController.create(defaultState, stateMethods);
 }
 
 export function attachMethods<
-	SM extends StateMethods,
-	SC extends Controller<SM>,
+	TStateMethods extends StateMethods,
+	TController extends Controller<TStateMethods>,
 >(
-	controller: SC,
-	stateMethods: SM,
+	controller: TController,
+	stateMethods: TStateMethods,
 ) {
 	const methods = {} as Record<string, UnknownFn>;
 
@@ -62,6 +63,6 @@ export function attachMethods<
 	return merge(
 		controller,
 		{ stateMethods },
-		methods as Methods<SM>,
+		methods as Methods<TStateMethods>,
 	);
 }

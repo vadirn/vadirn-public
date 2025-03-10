@@ -5,6 +5,8 @@ import {
 import { fail } from '@sveltejs/kit';
 import { db } from '$lib/server/database';
 
+const BAD_REQUEST = 400;
+
 export const actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
@@ -17,6 +19,6 @@ export const actions = {
 			return { message: 'Message received. Thanks for reaching out!' };
 		}
 
-		return fail(400, { message: 'Something went wrong 🤔' });
+		return fail(BAD_REQUEST, { message: 'Something went wrong 🤔' });
 	},
 };

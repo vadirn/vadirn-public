@@ -3,7 +3,7 @@ import globals from 'globals';
 import { parser } from 'typescript-eslint';
 import { importRules, project } from './import-rules.js';
 import { recommended } from './recommended.js';
-import { style } from './style.js';
+import { style } from './style/index.js';
 import { svelte } from './svelte.js';
 import { final } from './final.js';
 
