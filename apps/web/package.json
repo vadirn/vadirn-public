@@ -21,7 +21,7 @@
 		"@ui/components": "workspace:*"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "4.0.0",
+		"@sveltejs/adapter-vercel": "5.6.3",
 		"@sveltejs/kit": "2.19.0",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",
 		"@tools/eslint": "workspace:*",
