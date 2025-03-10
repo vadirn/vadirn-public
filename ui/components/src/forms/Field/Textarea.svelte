@@ -3,6 +3,8 @@
 	import CustomField from './Custom.svelte';
 	import type { FieldProps } from './types';
 
+	const DEFAULT_ROWS = 2;
+
 	type Props = FieldProps & {
 		value?: string;
 		placeholder?: string;
@@ -19,7 +21,7 @@
 		required = false,
 		disabled = false,
 		autocomplete = 'off',
-		rows = 2,
+		rows = DEFAULT_ROWS,
 		validationMessage,
 	}: Props = $props();
 </script>

@@ -3,10 +3,12 @@
 	import { Button } from '@ui/components/button';
 	import { Modal } from '@ui/components/modal';
 	import { getNotePath, notes } from '$lib/cache/notes';
-	import Pricing from '$lib/components/Pricing.svelte';
+	import Pricing from '$lib/components/Pricing/Pricing.svelte';
 	import { app } from '$lib/paths/app';
 
-	const recentNotes = notes.slice(0, 5);
+	const RECENT_NOTES_COUNT = 5;
+
+	const recentNotes = notes.slice(0, RECENT_NOTES_COUNT);
 </script>
 
 <style lang="postcss">

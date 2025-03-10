@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { LogoState } from './state.svelte';
+	import { Emoji, type LogoState } from './state.svelte';
 
 	const { logoState }: { logoState: LogoState } = $props();
 </script>
@@ -86,8 +86,8 @@
 </style>
 
 <a class='text-heading' href='/'><figure
-	class:ball={logoState.index === 2}
-	class:code={logoState.index === 0}
-	class:game={logoState.index === 3}
-	class:ski={logoState.index === 1}
+	class:ball={logoState.index === Emoji.Ball}
+	class:code={logoState.index === Emoji.Code}
+	class:game={logoState.index === Emoji.Game}
+	class:ski={logoState.index === Emoji.Ski}
 >{logoState.emoji}</figure>Vadim Kotov</a>

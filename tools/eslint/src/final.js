@@ -144,6 +144,12 @@ const finalRules = {
 				modifiers: ['requiresQuotes'],
 				format: null,
 			},
+
+			{
+				selector: 'objectLiteralMethod',
+				modifiers: ['requiresQuotes'],
+				format: null,
+			},
 		],
 	},
 };

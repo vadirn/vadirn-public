@@ -3,6 +3,9 @@
 	import { stateController } from '@libs/state-controller';
 	import { Button } from '@ui/components/button';
 
+	const LOADING_DELAY = 800;
+	const ERROR_FACTOR = 2;
+
 	let clicks = $state(0);
 
 	const buttonController = stateController('idle', {
@@ -11,8 +14,8 @@
 				buttonController.state = 'loading';
 				try {
 					clicks += 1;
-					await sleep(800);
-					if (clicks % 2 === 0) throw new Error('💥');
+					await sleep(LOADING_DELAY);
+					if (clicks % ERROR_FACTOR === 0) throw new Error('💥');
 					buttonController.state = 'success';
 				}
 				catch {
