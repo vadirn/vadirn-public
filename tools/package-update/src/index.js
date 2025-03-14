@@ -10,7 +10,7 @@ import {
 import { awaitYesNoInput, closeReadline } from './interaction.js';
 import { findPackages } from './packages.js';
 
-const write = (...args) => process.stdout.write(...args);
+const write = message => process.stdout.write(message);
 
 async function main() {
 	const cachedAnswers = {};

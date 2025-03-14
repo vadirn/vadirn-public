@@ -10,33 +10,28 @@ export async function findPackages(...dirs) {
 	for (const dir of dirs) {
 		const files = await readdir(dir, { withFileTypes: true });
 
-		for (const file of files) {
-			if (file.isDirectory() && file.name !== 'node_modules') {
-				const packageJsonPath = join(
-					file.parentPath,
-					file.name,
-					'package.json',
-				);
-
-				if (await fileExists(packageJsonPath)) {
-					packages.add(packageJsonPath);
-				}
-			}
-
-			if (file.isFile() && file.name === 'package.json') {
-				const packageJsonPath = join(
-					file.parentPath,
-					file.name,
-				);
-
-				if (await fileExists(packageJsonPath)) {
-					packages.add(packageJsonPath);
-				}
-			}
-		}
+		await Promise.all(files.map(file => addPackages(file, packages)));
 	}
 
 	return [...packages];
+}
+
+async function addPackages(file, packages) {
+	if (file.isDirectory() && file.name !== 'node_modules') {
+		const packageJsonPath = join(file.parentPath, file.name, 'package.json');
+
+		if (await fileExists(packageJsonPath)) {
+			packages.add(packageJsonPath);
+		}
+	}
+
+	if (file.isFile() && file.name === 'package.json') {
+		const packageJsonPath = join(file.parentPath, file.name);
+
+		if (await fileExists(packageJsonPath)) {
+			packages.add(packageJsonPath);
+		}
+	}
 }
 
 async function fileExists(path) {
