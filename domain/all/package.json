@@ -3,6 +3,13 @@
 	"exports": {
 		"./contact-form": "./src/contact-form.ts"
 	},
-	"scripts": {},
-	"type": "module"
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@tools/tsconfig": "workspace:*",
+		"@tools/eslint": "workspace:*"
+	}
 }

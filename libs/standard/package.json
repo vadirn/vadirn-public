@@ -13,7 +13,10 @@
 		"./type": "./src/type.ts",
 		"./dev": "./src/dev.ts"
 	},
-	"scripts": {},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
 	"type": "module",
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",

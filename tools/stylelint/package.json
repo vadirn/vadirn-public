@@ -4,7 +4,8 @@
 		".": "./src/index.js"
 	},
 	"scripts": {
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
 	},
 	"type": "module",
 	"devDependencies": {
@@ -13,7 +14,7 @@
 		"@tools/jsconfig": "workspace:*",
 		"postcss": "8.5.3",
 		"postcss-html": "1.8.0",
-		"stylelint": "16.15.0",
+		"stylelint": "16.16.0",
 		"stylelint-config-html": "1.1.0",
 		"stylelint-config-recess-order": "6.0.0",
 		"stylelint-config-standard": "37.0.0",
