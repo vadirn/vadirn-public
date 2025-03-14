@@ -41,6 +41,7 @@
 		border-radius: var(--radius-4);
 
 		:global(.dark) & {
+			color: var(--color-white);
 			background-color: var(--color-grey-400);
 		}
 	}
