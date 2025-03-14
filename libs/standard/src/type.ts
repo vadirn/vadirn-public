@@ -2,10 +2,10 @@ export type Prettify<T> = {
 	[K in keyof T]: T[K];
 } & {};
 
-export type UnionToIntersection<U> =
+export type UnionToIntersection<TUnion> =
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	(U extends any ? (k: U) => void : never) extends
-	(k: infer I extends U) => void ? I : never;
+	(TUnion extends any ? (k: TUnion) => void : never) extends
+	(k: infer I extends TUnion) => void ? I : never;
 
 export type DeepPartial<T> = T extends object ? {
 	[P in keyof T]?: DeepPartial<T[P]>;

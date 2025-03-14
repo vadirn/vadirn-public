@@ -5,7 +5,10 @@
 		".": "./src/index.js",
 		"./config": "./src/config.js"
 	},
-	"scripts": {},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
 	"devDependencies": {
 		"@sveltejs/kit": "2.19.0",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",

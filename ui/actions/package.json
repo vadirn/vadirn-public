@@ -3,7 +3,10 @@
 	"exports": {
 		"./portal": "./src/portal.ts"
 	},
-	"scripts": {},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
 	"type": "module",
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",

@@ -1,7 +1,7 @@
 {
-    "name": "@tools/package-update",
+    "name": "@tools/symlink-env",
     "bin": {
-        "package-update": "./src/index.js"
+        "symlink-env": "./src/index.js"
     },
     "scripts": {
         "lint": "eslint .",

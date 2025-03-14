@@ -5,6 +5,9 @@
 			"path": "../../core/database"
 		},
 		{
+			"path": "../../domain/all"
+		},
+		{
 			"path": "../../libs/routing"
 		},
 		{

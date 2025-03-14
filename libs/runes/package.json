@@ -3,12 +3,15 @@
 	"exports": {
 		"./persisted-state": "./src/persisted-state.svelte.ts"
 	},
-	"scripts": {},
+	"scripts": {
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
 	"type": "module",
 	"devDependencies": {
 		"@tools/eslint": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
-		"svelte": "5.22.6"
+		"svelte": "5.23.0"
 	},
 	"dependencies": {
 		"@libs/standard": "workspace:*"
