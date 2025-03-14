@@ -1,18 +1,22 @@
+import { drizzle } from 'drizzle-orm/neon-http';
 import { resultOf } from '@libs/result';
-import { createClient, VercelKV } from '@vercel/kv';
-
-type DatabaseConfig = {
-	url: string;
-	token: string;
-};
+import { contacts } from './schema/contacts';
+import type { ContactFormData } from '@domain/all/contact-form';
 
 export class Database {
-	kv: VercelKV;
-	constructor(config: DatabaseConfig) {
-		this.kv = createClient(config);
+	private db;
+
+	constructor(databaseUrl: string) {
+		this.db = drizzle(databaseUrl);
 	}
 
-	add = (key: string, value: Record<string, string | number | boolean>) => {
-		return resultOf(this.kv.lpush(key, value));
+	addContact = async (contact: ContactFormData) => {
+		const result = await resultOf(
+			this.db.insert(contacts)
+				.values(contact)
+				.returning(),
+		);
+
+		return result;
 	};
 }

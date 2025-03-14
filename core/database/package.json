@@ -3,15 +3,23 @@
 	"exports": {
 		".": "./src/index.ts"
 	},
-	"scripts": {},
+	"scripts": {
+		"db:push": "drizzle-kit push",
+		"db:studio": "drizzle-kit studio",
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
+	},
 	"type": "module",
 	"devDependencies": {
+		"@domain/all": "workspace:*",
+		"@libs/result": "workspace:*",
+		"@libs/standard": "workspace:*",
+		"@neondatabase/serverless": "0.10.4",
 		"@tools/eslint": "workspace:*",
 		"@tools/testing": "workspace:*",
-		"@tools/tsconfig": "workspace:*"
-	},
-	"dependencies": {
-		"@vercel/kv": "3.0.0",
-		"@libs/result": "workspace:*"
+		"@tools/tsconfig": "workspace:*",
+		"dotenv": "16.4.7",
+		"drizzle-kit": "0.30.5",
+		"drizzle-orm": "0.40.0"
 	}
 }

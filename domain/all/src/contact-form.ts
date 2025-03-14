@@ -1,9 +1,10 @@
+/**
+ * Contact form data as submitted by users
+ */
 export type ContactFormData = {
-	plan: string;
 	name: string;
+	plan: string;
 	email: string;
-	company?: string;
-	message?: string;
-}
-
-export const ContactRequests = 'contact-requests';
+	company?: string | null;
+	message?: string | null;
+};
