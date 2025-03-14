@@ -101,7 +101,7 @@
 	<div class="flex flex-row-reverse gap-16">
 		<Button
 			type="submit"
-			onclick={formController.submit}
+			onclick={event => formController.submit(event, closeModal)}
 		>
 			{submitLabel}
 		</Button>
