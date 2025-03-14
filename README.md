@@ -27,6 +27,18 @@ This project is organized as a monorepo using pnpm workspaces:
 pnpm install
 ```
 
+### Environment Setup
+
+Create a `.env` file in the root directory. Check `.env.example` for expected variables.
+
+Run the environment setup tool to create symlinks:
+
+```bash
+pnpm symlink-env
+```
+
+This will create symlinks to the root `.env` file in all required project directories.
+
 ### Development
 
 ```bash
@@ -38,6 +50,24 @@ pnpm lint
 
 # Run tests
 pnpm test
+```
+
+### Database
+
+The project uses [Neon](https://neon.tech) (serverless Postgres) with Drizzle ORM. Make sure you have the database URL set in your `.env` file:
+
+```
+DATABASE_URL=postgresql://username:password@your-neon-db-url/dbname
+```
+
+Available commands:
+
+```bash
+# Push schema changes to the database
+pnpm db:push
+
+# Open Drizzle Studio to manage data
+pnpm db:studio
 ```
 
 ### Building

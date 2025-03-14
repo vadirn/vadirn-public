@@ -6,16 +6,21 @@
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"lint": "turbo lint",
+		"lint:fix": "turbo lint:fix",
 		"format": "turbo format",
 		"test": "turbo test",
+		"db:push": "pnpm --filter @core/database db:push",
+		"db:studio": "pnpm --filter @core/database db:studio",
 		"update": "package-update",
 		"check-project-references": "set-project-references",
-		"set-project-references": "set-project-references --save"
+		"set-project-references": "set-project-references --save",
+		"symlink-env": "symlink-env"
 	},
 	"packageManager": "pnpm@10.6.1",
 	"devDependencies": {
 		"@bessonovs/set-project-references": "0.0.10",
 		"@tools/package-update": "workspace:*",
+		"@tools/symlink-env": "workspace:*",
 		"@tools/tsconfig": "workspace:*",
 		"turbo": "2.4.4",
 		"typescript": "5.8.2",
