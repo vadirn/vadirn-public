@@ -1,0 +1,17 @@
+{
+    "name": "@tools/symlink-env",
+    "bin": {
+        "symlink-env": "./src/index.js"
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix"
+    },
+    "type": "module",
+    "devDependencies": {
+        "@tools/eslint": "workspace:*",
+        "@tools/jsconfig": "workspace:*",
+        "@tools/monorepo": "workspace:*",
+        "chalk": "5.4.1"
+    }
+}
