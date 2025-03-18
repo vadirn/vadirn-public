@@ -3,6 +3,9 @@
 	import { isEditingText } from '@libs/standard/dom';
 	import { stateController } from '@libs/state-controller';
 	import { Meta } from '@ui/components/meta';
+	import inter from '@ui/theme/assets/fonts/InterVariable.woff2?url';
+	import interItalic from
+		'@ui/theme/assets/fonts/InterVariable-Italic.woff2?url';
 	import { getThemeController } from '$lib/cache/theme-controller';
 	import { getRootMeta } from '$lib/cache/meta';
 	import { getLogoState } from '$lib/cache/logo-state';
@@ -69,6 +72,23 @@
 	});
 
 </script>
+
+<svelte:head>
+	<link
+		as="font"
+		crossorigin="anonymous"
+		href={inter}
+		rel="preload"
+		type="font/woff2"
+	/>
+	<link
+		as="font"
+		crossorigin="anonymous"
+		href={interItalic}
+		rel="preload"
+		type="font/woff2"
+	/>
+</svelte:head>
 
 <Meta {...getRootMeta({ canonical: page.url.href })} />
 

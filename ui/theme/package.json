@@ -2,6 +2,7 @@
 	"name": "@ui/theme",
 	"exports": {
 		".": "./src/index.ts",
+		"./assets/*": "./src/assets/*",
 		"./css": "./src/css/index.css",
 		"./postcss": "./src/postcss.config.js"
 	},
